@@ -337,6 +337,44 @@
     .trust{gap:20px}
     .trust b{font-size:24px}
   }
+  /* CONCIERGE CHAT + FRONT DESK */
+  .cc-launch{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:9px;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);border:0;border-radius:999px;
+    padding:13px 20px 13px 17px;font:inherit;font-weight:800;font-size:15px;cursor:pointer;
+    box-shadow:0 14px 34px -10px rgba(232,146,56,0.6);transition:transform .2s}
+  .cc-launch:hover{transform:translateY(-3px)}
+  .cc-launch svg{width:21px;height:21px}
+  .cc-launch .cc-dot{position:absolute;top:9px;right:13px;width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(95,209,160,0.3)}
+  .cc-panel{position:fixed;right:22px;bottom:86px;z-index:81;width:372px;max-width:calc(100vw - 34px);height:524px;max-height:calc(100vh - 130px);
+    display:none;flex-direction:column;overflow:hidden;border-radius:22px;border:1px solid var(--line);
+    background:linear-gradient(180deg,var(--navy-800),var(--navy-900));box-shadow:0 30px 80px -20px rgba(0,0,0,0.85)}
+  .cc-panel.open{display:flex;animation:ccpop .25s ease}
+  @keyframes ccpop{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .cc-head{display:flex;align-items:center;gap:11px;padding:15px 17px;border-bottom:1px solid var(--line);
+    background:linear-gradient(135deg,rgba(232,146,56,0.16),rgba(108,166,214,0.12))}
+  .cc-head .cc-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);font-weight:800;font-size:14px}
+  .cc-head h4{color:#fff;font-size:15px;font-family:'Manrope';font-weight:700;margin:0;line-height:1.2}
+  .cc-head .cc-status{font-size:12px;color:var(--ok);font-weight:600}
+  .cc-head .cc-close{margin-left:auto;background:transparent;border:0;color:var(--sky-soft);font-size:24px;cursor:pointer;line-height:1}
+  .cc-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:11px}
+  .cc-msg{max-width:84%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5}
+  .cc-bot{align-self:flex-start;background:var(--glass-strong);border:1px solid var(--line);color:var(--champagne);border-bottom-left-radius:5px}
+  .cc-user{align-self:flex-end;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);font-weight:600;border-bottom-right-radius:5px}
+  .cc-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 10px}
+  .cc-chip{background:var(--glass);border:1px solid var(--line);color:var(--sky-soft);font:inherit;font-size:12.5px;font-weight:600;
+    padding:8px 13px;border-radius:999px;cursor:pointer;transition:.2s}
+  .cc-chip:hover{border-color:var(--gold);color:#fff}
+  .cc-call{font-size:12px;color:var(--sky-soft);padding:0 18px 10px;text-align:center}
+  .cc-call a{color:var(--gold-bright);font-weight:700;white-space:nowrap}
+  .cc-foot{display:flex;gap:8px;padding:12px 13px;border-top:1px solid var(--line)}
+  .cc-foot input{flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--line);border-radius:12px;color:#fff;font:inherit;font-size:14px;padding:11px 14px}
+  .cc-foot input:focus{outline:0;border-color:var(--gold)}
+  .cc-foot input::placeholder{color:rgba(185,216,242,0.55)}
+  .cc-foot button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border:0;border-radius:12px;width:46px;cursor:pointer;display:grid;place-items:center;flex:none}
+  .cc-foot button svg{width:18px;height:18px;fill:var(--navy-900)}
+  @media(max-width:480px){.cc-launch span{display:none}.cc-launch{padding:14px;right:16px;bottom:16px}}
+
   .fade{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
   .fade.in{opacity:1;transform:none}
 </style>
@@ -770,6 +808,37 @@
   </section>
 </main>
 
+<!-- ===================== CONCIERGE CHAT + FRONT DESK ===================== -->
+<button class="cc-launch" id="ccLaunch" onclick="ccToggle()" aria-label="Open concierge chat">
+  <span class="cc-dot"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <span data-i18n="chat_launch">Concierge</span>
+</button>
+<div class="cc-panel" id="ccPanel" role="dialog" aria-label="Skybridge Concierge">
+  <div class="cc-head">
+    <div class="cc-av">SB</div>
+    <div>
+      <h4 data-i18n="chat_title">Skybridge Concierge</h4>
+      <div class="cc-status" data-i18n="chat_online">● Online · replies in seconds</div>
+    </div>
+    <button class="cc-close" onclick="ccToggle()" aria-label="Close chat">×</button>
+  </div>
+  <div class="cc-body" id="ccBody">
+    <div class="cc-msg cc-bot" data-i18n="chat_greet">Hi! I'm your Skybridge concierge. How can I help with your closing today?</div>
+  </div>
+  <div class="cc-chips">
+    <button class="cc-chip" onclick="ccQuick('quote')" data-i18n="chat_q1">Get a quote</button>
+    <button class="cc-chip" onclick="ccQuick('track')" data-i18n="chat_q2">Track my closing</button>
+    <button class="cc-chip" onclick="ccQuick('costs')" data-i18n="chat_q3">Closing costs</button>
+    <button class="cc-chip" onclick="ccQuick('person')" data-i18n="chat_q4">Talk to a person</button>
+  </div>
+  <div class="cc-call"><span data-i18n="chat_call">Prefer to talk? Our 24/7 front desk:</span> <a href="tel:18883360902">1 (888) 336-0902</a></div>
+  <form class="cc-foot" onsubmit="return ccSend(event)">
+    <input id="ccInput" data-i18n-ph="chat_input_ph" placeholder="Type a message…" autocomplete="off">
+    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></button>
+  </form>
+</div>
+
 <footer>
   <div class="wrap foot">
     <div>
@@ -857,6 +926,14 @@ const I18N = {
     form_sent:"Thank you — your message is on its way. We'll reply shortly.",form_name:"Full name",form_email:"Email",form_phone:"Phone (optional)",form_msg:"How can we help?",form_send:"Send message",form_note:"Your information is sent securely and is never sold.",
     form_t1:"General question",form_t2:"Start a title order",form_t3:"Realtor partnership",powered:"Powered by",foot_contact:"Contact us",
     fp_tag:"Featured lending partner",fp_desc:"Mortgages made simple — FHA, VA, USDA, conventional & jumbo loans across Florida. NMLS #2323340.",fp_cta:"Visit site →",
+    chat_launch:"Concierge",chat_title:"Skybridge Concierge",chat_online:"● Online · replies in seconds",
+    chat_greet:"Hi! I'm your Skybridge concierge. How can I help with your closing today?",
+    chat_q1:"Get a quote",chat_q2:"Track my closing",chat_q3:"Closing costs",chat_q4:"Talk to a person",
+    chat_call:"Prefer to talk? Our 24/7 front desk:",chat_input_ph:"Type a message…",
+    chat_r_quote:"Happy to help! Our instant calculator uses Florida's official rates. Let me take you there…",
+    chat_r_track:"Sure — you can follow every step of your closing in your secure client portal. Opening it now…",
+    chat_r_person:"Of course. Our team is one call away at 1 (888) 336-0902, or leave a note on our contact form and we'll reply fast — in your language.",
+    chat_r_default:"Great question. A specialist can help with that — call 1 (888) 336-0902 or use our contact form, and we'll get right back to you.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Call us: 1 (888) 336-0902",foot_proto:"Prototype"
   },
   ht:{
@@ -921,6 +998,14 @@ const I18N = {
     form_sent:"Mèsi — mesaj ou a sou wout li. N ap reponn talè.",form_name:"Non konplè",form_email:"Imèl",form_phone:"Telefòn (opsyonèl)",form_msg:"Kijan nou ka ede?",form_send:"Voye mesaj",form_note:"Enfòmasyon ou voye an sekirite epi nou pa janm vann li.",
     form_t1:"Kesyon jeneral",form_t2:"Kòmanse yon kòmann tit",form_t3:"Patenarya ajan",powered:"Mete an mach pa",foot_contact:"Kontakte nou",
     fp_tag:"Patnè prè ki an vedèt",fp_desc:"Prè ipotekè san konplikasyon — prè FHA, VA, USDA, konvansyonèl ak jumbo nan tout Florid. NMLS #2323340.",fp_cta:"Vizite sit la →",
+    chat_launch:"Konsyèj",chat_title:"Konsyèj Skybridge",chat_online:"● Anliy · reponn nan kèk segonn",
+    chat_greet:"Bonjou! Mwen se konsyèj Skybridge ou. Kijan mwen ka ede w ak fèmti ou jodi a?",
+    chat_q1:"Jwenn yon devi",chat_q2:"Swiv fèmti mwen",chat_q3:"Frè fèmti",chat_q4:"Pale ak yon moun",
+    chat_call:"Ou pito pale? Resepsyon 24/7 nou an:",chat_input_ph:"Ekri yon mesaj…",
+    chat_r_quote:"Avèk plezi! Kalkilatè enstantane nou an itilize to ofisyèl Florid yo. Kite m mennen w la…",
+    chat_r_track:"Byensi — ou ka swiv chak etap fèmti ou nan pòtay sekirize ou. M ap louvri li kounye a…",
+    chat_r_person:"Natirèlman. Ekip nou an a yon apèl: 1 (888) 336-0902, oswa kite yon nòt sou fòm nan epi n ap reponn vit, nan lang ou.",
+    chat_r_default:"Bon kesyon. Yon espesyalis ka ede w — rele 1 (888) 336-0902 oswa sèvi ak fòm nan epi n ap reponn ou touswit.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Rele nou: 1 (888) 336-0902",foot_proto:"Pwototip"
   },
   fr:{
@@ -985,6 +1070,14 @@ const I18N = {
     form_sent:"Merci — votre message est en route. Nous répondrons sous peu.",form_name:"Nom complet",form_email:"E-mail",form_phone:"Téléphone (facultatif)",form_msg:"Comment pouvons-nous aider ?",form_send:"Envoyer le message",form_note:"Vos informations sont transmises en toute sécurité et ne sont jamais vendues.",
     form_t1:"Question générale",form_t2:"Lancer une commande de titre",form_t3:"Partenariat agent",powered:"Propulsé par",foot_contact:"Contactez-nous",
     fp_tag:"Partenaire prêteur en vedette",fp_desc:"Des prêts hypothécaires simplifiés — FHA, VA, USDA, conventionnels et jumbo dans toute la Floride. NMLS #2323340.",fp_cta:"Visiter le site →",
+    chat_launch:"Conciergerie",chat_title:"Conciergerie Skybridge",chat_online:"● En ligne · réponse en quelques secondes",
+    chat_greet:"Bonjour ! Je suis votre concierge Skybridge. Comment puis-je vous aider avec votre clôture aujourd'hui ?",
+    chat_q1:"Obtenir un devis",chat_q2:"Suivre ma clôture",chat_q3:"Frais de clôture",chat_q4:"Parler à une personne",
+    chat_call:"Vous préférez parler ? Accueil 24/7 :",chat_input_ph:"Écrivez un message…",
+    chat_r_quote:"Avec plaisir ! Notre calculateur instantané utilise les tarifs officiels de Floride. Je vous y emmène…",
+    chat_r_track:"Bien sûr — vous pouvez suivre chaque étape de votre clôture dans votre portail sécurisé. Je l'ouvre…",
+    chat_r_person:"Bien sûr. Notre équipe est à un appel : 1 (888) 336-0902, ou laissez un mot sur le formulaire et nous répondrons vite, dans votre langue.",
+    chat_r_default:"Bonne question. Un spécialiste peut vous aider — appelez le 1 (888) 336-0902 ou utilisez le formulaire, nous reviendrons vers vous rapidement.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Appelez-nous : 1 (888) 336-0902",foot_proto:"Prototype"
   },
   es:{
@@ -1049,6 +1142,14 @@ const I18N = {
     form_sent:"Gracias — su mensaje va en camino. Le responderemos pronto.",form_name:"Nombre completo",form_email:"Correo electrónico",form_phone:"Teléfono (opcional)",form_msg:"¿Cómo podemos ayudar?",form_send:"Enviar mensaje",form_note:"Su información se envía de forma segura y nunca se vende.",
     form_t1:"Pregunta general",form_t2:"Iniciar un pedido de título",form_t3:"Alianza con agente",powered:"Desarrollado por",foot_contact:"Contáctenos",
     fp_tag:"Socio prestamista destacado",fp_desc:"Hipotecas sin complicaciones — préstamos FHA, VA, USDA, convencionales y jumbo en toda Florida. NMLS #2323340.",fp_cta:"Visitar sitio →",
+    chat_launch:"Conserje",chat_title:"Conserje Skybridge",chat_online:"● En línea · responde en segundos",
+    chat_greet:"¡Hola! Soy su conserje de Skybridge. ¿Cómo puedo ayudarle con su cierre hoy?",
+    chat_q1:"Obtener cotización",chat_q2:"Seguir mi cierre",chat_q3:"Costos de cierre",chat_q4:"Hablar con una persona",
+    chat_call:"¿Prefiere hablar? Recepción 24/7:",chat_input_ph:"Escriba un mensaje…",
+    chat_r_quote:"¡Con gusto! Nuestra calculadora instantánea usa las tarifas oficiales de Florida. Le llevo allí…",
+    chat_r_track:"Claro — puede seguir cada paso de su cierre en su portal seguro. Abriéndolo ahora…",
+    chat_r_person:"Por supuesto. Nuestro equipo está a una llamada: 1 (888) 336-0902, o déjenos una nota en el formulario y le responderemos rápido, en su idioma.",
+    chat_r_default:"Buena pregunta. Un especialista puede ayudarle — llame al 1 (888) 336-0902 o use el formulario y le responderemos enseguida.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Llámenos: 1 (888) 336-0902",foot_proto:"Prototipo"
   }
 };
@@ -1078,6 +1179,45 @@ function sendForm(e){
   document.getElementById('formOk').style.display='block';
   e.target.reset();
   document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+
+/* ---------- CONCIERGE CHAT + FRONT DESK (prototype) ----------
+   Production: connects to the self-hosted AI concierge (Supabase + n8n),
+   the same engine that powers the 24/7 voice front desk; escalates to staff. */
+function ccToggle(){
+  var p=document.getElementById('ccPanel');
+  p.classList.toggle('open');
+  if(p.classList.contains('open')) setTimeout(function(){var i=document.getElementById('ccInput');if(i)i.focus();},60);
+}
+function ccAdd(text,who){
+  var b=document.getElementById('ccBody');
+  var d=document.createElement('div');
+  d.className='cc-msg '+(who==='user'?'cc-user':'cc-bot');
+  d.textContent=text;
+  b.appendChild(d); b.scrollTop=b.scrollHeight;
+}
+function ccReply(key){
+  var t=I18N[lang];
+  setTimeout(function(){ ccAdd(t[key]||t.chat_r_default,'bot'); },550);
+}
+function ccQuick(intent){
+  var t=I18N[lang];
+  var k={quote:'chat_q1',track:'chat_q2',costs:'chat_q3',person:'chat_q4'}[intent];
+  ccAdd(t[k],'user');
+  if(intent==='quote'||intent==='costs'){ ccReply('chat_r_quote'); setTimeout(function(){showHome();document.getElementById('calculator').scrollIntoView();},900); }
+  else if(intent==='track'){ ccReply('chat_r_track'); setTimeout(showPortal,1000); }
+  else { ccReply('chat_r_person'); }
+}
+function ccSend(e){
+  e.preventDefault();
+  var i=document.getElementById('ccInput'); var v=(i.value||'').trim(); if(!v) return false;
+  ccAdd(v,'user'); i.value='';
+  var s=v.toLowerCase();
+  if(/quote|cost|price|estimat|cu[aá]nto|pri|fr[eè]|frais|devis|cotiz/.test(s)){ ccReply('chat_r_quote'); setTimeout(function(){showHome();document.getElementById('calculator').scrollIntoView();},900); }
+  else if(/track|status|portal|swiv|seguir|suivre|f[eè]mti|progress|pwogr/.test(s)){ ccReply('chat_r_track'); }
+  else if(/agent|person|human|call|phone|moun|persona|personne|rele|telefon|appel/.test(s)){ ccReply('chat_r_person'); }
+  else { ccReply('chat_r_default'); }
   return false;
 }
 
