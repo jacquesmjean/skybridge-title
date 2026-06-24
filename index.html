@@ -241,6 +241,14 @@
   .pcard a{color:var(--gold-bright);font-weight:700;font-size:13.5px}
   .partner-cta{text-align:center;margin-top:34px}
   .partner-cta p{color:var(--sky-soft);font-size:15px;margin-bottom:16px}
+  .featured-partner{display:flex;align-items:center;gap:24px;padding:22px 28px;margin-bottom:26px;text-decoration:none;transition:transform .25s,border-color .25s}
+  .featured-partner:hover{transform:translateY(-4px);border-color:rgba(232,146,56,0.55)}
+  .fp-logo{width:92px;height:66px;object-fit:contain;background:#fff;border-radius:12px;padding:9px;flex:none}
+  .fp-body{flex:1}
+  .fp-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:6px}
+  .fp-body h3{color:#fff;font-size:21px;margin-bottom:4px}
+  .fp-body p{color:var(--sky-soft);font-size:14px;max-width:64ch}
+  .fp-cta{color:var(--gold-bright);font-weight:700;font-size:14.5px;white-space:nowrap;flex:none}
 
   /* BLOG */
   .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -286,8 +294,8 @@
   .poweredby{text-align:center;padding:18px 0 0;margin-top:24px;border-top:1px solid var(--line)}
   .poweredby a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--sky-soft);letter-spacing:.02em}
   .poweredby a:hover{color:#fff}
-  .poweredby .tfmark{font-family:'Arial';font-weight:800}
-  .poweredby .tfmark span{color:var(--sky)}
+  .poweredby .tfmark{font-family:'Arial';font-weight:800;color:#ffffff}
+  .poweredby .tfmark span{color:#00AEEF}
 
   /* BRAND BAND */
   .brandband{padding:60px 0;overflow:hidden}
@@ -319,6 +327,7 @@
     .img-duo img{height:230px}
     .stats-grid{gap:12px}
     .partners{grid-template-columns:1fr}
+    .featured-partner{flex-direction:column;text-align:center}
     .contact-form .frow{grid-template-columns:1fr}
     .lang button{padding:6px 9px;font-size:11.5px}
     .menu-toggle{display:block}
@@ -523,6 +532,15 @@
       <h2 data-i18n="partners_h2">Our realtor partners</h2>
     </div>
     <p class="partner-intro fade" data-i18n="partners_p">We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.</p>
+    <a class="featured-partner glass fade" href="https://sodolending.com/" target="_blank" rel="noopener">
+      <img class="fp-logo" src="sodo-logo.png" alt="Sodo Lending">
+      <div class="fp-body">
+        <span class="fp-tag" data-i18n="fp_tag">Featured lending partner</span>
+        <h3>Sodo Lending</h3>
+        <p data-i18n="fp_desc">Mortgages made simple — FHA, VA, USDA, conventional &amp; jumbo loans across Florida. NMLS #2323340.</p>
+      </div>
+      <span class="fp-cta" data-i18n="fp_cta">Visit site →</span>
+    </a>
     <div class="partners">
       <div class="pcard glass fade">
         <div class="pav">MR</div>
@@ -649,7 +667,6 @@
       <div class="contact-left">
         <h2 data-i18n="contact_h2">Talk to a real person</h2>
         <p data-i18n="contact_p">A question, an order, or a partnership — send a note and our team replies fast, in your language.</p>
-        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4zM4 6l8 6 8-6"/></svg> <a href="mailto:andre@skybridgetitle.com">andre@skybridgetitle.com</a></div>
         <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg> <a href="tel:18883360902">1 (888) 336-0902</a></div>
         <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.27 7-11a7 7 0 10-14 0c0 4.73 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span data-i18n="contact_addr">655 NE 125th St, Ste A · North Miami, FL</span></div>
       </div>
@@ -768,7 +785,7 @@
     </div>
     <div style="text-align:right">
       <div data-i18n="foot_call">Call us: 1 (888) 336-0902</div>
-      <div style="margin-top:6px"><a href="mailto:andre@skybridgetitle.com" style="color:var(--gold-bright);font-weight:600">andre@skybridgetitle.com</a></div>
+      <div style="margin-top:6px"><a href="#contact" onclick="showHome();setTimeout(function(){var c=document.getElementById('contact');if(c)c.scrollIntoView();},40);return false;" style="color:var(--gold-bright);font-weight:600" data-i18n="foot_contact">Contact us</a></div>
       <div style="opacity:.6;margin-top:6px">© 2026 Skybridge Title, LLC · <span data-i18n="foot_proto">Prototype</span></div>
     </div>
   </div>
@@ -837,8 +854,9 @@ const I18N = {
     blog2_d:"June 2026",blog2_t:"Closing costs in Florida, explained",blog2_x:"What you really pay at closing — and who pays for what.",
     blog3_d:"May 2026",blog3_t:"Buying your first home in Miami: a checklist",blog3_x:"Everything to have ready before you sign.",
     contact_h2:"Talk to a real person",contact_p:"A question, an order, or a partnership — send a note and our team replies fast, in your language.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
-    form_sent:"Thank you — your message is on its way. We'll reply shortly.",form_name:"Full name",form_email:"Email",form_phone:"Phone (optional)",form_msg:"How can we help?",form_send:"Send message",form_note:"Form submissions route securely to Submissions@skybridgetitle.com. We never sell your data.",
-    form_t1:"General question",form_t2:"Start a title order",form_t3:"Realtor partnership",powered:"Powered by",
+    form_sent:"Thank you — your message is on its way. We'll reply shortly.",form_name:"Full name",form_email:"Email",form_phone:"Phone (optional)",form_msg:"How can we help?",form_send:"Send message",form_note:"Your information is sent securely and is never sold.",
+    form_t1:"General question",form_t2:"Start a title order",form_t3:"Realtor partnership",powered:"Powered by",foot_contact:"Contact us",
+    fp_tag:"Featured lending partner",fp_desc:"Mortgages made simple — FHA, VA, USDA, conventional & jumbo loans across Florida. NMLS #2323340.",fp_cta:"Visit site →",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Call us: 1 (888) 336-0902",foot_proto:"Prototype"
   },
   ht:{
@@ -900,8 +918,9 @@ const I18N = {
     blog2_d:"Jen 2026",blog2_t:"Frè fèmti nan Florid, eksplike",blog2_x:"Sa ou peye vrèman nan fèmti — epi kiyès ki peye pou kisa.",
     blog3_d:"Me 2026",blog3_t:"Achte premye kay ou nan Miami: yon lis",blog3_x:"Tout sa ou bezwen pare anvan ou siyen.",
     contact_h2:"Pale ak yon vrè moun",contact_p:"Yon kesyon, yon kòmann, oswa yon patenarya — voye yon nòt epi ekip nou an reponn vit, nan lang ou.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
-    form_sent:"Mèsi — mesaj ou a sou wout li. N ap reponn talè.",form_name:"Non konplè",form_email:"Imèl",form_phone:"Telefòn (opsyonèl)",form_msg:"Kijan nou ka ede?",form_send:"Voye mesaj",form_note:"Fòm yo voye an sekirite bay Submissions@skybridgetitle.com. Nou pa janm vann done ou.",
-    form_t1:"Kesyon jeneral",form_t2:"Kòmanse yon kòmann tit",form_t3:"Patenarya ajan",powered:"Mete an mach pa",
+    form_sent:"Mèsi — mesaj ou a sou wout li. N ap reponn talè.",form_name:"Non konplè",form_email:"Imèl",form_phone:"Telefòn (opsyonèl)",form_msg:"Kijan nou ka ede?",form_send:"Voye mesaj",form_note:"Enfòmasyon ou voye an sekirite epi nou pa janm vann li.",
+    form_t1:"Kesyon jeneral",form_t2:"Kòmanse yon kòmann tit",form_t3:"Patenarya ajan",powered:"Mete an mach pa",foot_contact:"Kontakte nou",
+    fp_tag:"Patnè prè ki an vedèt",fp_desc:"Prè ipotekè san konplikasyon — prè FHA, VA, USDA, konvansyonèl ak jumbo nan tout Florid. NMLS #2323340.",fp_cta:"Vizite sit la →",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Rele nou: 1 (888) 336-0902",foot_proto:"Pwototip"
   },
   fr:{
@@ -963,8 +982,9 @@ const I18N = {
     blog2_d:"Juin 2026",blog2_t:"Les frais de clôture en Floride, expliqués",blog2_x:"Ce que vous payez vraiment à la clôture — et qui paie quoi.",
     blog3_d:"Mai 2026",blog3_t:"Acheter sa première maison à Miami : une liste",blog3_x:"Tout ce qu'il faut préparer avant de signer.",
     contact_h2:"Parlez à une vraie personne",contact_p:"Une question, une commande ou un partenariat — envoyez un mot et notre équipe répond vite, dans votre langue.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
-    form_sent:"Merci — votre message est en route. Nous répondrons sous peu.",form_name:"Nom complet",form_email:"E-mail",form_phone:"Téléphone (facultatif)",form_msg:"Comment pouvons-nous aider ?",form_send:"Envoyer le message",form_note:"Les formulaires sont transmis en toute sécurité à Submissions@skybridgetitle.com. Nous ne vendons jamais vos données.",
-    form_t1:"Question générale",form_t2:"Lancer une commande de titre",form_t3:"Partenariat agent",powered:"Propulsé par",
+    form_sent:"Merci — votre message est en route. Nous répondrons sous peu.",form_name:"Nom complet",form_email:"E-mail",form_phone:"Téléphone (facultatif)",form_msg:"Comment pouvons-nous aider ?",form_send:"Envoyer le message",form_note:"Vos informations sont transmises en toute sécurité et ne sont jamais vendues.",
+    form_t1:"Question générale",form_t2:"Lancer une commande de titre",form_t3:"Partenariat agent",powered:"Propulsé par",foot_contact:"Contactez-nous",
+    fp_tag:"Partenaire prêteur en vedette",fp_desc:"Des prêts hypothécaires simplifiés — FHA, VA, USDA, conventionnels et jumbo dans toute la Floride. NMLS #2323340.",fp_cta:"Visiter le site →",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Appelez-nous : 1 (888) 336-0902",foot_proto:"Prototype"
   },
   es:{
@@ -1026,8 +1046,9 @@ const I18N = {
     blog2_d:"Junio 2026",blog2_t:"Costos de cierre en Florida, explicados",blog2_x:"Lo que realmente paga al cierre — y quién paga qué.",
     blog3_d:"Mayo 2026",blog3_t:"Comprar su primera casa en Miami: una lista",blog3_x:"Todo lo que debe tener listo antes de firmar.",
     contact_h2:"Hable con una persona real",contact_p:"Una pregunta, un pedido o una alianza — envíe una nota y nuestro equipo responde rápido, en su idioma.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
-    form_sent:"Gracias — su mensaje va en camino. Le responderemos pronto.",form_name:"Nombre completo",form_email:"Correo electrónico",form_phone:"Teléfono (opcional)",form_msg:"¿Cómo podemos ayudar?",form_send:"Enviar mensaje",form_note:"Los formularios se envían de forma segura a Submissions@skybridgetitle.com. Nunca vendemos sus datos.",
-    form_t1:"Pregunta general",form_t2:"Iniciar un pedido de título",form_t3:"Alianza con agente",powered:"Desarrollado por",
+    form_sent:"Gracias — su mensaje va en camino. Le responderemos pronto.",form_name:"Nombre completo",form_email:"Correo electrónico",form_phone:"Teléfono (opcional)",form_msg:"¿Cómo podemos ayudar?",form_send:"Enviar mensaje",form_note:"Su información se envía de forma segura y nunca se vende.",
+    form_t1:"Pregunta general",form_t2:"Iniciar un pedido de título",form_t3:"Alianza con agente",powered:"Desarrollado por",foot_contact:"Contáctenos",
+    fp_tag:"Socio prestamista destacado",fp_desc:"Hipotecas sin complicaciones — préstamos FHA, VA, USDA, convencionales y jumbo en toda Florida. NMLS #2323340.",fp_cta:"Visitar sitio →",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Llámenos: 1 (888) 336-0902",foot_proto:"Prototipo"
   }
 };
