@@ -13,11 +13,11 @@
     --navy-800:#0c1733;
     --navy-700:#13224a;
     --navy-600:#1c3066;
-    --gold:#d8b46a;
-    --gold-bright:#f0d399;
-    --champagne:#f5ecd8;
-    --sky:#7db7e8;
-    --sky-soft:#b9d8f2;
+    --gold:#e89238;
+    --gold-bright:#fba94c;
+    --champagne:#e9f1fa;
+    --sky:#6ca6d6;
+    --sky-soft:#a9c9e6;
     --ink:#0a1124;
     --paper:#f7f9fc;
     --glass:rgba(255,255,255,0.07);
@@ -40,8 +40,8 @@
   body::before{
     content:"";position:fixed;inset:0;z-index:-2;
     background:
-      radial-gradient(1100px 700px at 80% -10%, rgba(125,183,232,0.20), transparent 60%),
-      radial-gradient(900px 600px at 0% 20%, rgba(216,180,106,0.14), transparent 55%),
+      radial-gradient(1100px 700px at 80% -10%, rgba(108,166,214,0.22), transparent 60%),
+      radial-gradient(900px 600px at 0% 20%, rgba(232,146,56,0.14), transparent 55%),
       linear-gradient(180deg,var(--navy-900),var(--navy-800) 40%,var(--navy-900));
   }
   body::after{
@@ -58,6 +58,7 @@
     border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;gap:22px;height:72px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces';font-size:21px;font-weight:600;color:#fff}
+  .brand-logo{height:34px;width:auto;display:block}
   .brand .mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);box-shadow:0 6px 18px rgba(216,180,106,0.4)}
   .brand .mark svg{width:20px;height:20px}
@@ -224,6 +225,70 @@
   .img-duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .img-duo img{width:100%;height:300px;object-fit:cover;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow)}
 
+  /* PARTNERS (B2B) */
+  .partner-intro{max-width:680px;margin:0 auto 30px;text-align:center;color:var(--sky-soft);font-size:16px}
+  .partners{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pcard{padding:26px 22px;text-align:center;transition:transform .25s,border-color .25s}
+  .pcard:hover{transform:translateY(-6px);border-color:rgba(216,180,106,0.5)}
+  .pcard .pav{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    font-family:'Fraunces';font-size:28px;color:var(--navy-900);font-weight:600;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold))}
+  .pcard h3{color:#fff;font-size:18px;margin-bottom:2px}
+  .pcard .firm{color:var(--gold-bright);font-size:13.5px;font-weight:700;margin-bottom:10px}
+  .pcard .ptag{display:inline-block;font-size:11.5px;font-weight:700;color:var(--sky-soft);
+    background:var(--glass-strong);border:1px solid var(--line);border-radius:999px;padding:4px 12px;margin-bottom:12px}
+  .pcard p{color:var(--sky-soft);font-size:13.5px;margin-bottom:14px}
+  .pcard a{color:var(--gold-bright);font-weight:700;font-size:13.5px}
+  .partner-cta{text-align:center;margin-top:34px}
+  .partner-cta p{color:var(--sky-soft);font-size:15px;margin-bottom:16px}
+
+  /* BLOG */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .post{overflow:hidden;transition:transform .25s}
+  .post:hover{transform:translateY(-6px)}
+  .post .pimg{height:170px;background-size:cover;background-position:center;position:relative}
+  .post .plang{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;color:var(--navy-900);
+    background:var(--gold-bright);border-radius:999px;padding:4px 10px}
+  .post .pbody{padding:22px}
+  .post .pdate{font-size:12px;color:var(--sky-soft);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .post h3{color:#fff;font-size:18px;margin:8px 0 8px;line-height:1.25}
+  .post p{color:var(--sky-soft);font-size:14px;margin-bottom:14px}
+  .post a{color:var(--gold-bright);font-weight:700;font-size:13.5px}
+
+  /* CONTACT FORM */
+  .contact-wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:0;overflow:hidden}
+  .contact-left{padding:40px 36px;background:linear-gradient(165deg,rgba(125,183,232,0.10),rgba(216,180,106,0.06))}
+  .contact-left h2{color:#fff;font-size:30px;margin-bottom:12px}
+  .contact-left p{color:var(--sky-soft);font-size:15px;margin-bottom:22px}
+  .contact-left .cline{display:flex;align-items:center;gap:11px;color:#fff;font-size:15px;font-weight:600;margin-bottom:14px}
+  .contact-left .cline svg{width:20px;height:20px;stroke:var(--gold-bright);flex:none}
+  .contact-left a{color:var(--gold-bright)}
+  .contact-form{padding:40px 36px}
+  .contact-form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .contact-form .field{margin-bottom:16px}
+  .contact-form input,.contact-form textarea,.contact-form select{width:100%;background:rgba(0,0,0,0.25);border:1px solid var(--line);
+    border-radius:13px;color:#fff;font:inherit;font-size:15px;padding:13px 15px;transition:border-color .2s}
+  .contact-form select{appearance:none;cursor:pointer}
+  .contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{outline:0;border-color:var(--gold)}
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(185,216,242,0.55)}
+  .contact-form textarea{min-height:108px;resize:vertical}
+  .form-ok{display:none;padding:16px;border-radius:13px;background:rgba(95,209,160,0.14);border:1px solid rgba(95,209,160,0.4);
+    color:var(--ok);font-weight:600;font-size:14.5px;margin-bottom:14px}
+  .form-note{font-size:11.5px;color:rgba(185,216,242,0.6);margin-top:12px}
+
+  /* SOCIAL + POWERED BY */
+  .socials{display:flex;gap:12px;margin-top:14px}
+  .socials a{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    background:var(--glass-strong);border:1px solid var(--line);transition:.2s}
+  .socials a:hover{transform:translateY(-3px);background:rgba(216,180,106,0.2);border-color:var(--gold)}
+  .socials svg{width:18px;height:18px;fill:var(--sky-soft)}
+  .socials a:hover svg{fill:var(--gold-bright)}
+  .poweredby{text-align:center;padding:18px 0 0;margin-top:24px;border-top:1px solid var(--line)}
+  .poweredby a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--sky-soft);letter-spacing:.02em}
+  .poweredby a:hover{color:#fff}
+  .poweredby .tfmark{font-family:'Arial';font-weight:800}
+  .poweredby .tfmark span{color:var(--sky)}
+
   /* BRAND BAND */
   .brandband{padding:60px 0;overflow:hidden}
   .brandband-inner{position:relative;display:flex;justify-content:center}
@@ -241,6 +306,9 @@
     .hero-grid{grid-template-columns:1fr;gap:30px}
     .hero-media{order:-1}
     .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .partners{grid-template-columns:repeat(2,1fr)}
+    .blog-grid{grid-template-columns:1fr}
+    .contact-wrap{grid-template-columns:1fr}
     .calc{grid-template-columns:1fr}
     .calc-out{border-left:0;border-top:1px solid var(--line)}
     .portal-grid{grid-template-columns:1fr}
@@ -250,6 +318,8 @@
     .img-duo{grid-template-columns:1fr}
     .img-duo img{height:230px}
     .stats-grid{gap:12px}
+    .partners{grid-template-columns:1fr}
+    .contact-form .frow{grid-template-columns:1fr}
     .lang button{padding:6px 9px;font-size:11.5px}
     .menu-toggle{display:block}
     .steps,.aud{grid-template-columns:1fr}
@@ -266,14 +336,14 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#" class="brand" onclick="showHome();return false;">
-      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18M5 19V9l7-5 7 5v10M9 19v-5h6v5"/></svg></span>
-      Skybridge Title
+    <a href="#" class="brand" onclick="showHome();return false;" aria-label="Skybridge Title">
+      <img src="skybridge-logo.png" alt="Skybridge Title" class="brand-logo">
     </a>
     <nav class="nav-links">
       <a href="#how" data-i18n="nav_how">How it works</a>
       <a href="#calculator" data-i18n="nav_calc">Get a quote</a>
-      <a href="#who" data-i18n="nav_who">Who we help</a>
+      <a href="#partners" data-i18n="nav_partners">Realtor partners</a>
+      <a href="#blog" data-i18n="nav_blog">Resources</a>
       <a href="#" onclick="showPortal();return false;" data-i18n="nav_track">Track closing</a>
     </nav>
     <div class="nav-right">
@@ -446,6 +516,54 @@
   </div>
 </section>
 
+<section id="partners">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="partners_eyebrow">For the realtors we work with</span></span>
+      <h2 data-i18n="partners_h2">Our realtor partners</h2>
+    </div>
+    <p class="partner-intro fade" data-i18n="partners_p">We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.</p>
+    <div class="partners">
+      <div class="pcard glass fade">
+        <div class="pav">MR</div>
+        <h3>Maria Rivera</h3>
+        <div class="firm">Rivera Group · Coral Gables</div>
+        <span class="ptag" data-i18n="spec_res">Residential</span>
+        <p data-i18n="pcb_1">Helping families find home across Miami-Dade.</p>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
+      </div>
+      <div class="pcard glass fade">
+        <div class="pav">JO</div>
+        <h3>James Okafor</h3>
+        <div class="firm">Okafor Realty · Aventura</div>
+        <span class="ptag" data-i18n="spec_lux">Luxury</span>
+        <p data-i18n="pcb_2">Waterfront and luxury listings, sold with care.</p>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
+      </div>
+      <div class="pcard glass fade">
+        <div class="pav">SL</div>
+        <h3>Sophia Laurent</h3>
+        <div class="firm">Laurent &amp; Co · Brickell</div>
+        <span class="ptag" data-i18n="spec_com">Commercial</span>
+        <p data-i18n="pcb_3">Commercial and investment deals, done right.</p>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
+      </div>
+      <div class="pcard glass fade">
+        <div class="pav">DP</div>
+        <h3>David Pierre</h3>
+        <div class="firm">Pierre Homes · North Miami</div>
+        <span class="ptag" data-i18n="spec_first">First-time buyers</span>
+        <p data-i18n="pcb_4">Guiding first-time buyers, every step.</p>
+        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
+      </div>
+    </div>
+    <div class="partner-cta fade">
+      <p data-i18n="partners_cta_p">Work with Skybridge? Get a free featured profile — and we'll help market your listings.</p>
+      <button class="btn btn-gold" onclick="document.getElementById('contact').scrollIntoView()"><span data-i18n="partners_cta">Become a featured partner</span></button>
+    </div>
+  </div>
+</section>
+
 <section id="alwayson">
   <div class="wrap">
     <div class="sec-head fade">
@@ -473,6 +591,45 @@
   </div>
 </section>
 
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="blog_eyebrow">Learn the process</span></span>
+      <h2 data-i18n="blog_h2">Guides &amp; resources</h2>
+      <p data-i18n="blog_p">Plain-language guides on buying, selling, and closing — new posts every month in English, Español, Kreyòl, and Français.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="post glass fade">
+        <div class="pimg" style="background-image:url('img-family-keys.jpg')"><span class="plang" data-i18n="blog_tag">Guide</span></div>
+        <div class="pbody">
+          <div class="pdate" data-i18n="blog1_d">June 2026</div>
+          <h3 data-i18n="blog1_t">What does a title company actually do?</h3>
+          <p data-i18n="blog1_x">A 3-minute, no-jargon explainer for first-time buyers.</p>
+          <a href="#" onclick="return false;" data-i18n="blog_read">Read more →</a>
+        </div>
+      </article>
+      <article class="post glass fade">
+        <div class="pimg" style="background-image:url('img-closing.jpg')"><span class="plang" data-i18n="blog_tag">Guide</span></div>
+        <div class="pbody">
+          <div class="pdate" data-i18n="blog2_d">June 2026</div>
+          <h3 data-i18n="blog2_t">Closing costs in Florida, explained</h3>
+          <p data-i18n="blog2_x">What you really pay at closing — and who pays for what.</p>
+          <a href="#" onclick="return false;" data-i18n="blog_read">Read more →</a>
+        </div>
+      </article>
+      <article class="post glass fade">
+        <div class="pimg" style="background-image:url('img-moving-in.jpg')"><span class="plang" data-i18n="blog_tag">Guide</span></div>
+        <div class="pbody">
+          <div class="pdate" data-i18n="blog3_d">May 2026</div>
+          <h3 data-i18n="blog3_t">Buying your first home in Miami: a checklist</h3>
+          <p data-i18n="blog3_x">Everything to have ready before you sign.</p>
+          <a href="#" onclick="return false;" data-i18n="blog_read">Read more →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="brandband">
   <div class="wrap brandband-inner">
     <div class="brandword">SKYBRIDGE</div>
@@ -481,6 +638,34 @@
       <div class="brandband-cap">
         <h2 data-i18n="brand_h">Your bridge home.</h2>
         <p data-i18n="brand_p">From your first question to the keys in your hand — in English, Español, Kreyòl, or Français.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap glass fade">
+      <div class="contact-left">
+        <h2 data-i18n="contact_h2">Talk to a real person</h2>
+        <p data-i18n="contact_p">A question, an order, or a partnership — send a note and our team replies fast, in your language.</p>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4zM4 6l8 6 8-6"/></svg> <a href="mailto:andre@skybridgetitle.com">andre@skybridgetitle.com</a></div>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg> <a href="tel:18883360902">1 (888) 336-0902</a></div>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.27 7-11a7 7 0 10-14 0c0 4.73 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span data-i18n="contact_addr">655 NE 125th St, Ste A · North Miami, FL</span></div>
+      </div>
+      <div class="contact-form">
+        <div class="form-ok" id="formOk" data-i18n="form_sent">Thank you — your message is on its way. We'll reply shortly.</div>
+        <form onsubmit="return sendForm(event)">
+          <div class="frow">
+            <div class="field"><input type="text" data-i18n-ph="form_name" placeholder="Full name" required></div>
+            <div class="field"><input type="email" data-i18n-ph="form_email" placeholder="Email" required></div>
+          </div>
+          <div class="field"><input type="tel" data-i18n-ph="form_phone" placeholder="Phone (optional)"></div>
+          <div class="field"><select id="cf_topic"><option data-i18n="form_t1">General question</option><option data-i18n="form_t2">Start a title order</option><option data-i18n="form_t3">Realtor partnership</option></select></div>
+          <div class="field"><textarea data-i18n-ph="form_msg" placeholder="How can we help?"></textarea></div>
+          <button class="btn btn-gold" type="submit" style="width:100%;justify-content:center"><span data-i18n="form_send">Send message</span></button>
+          <p class="form-note" data-i18n="form_note">Form submissions route securely to Submissions@skybridgetitle.com. We never sell your data.</p>
+        </form>
       </div>
     </div>
   </div>
@@ -571,14 +756,23 @@
 <footer>
   <div class="wrap foot">
     <div>
-      <div class="brand" style="color:#fff;margin-bottom:8px"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18M5 19V9l7-5 7 5v10"/></svg></span>Skybridge Title</div>
+      <img src="skybridge-logo.png" alt="Skybridge Title" style="height:42px;margin-bottom:12px;display:block">
       <div data-i18n="foot_addr">655 NE 125th Street, Ste A · North Miami, FL 33161</div>
+      <div class="socials">
+        <a href="https://www.facebook.com/skybridgetitle/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0022 12z"/></svg></a>
+        <a href="https://www.linkedin.com/company/skybridge-title/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 112.06-2.06 2.06 2.06 0 01-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://x.com/skybridgetitle" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7l4.9 6.5L18.9 2zm-2.4 18h1.9L7.6 4H5.6l10.9 16z"/></svg></a>
+        <a href="https://www.instagram.com/skybridgetitle/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.43.36 1.06.42 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.36-2.23.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.8-.25-2.23-.42a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.17-.43-.36-1.06-.42-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.06-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.36 2.23-.42C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.3-1.46.72-2.12 1.38C1.36 2.67.94 3.34.63 4.14.33 4.9.13 5.77.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.7 5.7 0 002.12-1.38 5.7 5.7 0 001.38-2.12c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.7 5.7 0 00-1.38-2.12A5.7 5.7 0 0019.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zm0 10.16A4 4 0 1116 12a4 4 0 01-4 4zm6.41-10.85a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/></svg></a>
+        <a href="https://www.tiktok.com/@skybridgetitle" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.89 2.89 2.89 2.89 0 010-5.78c.3 0 .59.05.86.13V9.4a6.33 6.33 0 00-.86-.06 6.34 6.34 0 100 12.67 6.34 6.34 0 006.34-6.34V8.99a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.42z"/></svg></a>
+      </div>
     </div>
     <div style="text-align:right">
       <div data-i18n="foot_call">Call us: 1 (888) 336-0902</div>
+      <div style="margin-top:6px"><a href="mailto:andre@skybridgetitle.com" style="color:var(--gold-bright);font-weight:600">andre@skybridgetitle.com</a></div>
       <div style="opacity:.6;margin-top:6px">© 2026 Skybridge Title, LLC · <span data-i18n="foot_proto">Prototype</span></div>
     </div>
   </div>
+  <div class="wrap"><div class="poweredby"><a href="https://techfides.com" target="_blank" rel="noopener"><span data-i18n="powered">Powered by</span> <span class="tfmark">Tech<span>Fides</span></span> &nbsp;·&nbsp; Own Your AI</a></div></div>
 </footer>
 
 <script>
@@ -630,6 +824,21 @@ const I18N = {
     portal_doc_h:"Documents",portal_doc_p:"Encrypted. Only you and your closing team can see these.",portal_upload:"Drag a file here or tap to upload",
     doc1:"Purchase contract",doc_ok:"Received",doc2:"Title commitment",doc_ok2:"Received",doc3:"Government ID",doc_wait:"Needed",
     portal_sched_h:"Schedule your closing",portal_sched_p:"Pick a time that works. In-office or fully online.",portal_sched_btn:"Choose a closing time",
+    nav_partners:"Realtor partners",nav_blog:"Resources",
+    partners_eyebrow:"For the realtors we work with",partners_h2:"Our realtor partners",
+    partners_p:"We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.",
+    spec_res:"Residential",spec_lux:"Luxury",spec_com:"Commercial",spec_first:"First-time buyers",
+    pcb_1:"Helping families find home across Miami-Dade.",pcb_2:"Waterfront and luxury listings, sold with care.",pcb_3:"Commercial and investment deals, done right.",pcb_4:"Guiding first-time buyers, every step.",
+    pcard_link:"View profile →",
+    partners_cta_p:"Work with Skybridge? Get a free featured profile — and we'll help market your listings.",partners_cta:"Become a featured partner",
+    blog_eyebrow:"Learn the process",blog_h2:"Guides & resources",blog_p:"Plain-language guides on buying, selling, and closing — new posts every month in English, Español, Kreyòl, and Français.",
+    blog_tag:"Guide",blog_read:"Read more →",
+    blog1_d:"June 2026",blog1_t:"What does a title company actually do?",blog1_x:"A 3-minute, no-jargon explainer for first-time buyers.",
+    blog2_d:"June 2026",blog2_t:"Closing costs in Florida, explained",blog2_x:"What you really pay at closing — and who pays for what.",
+    blog3_d:"May 2026",blog3_t:"Buying your first home in Miami: a checklist",blog3_x:"Everything to have ready before you sign.",
+    contact_h2:"Talk to a real person",contact_p:"A question, an order, or a partnership — send a note and our team replies fast, in your language.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
+    form_sent:"Thank you — your message is on its way. We'll reply shortly.",form_name:"Full name",form_email:"Email",form_phone:"Phone (optional)",form_msg:"How can we help?",form_send:"Send message",form_note:"Form submissions route securely to Submissions@skybridgetitle.com. We never sell your data.",
+    form_t1:"General question",form_t2:"Start a title order",form_t3:"Realtor partnership",powered:"Powered by",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Call us: 1 (888) 336-0902",foot_proto:"Prototype"
   },
   ht:{
@@ -678,6 +887,21 @@ const I18N = {
     portal_doc_h:"Dokiman",portal_doc_p:"Chifre. Se sèlman ou menm ak ekip fèmti ou ki ka wè sa yo.",portal_upload:"Trennen yon fichye isit la oswa tape pou telechaje",
     doc1:"Kontra acha",doc_ok:"Resevwa",doc2:"Angajman tit",doc_ok2:"Resevwa",doc3:"ID gouvènman",doc_wait:"Bezwen",
     portal_sched_h:"Pwograme fèmti ou",portal_sched_p:"Chwazi yon lè ki bon pou ou. Nan biwo oswa konplètman sou entènèt.",portal_sched_btn:"Chwazi yon lè fèmti",
+    nav_partners:"Patnè ajan",nav_blog:"Resous",
+    partners_eyebrow:"Pou ajan nou travay ak yo",partners_h2:"Patnè ajan nou yo",
+    partners_p:"Nou pa sèlman fèmen kontra ou — nou pwomote biznis ou. Rankontre kèk ajan ki fè Skybridge konfyans, epi mete non ou la tou.",
+    spec_res:"Rezidansyèl",spec_lux:"Liks",spec_com:"Komèsyal",spec_first:"Premye achtè",
+    pcb_1:"Ede fanmi jwenn kay nan tout Miami-Dade.",pcb_2:"Pwopriyete liks ak bò lanmè, vann ak swen.",pcb_3:"Kontra komèsyal ak envestisman, byen fèt.",pcb_4:"Gide premye achtè yo, chak etap.",
+    pcard_link:"Wè pwofil →",
+    partners_cta_p:"Ou travay ak Skybridge? Jwenn yon pwofil vedèt gratis — epi n ap ede w fè piblisite pou anons ou yo.",partners_cta:"Vin yon patnè vedèt",
+    blog_eyebrow:"Aprann pwosesis la",blog_h2:"Gid ak resous",blog_p:"Gid an langaj senp sou achte, vann, ak fèmti — nouvo piblikasyon chak mwa an Anglè, Espayòl, Kreyòl, ak Franse.",
+    blog_tag:"Gid",blog_read:"Li plis →",
+    blog1_d:"Jen 2026",blog1_t:"Kisa yon konpayi tit fè vrèman?",blog1_x:"Yon eksplikasyon 3 minit, san jagon, pou premye achtè.",
+    blog2_d:"Jen 2026",blog2_t:"Frè fèmti nan Florid, eksplike",blog2_x:"Sa ou peye vrèman nan fèmti — epi kiyès ki peye pou kisa.",
+    blog3_d:"Me 2026",blog3_t:"Achte premye kay ou nan Miami: yon lis",blog3_x:"Tout sa ou bezwen pare anvan ou siyen.",
+    contact_h2:"Pale ak yon vrè moun",contact_p:"Yon kesyon, yon kòmann, oswa yon patenarya — voye yon nòt epi ekip nou an reponn vit, nan lang ou.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
+    form_sent:"Mèsi — mesaj ou a sou wout li. N ap reponn talè.",form_name:"Non konplè",form_email:"Imèl",form_phone:"Telefòn (opsyonèl)",form_msg:"Kijan nou ka ede?",form_send:"Voye mesaj",form_note:"Fòm yo voye an sekirite bay Submissions@skybridgetitle.com. Nou pa janm vann done ou.",
+    form_t1:"Kesyon jeneral",form_t2:"Kòmanse yon kòmann tit",form_t3:"Patenarya ajan",powered:"Mete an mach pa",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Rele nou: 1 (888) 336-0902",foot_proto:"Pwototip"
   },
   fr:{
@@ -726,6 +950,21 @@ const I18N = {
     portal_doc_h:"Documents",portal_doc_p:"Chiffrés. Seuls vous et votre équipe de clôture pouvez les voir.",portal_upload:"Glissez un fichier ici ou touchez pour téléverser",
     doc1:"Contrat d'achat",doc_ok:"Reçu",doc2:"Engagement de titre",doc_ok2:"Reçu",doc3:"Pièce d'identité",doc_wait:"Requis",
     portal_sched_h:"Planifiez votre clôture",portal_sched_p:"Choisissez un moment qui vous convient. Au bureau ou entièrement en ligne.",portal_sched_btn:"Choisir une heure de clôture",
+    nav_partners:"Agents partenaires",nav_blog:"Ressources",
+    partners_eyebrow:"Pour les agents avec qui nous travaillons",partners_h2:"Nos agents partenaires",
+    partners_p:"Nous ne faisons pas que conclure vos transactions — nous promouvons votre entreprise. Rencontrez des agents qui font confiance à Skybridge, et ajoutez votre nom ici aussi.",
+    spec_res:"Résidentiel",spec_lux:"Luxe",spec_com:"Commercial",spec_first:"Primo-accédants",
+    pcb_1:"Aider les familles à trouver un foyer dans tout Miami-Dade.",pcb_2:"Biens de luxe et en bord de mer, vendus avec soin.",pcb_3:"Transactions commerciales et d'investissement, bien menées.",pcb_4:"Guider les primo-accédants, à chaque étape.",
+    pcard_link:"Voir le profil →",
+    partners_cta_p:"Vous travaillez avec Skybridge ? Obtenez un profil en vedette gratuit — et nous promouvons vos annonces.",partners_cta:"Devenez agent en vedette",
+    blog_eyebrow:"Comprendre le processus",blog_h2:"Guides et ressources",blog_p:"Des guides en langage simple sur l'achat, la vente et la clôture — de nouveaux articles chaque mois en anglais, espagnol, créole et français.",
+    blog_tag:"Guide",blog_read:"Lire la suite →",
+    blog1_d:"Juin 2026",blog1_t:"Que fait vraiment une société de titre ?",blog1_x:"Une explication de 3 minutes, sans jargon, pour les primo-accédants.",
+    blog2_d:"Juin 2026",blog2_t:"Les frais de clôture en Floride, expliqués",blog2_x:"Ce que vous payez vraiment à la clôture — et qui paie quoi.",
+    blog3_d:"Mai 2026",blog3_t:"Acheter sa première maison à Miami : une liste",blog3_x:"Tout ce qu'il faut préparer avant de signer.",
+    contact_h2:"Parlez à une vraie personne",contact_p:"Une question, une commande ou un partenariat — envoyez un mot et notre équipe répond vite, dans votre langue.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
+    form_sent:"Merci — votre message est en route. Nous répondrons sous peu.",form_name:"Nom complet",form_email:"E-mail",form_phone:"Téléphone (facultatif)",form_msg:"Comment pouvons-nous aider ?",form_send:"Envoyer le message",form_note:"Les formulaires sont transmis en toute sécurité à Submissions@skybridgetitle.com. Nous ne vendons jamais vos données.",
+    form_t1:"Question générale",form_t2:"Lancer une commande de titre",form_t3:"Partenariat agent",powered:"Propulsé par",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Appelez-nous : 1 (888) 336-0902",foot_proto:"Prototype"
   },
   es:{
@@ -774,6 +1013,21 @@ const I18N = {
     portal_doc_h:"Documentos",portal_doc_p:"Cifrados. Solo usted y su equipo de cierre pueden verlos.",portal_upload:"Arrastre un archivo aquí o toque para subir",
     doc1:"Contrato de compra",doc_ok:"Recibido",doc2:"Compromiso de título",doc_ok2:"Recibido",doc3:"Identificación oficial",doc_wait:"Requerido",
     portal_sched_h:"Agende su cierre",portal_sched_p:"Elija un horario que le convenga. En oficina o totalmente en línea.",portal_sched_btn:"Elegir un horario de cierre",
+    nav_partners:"Agentes aliados",nav_blog:"Recursos",
+    partners_eyebrow:"Para los agentes con quienes trabajamos",partners_h2:"Nuestros agentes aliados",
+    partners_p:"No solo cerramos sus tratos — promovemos su negocio. Conozca a algunos agentes que confían en Skybridge, y ponga su nombre aquí también.",
+    spec_res:"Residencial",spec_lux:"Lujo",spec_com:"Comercial",spec_first:"Primera vivienda",
+    pcb_1:"Ayudando a las familias a encontrar hogar en Miami-Dade.",pcb_2:"Propiedades de lujo y frente al mar, vendidas con cuidado.",pcb_3:"Negocios comerciales y de inversión, bien hechos.",pcb_4:"Guiando a quienes compran por primera vez, paso a paso.",
+    pcard_link:"Ver perfil →",
+    partners_cta_p:"¿Trabaja con Skybridge? Obtenga un perfil destacado gratis — y le ayudamos a promocionar sus propiedades.",partners_cta:"Conviértase en agente destacado",
+    blog_eyebrow:"Conozca el proceso",blog_h2:"Guías y recursos",blog_p:"Guías en lenguaje sencillo sobre comprar, vender y cerrar — nuevas publicaciones cada mes en inglés, español, criollo y francés.",
+    blog_tag:"Guía",blog_read:"Leer más →",
+    blog1_d:"Junio 2026",blog1_t:"¿Qué hace realmente una compañía de título?",blog1_x:"Una explicación de 3 minutos, sin tecnicismos, para quienes compran por primera vez.",
+    blog2_d:"Junio 2026",blog2_t:"Costos de cierre en Florida, explicados",blog2_x:"Lo que realmente paga al cierre — y quién paga qué.",
+    blog3_d:"Mayo 2026",blog3_t:"Comprar su primera casa en Miami: una lista",blog3_x:"Todo lo que debe tener listo antes de firmar.",
+    contact_h2:"Hable con una persona real",contact_p:"Una pregunta, un pedido o una alianza — envíe una nota y nuestro equipo responde rápido, en su idioma.",contact_addr:"655 NE 125th St, Ste A · North Miami, FL",
+    form_sent:"Gracias — su mensaje va en camino. Le responderemos pronto.",form_name:"Nombre completo",form_email:"Correo electrónico",form_phone:"Teléfono (opcional)",form_msg:"¿Cómo podemos ayudar?",form_send:"Enviar mensaje",form_note:"Los formularios se envían de forma segura a Submissions@skybridgetitle.com. Nunca vendemos sus datos.",
+    form_t1:"Pregunta general",form_t2:"Iniciar un pedido de título",form_t3:"Alianza con agente",powered:"Desarrollado por",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Llámenos: 1 (888) 336-0902",foot_proto:"Prototipo"
   }
 };
@@ -787,7 +1041,23 @@ function setLang(l){
     const k=el.getAttribute('data-i18n');
     if(I18N[l][k]!==undefined) el.innerHTML=I18N[l][k];
   });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-ph');
+    if(I18N[l][k]!==undefined) el.placeholder=I18N[l][k];
+  });
   calc();
+}
+
+/* ---------- CONTACT FORM (prototype) ----------
+   Production: POSTs to the secure CRM (Supabase + n8n).
+   Routing: form submissions + tracking -> Submissions@skybridgetitle.com;
+   transaction & general notifications -> andre@skybridgetitle.com. */
+function sendForm(e){
+  e.preventDefault();
+  document.getElementById('formOk').style.display='block';
+  e.target.reset();
+  document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
 }
 
 /* ---------- FEE CALCULATOR (Florida promulgated rates) ---------- */
