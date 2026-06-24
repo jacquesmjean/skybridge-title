@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skybridge Title — Closing made clear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#070d1f;
+    --navy-800:#0c1733;
+    --navy-700:#13224a;
+    --navy-600:#1c3066;
+    --gold:#d8b46a;
+    --gold-bright:#f0d399;
+    --champagne:#f5ecd8;
+    --sky:#7db7e8;
+    --sky-soft:#b9d8f2;
+    --ink:#0a1124;
+    --paper:#f7f9fc;
+    --glass:rgba(255,255,255,0.07);
+    --glass-strong:rgba(255,255,255,0.12);
+    --line:rgba(255,255,255,0.14);
+    --ok:#5fd1a0;
+    --shadow:0 30px 80px -30px rgba(0,0,0,0.7);
+    --r:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    color:var(--champagne);
+    background:var(--navy-900);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(1100px 700px at 80% -10%, rgba(125,183,232,0.20), transparent 60%),
+      radial-gradient(900px 600px at 0% 20%, rgba(216,180,106,0.14), transparent 55%),
+      linear-gradient(180deg,var(--navy-900),var(--navy-800) 40%,var(--navy-900));
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;opacity:0.04;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-0.01em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  a{color:inherit;text-decoration:none}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+    background:linear-gradient(180deg,rgba(7,13,31,0.85),rgba(7,13,31,0.45));
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:22px;height:72px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces';font-size:21px;font-weight:600;color:#fff}
+  .brand .mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);box-shadow:0 6px 18px rgba(216,180,106,0.4)}
+  .brand .mark svg{width:20px;height:20px}
+  .nav-links{display:flex;gap:26px;margin-left:14px;font-size:14.5px;font-weight:600;color:var(--sky-soft)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .lang{display:flex;background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+  .lang button{border:0;background:transparent;color:var(--sky-soft);font:inherit;font-size:12.5px;font-weight:700;
+    padding:6px 12px;border-radius:999px;cursor:pointer;transition:.2s;letter-spacing:.02em}
+  .lang button.on{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;cursor:pointer;border:0;
+    padding:12px 22px;border-radius:999px;transition:transform .2s,box-shadow .2s;font-family:'Manrope'}
+  .btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);
+    box-shadow:0 12px 30px -10px rgba(216,180,106,0.6)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(216,180,106,0.7)}
+  .btn-ghost{background:var(--glass-strong);color:#fff;border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,0.18)}
+  .menu-toggle{display:none;background:var(--glass);border:1px solid var(--line);color:#fff;border-radius:12px;
+    width:42px;height:42px;cursor:pointer;font-size:18px}
+
+  /* HERO */
+  .hero{padding:74px 0 40px;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);background:var(--glass);border:1px solid var(--line);
+    padding:8px 16px;border-radius:999px;margin-bottom:24px}
+  .hero h1{font-size:clamp(38px,6vw,68px);color:#fff;max-width:14ch}
+  .hero h1 em{font-style:italic;color:var(--gold-bright)}
+  .hero p.lede{font-size:clamp(17px,2.2vw,21px);color:var(--sky-soft);max-width:46ch;margin:22px 0 32px;font-weight:500}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .trust{display:flex;gap:28px;margin-top:42px;flex-wrap:wrap}
+  .trust div{display:flex;flex-direction:column}
+  .trust b{font-family:'Fraunces';font-size:30px;color:#fff;font-weight:600}
+  .trust span{font-size:13px;color:var(--sky-soft);font-weight:600}
+  .hero-glow{position:absolute;right:-60px;top:40px;width:480px;height:480px;
+    background:radial-gradient(circle,rgba(125,183,232,0.35),transparent 65%);filter:blur(20px);z-index:-1}
+
+  /* SECTIONS */
+  section{padding:64px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 46px}
+  .sec-head .eyebrow{margin-bottom:18px}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);color:#fff}
+  .sec-head p{color:var(--sky-soft);margin-top:14px;font-size:16.5px}
+
+  .glass{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{padding:30px 26px;position:relative;transition:transform .25s,border-color .25s}
+  .step:hover{transform:translateY(-6px);border-color:rgba(216,180,106,0.5)}
+  .step .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:20px;
+    background:linear-gradient(135deg,rgba(125,183,232,0.25),rgba(216,180,106,0.18));border:1px solid var(--line)}
+  .step .ico svg{width:28px;height:28px;stroke:var(--gold-bright)}
+  .step .num{position:absolute;top:24px;right:26px;font-family:'Fraunces';font-size:42px;color:rgba(255,255,255,0.08);font-weight:700}
+  .step h3{font-size:20px;color:#fff;margin-bottom:8px}
+  .step p{font-size:15px;color:var(--sky-soft)}
+
+  /* CALCULATOR */
+  .calc{display:grid;grid-template-columns:0.95fr 1.05fr;gap:0;overflow:hidden}
+  .calc-form{padding:38px 36px}
+  .calc-out{padding:38px 36px;background:linear-gradient(165deg,rgba(125,183,232,0.10),rgba(216,180,106,0.06));border-left:1px solid var(--line)}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:13px;font-weight:700;color:var(--sky-soft);margin-bottom:8px;letter-spacing:.02em}
+  .input-money{position:relative}
+  .input-money span{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--gold);font-weight:700;font-size:16px}
+  .field input,.field select{width:100%;background:rgba(0,0,0,0.25);border:1px solid var(--line);border-radius:13px;
+    color:#fff;font:inherit;font-size:16px;font-weight:600;padding:14px 16px;transition:border-color .2s}
+  .field .input-money input{padding-left:34px}
+  .field input:focus,.field select:focus{outline:0;border-color:var(--gold)}
+  .field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23d8b46a' stroke-width='2'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+  .toggle-row{display:flex;gap:10px}
+  .toggle-row label{flex:1;cursor:pointer}
+  .toggle-row input{display:none}
+  .toggle-row .pill{display:block;text-align:center;padding:12px;border-radius:13px;border:1px solid var(--line);
+    background:rgba(0,0,0,0.2);font-weight:700;font-size:14px;color:var(--sky-soft);transition:.2s}
+  .toggle-row input:checked + .pill{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);border-color:transparent}
+  .calc-out h3{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-family:'Manrope';font-weight:700;margin-bottom:6px}
+  .calc-total{font-family:'Fraunces';font-size:46px;color:#fff;font-weight:600;line-height:1;margin:6px 0 4px}
+  .calc-sub{font-size:13px;color:var(--sky-soft);margin-bottom:22px}
+  .line{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,0.1);font-size:14.5px}
+  .line span:first-child{color:var(--sky-soft)}
+  .line span:last-child{font-weight:700;color:#fff}
+  .line.group{color:var(--gold-bright);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;border:0;padding-bottom:4px;padding-top:16px}
+  .disc{font-size:11.5px;color:rgba(185,216,242,0.6);margin-top:18px;line-height:1.5}
+
+  /* AUDIENCE */
+  .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .aud .card{padding:32px 28px;transition:transform .25s}
+  .aud .card:hover{transform:translateY(-6px)}
+  .aud .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold))}
+  .aud .ico svg{width:26px;height:26px;stroke:var(--navy-900)}
+  .aud h3{color:#fff;font-size:21px;margin-bottom:10px}
+  .aud p{color:var(--sky-soft);font-size:15px;margin-bottom:16px}
+  .aud a.more{color:var(--gold-bright);font-weight:700;font-size:14px}
+
+  /* PORTAL */
+  #portalView{display:none}
+  .portal-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+  .portal-top .av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--navy-600));
+    display:grid;place-items:center;font-family:'Fraunces';font-size:22px;color:#fff;font-weight:600}
+  .portal-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+  .panel{padding:30px}
+  .panel h3{color:#fff;font-size:20px;margin-bottom:6px}
+  .panel .muted{color:var(--sky-soft);font-size:14px;margin-bottom:26px}
+  .progbar{height:8px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;margin:8px 0 30px}
+  .progbar i{display:block;height:100%;width:60%;background:linear-gradient(90deg,var(--sky),var(--gold));border-radius:999px;transition:width 1s}
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:11px;top:6px;bottom:18px;width:2px;background:rgba(255,255,255,0.12)}
+  .ti{position:relative;padding-bottom:26px}
+  .ti .dot{position:absolute;left:-34px;top:1px;width:24px;height:24px;border-radius:50%;background:var(--navy-700);
+    border:2px solid rgba(255,255,255,0.18);display:grid;place-items:center}
+  .ti.done .dot{background:linear-gradient(135deg,var(--ok),#3fae84);border-color:transparent}
+  .ti.done .dot svg{width:13px;height:13px;stroke:#04130c;stroke-width:3}
+  .ti.active .dot{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border-color:transparent;
+    box-shadow:0 0 0 5px rgba(216,180,106,0.2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 5px rgba(216,180,106,0.2)}50%{box-shadow:0 0 0 9px rgba(216,180,106,0.05)}}
+  .ti h4{color:#fff;font-size:16px;font-family:'Manrope';font-weight:700}
+  .ti p{font-size:13.5px;color:var(--sky-soft)}
+  .ti.pending h4,.ti.pending p{opacity:.5}
+  .upload{border:2px dashed var(--line);border-radius:16px;padding:26px;text-align:center;margin-bottom:18px;
+    transition:.2s;cursor:pointer}
+  .upload:hover{border-color:var(--gold);background:rgba(216,180,106,0.05)}
+  .upload svg{width:32px;height:32px;stroke:var(--gold-bright);margin-bottom:8px}
+  .upload p{color:var(--sky-soft);font-size:14px}
+  .doc{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(0,0,0,0.2);border-radius:12px;margin-bottom:10px;font-size:14px}
+  .doc .tag{margin-left:auto;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(95,209,160,0.15);color:var(--ok)}
+  .doc .tag.wait{background:rgba(216,180,106,0.15);color:var(--gold-bright)}
+  .next-card{padding:24px;margin-top:22px;background:linear-gradient(135deg,rgba(125,183,232,0.14),rgba(216,180,106,0.08))}
+  .next-card h4{color:#fff;font-size:16px;margin-bottom:6px;font-family:'Manrope';font-weight:700}
+  .next-card p{font-size:13.5px;color:var(--sky-soft);margin-bottom:14px}
+
+  /* CTA BANNER */
+  .banner{padding:54px 44px;text-align:center;background:linear-gradient(135deg,rgba(125,183,232,0.16),rgba(216,180,106,0.12))}
+  .banner h2{font-size:clamp(26px,4vw,40px);color:#fff;margin-bottom:14px}
+  .banner p{color:var(--sky-soft);max-width:48ch;margin:0 auto 26px;font-size:16.5px}
+  .banner .hero-cta{justify-content:center}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;margin-top:40px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;color:var(--sky-soft);font-size:13.5px}
+  .foot .brand{font-size:18px}
+
+  .badge-row{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:8px;opacity:.85}
+  .badge-row span{font-size:12.5px;font-weight:700;color:var(--sky-soft);display:flex;align-items:center;gap:7px}
+  .badge-row svg{width:16px;height:16px;stroke:var(--ok)}
+
+  /* HERO MEDIA */
+  .hero-grid{display:grid;grid-template-columns:1.04fr 0.96fr;gap:48px;align-items:center}
+  .hero-copy{position:relative}
+  .hero-media{position:relative}
+  .hero-media img{width:100%;border-radius:26px;display:block;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .hero-media::after{content:"";position:absolute;inset:0;border-radius:26px;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.12);pointer-events:none}
+  .hero-media-badge{position:absolute;left:18px;bottom:18px;background:rgba(7,13,31,0.78);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:14px;padding:10px 16px;font-size:13.5px;font-weight:700;color:#fff;
+    display:flex;align-items:center;gap:8px}
+  .hero-media-badge .stars{color:var(--gold-bright);letter-spacing:1px}
+
+  /* STATS */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}
+  .statcard{padding:30px 22px;text-align:center;transition:transform .25s}
+  .statcard:hover{transform:translateY(-6px)}
+  .statcard b{display:block;font-family:'Fraunces';font-size:48px;font-weight:600;color:var(--gold-bright);line-height:1}
+  .statcard span{display:block;margin-top:10px;font-size:14px;color:var(--sky-soft);font-weight:600}
+  .img-duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .img-duo img{width:100%;height:300px;object-fit:cover;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow)}
+
+  /* BRAND BAND */
+  .brandband{padding:60px 0;overflow:hidden}
+  .brandband-inner{position:relative;display:flex;justify-content:center}
+  .brandword{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);font-family:'Fraunces';font-weight:700;
+    font-size:clamp(70px,15vw,210px);letter-spacing:-0.02em;line-height:1;white-space:nowrap;color:transparent;
+    -webkit-text-stroke:2px rgba(125,183,232,0.22);text-stroke:2px rgba(125,183,232,0.22);z-index:0;pointer-events:none;user-select:none}
+  .brandband-card{position:relative;z-index:1;max-width:760px;width:100%}
+  .brandband-card img{width:100%;border-radius:26px;display:block;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .brandband-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 32px;border-radius:0 0 26px 26px;
+    background:linear-gradient(180deg,transparent,rgba(7,13,31,0.92))}
+  .brandband-cap h2{color:#fff;font-size:clamp(24px,3.4vw,38px);margin-bottom:6px}
+  .brandband-cap p{color:var(--sky-soft);font-size:15.5px;max-width:46ch}
+
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .hero-media{order:-1}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .calc{grid-template-columns:1fr}
+    .calc-out{border-left:0;border-top:1px solid var(--line)}
+    .portal-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:760px){
+    .nav-links{display:none}
+    .img-duo{grid-template-columns:1fr}
+    .img-duo img{height:230px}
+    .stats-grid{gap:12px}
+    .lang button{padding:6px 9px;font-size:11.5px}
+    .menu-toggle{display:block}
+    .steps,.aud{grid-template-columns:1fr}
+    .nav-right .btn-text{display:none}
+    .hero{padding:48px 0 20px}
+    .trust{gap:20px}
+    .trust b{font-size:24px}
+  }
+  .fade{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+  .fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand" onclick="showHome();return false;">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18M5 19V9l7-5 7 5v10M9 19v-5h6v5"/></svg></span>
+      Skybridge Title
+    </a>
+    <nav class="nav-links">
+      <a href="#how" data-i18n="nav_how">How it works</a>
+      <a href="#calculator" data-i18n="nav_calc">Get a quote</a>
+      <a href="#who" data-i18n="nav_who">Who we help</a>
+      <a href="#" onclick="showPortal();return false;" data-i18n="nav_track">Track closing</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button data-lang="en" class="on" onclick="setLang('en')">EN</button>
+        <button data-lang="es" onclick="setLang('es')">ES</button>
+        <button data-lang="ht" onclick="setLang('ht')">KR</button>
+        <button data-lang="fr" onclick="setLang('fr')">FR</button>
+      </div>
+      <button class="btn btn-gold" onclick="document.getElementById('calculator').scrollIntoView();showHome();">
+        <span data-i18n="cta_quote">Get a quote</span>
+      </button>
+      <button class="menu-toggle" onclick="document.querySelector('.nav-links').style.display='flex'">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HOME ===================== -->
+<main id="homeView">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="hero-glow"></div>
+      <span class="eyebrow fade">◆ <span data-i18n="hero_eyebrow">North Miami · Title & Escrow</span></span>
+      <h1 class="fade" data-i18n="hero_h1">Buying a home should feel <em>safe</em>, not confusing.</h1>
+      <p class="lede fade" data-i18n="hero_lede">We handle the title, the paperwork, and the closing — and we explain every step in plain language, in your language. No surprises. No hidden fees.</p>
+      <div class="hero-cta fade">
+        <button class="btn btn-gold" onclick="document.getElementById('calculator').scrollIntoView()">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7h6M9 11h6M9 15h3M6 3h12v18H6z"/></svg>
+          <span data-i18n="cta_estimate">See my closing costs</span>
+        </button>
+        <button class="btn btn-ghost" onclick="showPortal()">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg>
+          <span data-i18n="cta_track">Track my closing</span>
+        </button>
+      </div>
+      <div class="trust fade">
+        <div><b>$0</b><span data-i18n="trust_1">Surprise fees at closing</span></div>
+        <div><b>24/7</b><span data-i18n="trust_2">Online order & tracking</span></div>
+        <div><b>4</b><span data-i18n="trust_3">Languages, spoken clearly</span></div>
+      </div>
+    </div>
+    <div class="hero-media fade">
+      <img src="img-family-keys.jpg" alt="A happy diverse family receiving the keys to their new home">
+      <div class="hero-media-badge"><span class="stars">★★★★★</span> <span data-i18n="hero_badge">345+ families home</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="how_eyebrow">Simple by design</span></span>
+      <h2 data-i18n="how_h2">Three steps to the keys</h2>
+      <p data-i18n="how_p">Most people never buy a home twice in a row. So we made the process feel like one clear path — not a stack of legal papers.</p>
+    </div>
+    <div class="steps">
+      <div class="step glass fade">
+        <span class="num">1</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3l9 4-9 4-9-4 9-4zM3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div>
+        <h3 data-i18n="step1_h">Tell us about the deal</h3>
+        <p data-i18n="step1_p">Realtor, lender, or buyer — submit your order online in minutes. We open your secure file automatically.</p>
+      </div>
+      <div class="step glass fade">
+        <span class="num">2</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.3-4.3"/></svg></div>
+        <h3 data-i18n="step2_h">We do the title work</h3>
+        <p data-i18n="step2_p">We search the property history, clear any liens, and protect you with title insurance. You watch it happen in real time.</p>
+      </div>
+      <div class="step glass fade">
+        <span class="num">3</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h3 data-i18n="step3_h">You close with confidence</h3>
+        <p data-i18n="step3_p">Sign in person or online, get your keys, and keep us as a resource long after closing day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="stats_eyebrow">Trusted across South Florida</span></span>
+      <h2 data-i18n="stats_h2">Families we've helped home</h2>
+      <p data-i18n="stats_p">Real people, real closings — guided start to finish by a team that speaks your language.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="statcard fade"><b>345+</b><span data-i18n="stat_1">Happy clients & families</span></div>
+      <div class="statcard fade"><b>5</b><span data-i18n="stat_2">In-house title experts</span></div>
+      <div class="statcard fade"><b>4</b><span data-i18n="stat_3">Languages spoken clearly</span></div>
+      <div class="statcard fade"><b>$0</b><span data-i18n="stat_4">Surprise fees at closing</span></div>
+    </div>
+    <div class="img-duo fade">
+      <img src="img-moving-in.jpg" alt="A family carrying boxes into their new home">
+      <img src="img-closing.jpg" alt="Clients happily signing their closing documents with the Skybridge team">
+    </div>
+  </div>
+</section>
+
+<section id="calculator">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="calc_eyebrow">Instant estimate</span></span>
+      <h2 data-i18n="calc_h2">Know your closing costs in seconds</h2>
+      <p data-i18n="calc_p">Enter a price. We use Florida's official title rates — the same numbers every title company must follow by law — so your estimate is real.</p>
+    </div>
+    <div class="calc glass fade">
+      <div class="calc-form">
+        <div class="field">
+          <label data-i18n="calc_price">Purchase price</label>
+          <div class="input-money"><span>$</span><input id="price" type="text" inputmode="numeric" value="450,000" oninput="formatMoney(this);calc()"></div>
+        </div>
+        <div class="field">
+          <label data-i18n="calc_role">I am the…</label>
+          <div class="toggle-row">
+            <label><input type="radio" name="role" value="buyer" checked onchange="calc()"><span class="pill" data-i18n="calc_buyer">Buyer</span></label>
+            <label><input type="radio" name="role" value="seller" onchange="calc()"><span class="pill" data-i18n="calc_seller">Seller</span></label>
+          </div>
+        </div>
+        <div class="field" id="loanField">
+          <label data-i18n="calc_loan">Loan amount <span style="font-weight:500;opacity:.7" data-i18n="calc_loan_opt">(leave blank if paying cash)</span></label>
+          <div class="input-money"><span>$</span><input id="loan" type="text" inputmode="numeric" value="360,000" oninput="formatMoney(this);calc()"></div>
+        </div>
+        <div class="field">
+          <label data-i18n="calc_owner">Who pays for the owner's title policy?</label>
+          <select id="ownerPayer" onchange="calc()">
+            <option value="buyer" data-i18n="calc_owner_b">Buyer (typical in Miami-Dade)</option>
+            <option value="seller" data-i18n="calc_owner_s">Seller (typical in most FL counties)</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-out">
+        <h3 data-i18n="calc_your">Your estimated total</h3>
+        <div class="calc-total" id="total">$0</div>
+        <div class="calc-sub" id="totalSub" data-i18n="calc_subtext">Estimated costs you would bring to closing</div>
+        <div id="lines"></div>
+        <p class="disc" data-i18n="calc_disc">Estimate only. Title insurance uses Florida's state-promulgated rates. Documentary stamp tax, intangible tax, and recording fees are based on Miami-Dade standard rates. Your final figures depend on the contract, county, lender, and survey. We confirm everything before you sign.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="who_eyebrow">Built for everyone at the table</span></span>
+      <h2 data-i18n="who_h2">Who we help</h2>
+    </div>
+    <div class="aud">
+      <div class="card glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div>
+        <h3 data-i18n="aud1_h">Realtors</h3>
+        <p data-i18n="aud1_p">Submit orders in two minutes, track every file from your phone, and never chase us for an update again.</p>
+        <a class="more" href="#" onclick="document.getElementById('calculator').scrollIntoView();return false;" data-i18n="aud_link">Submit an order →</a>
+      </div>
+      <div class="card glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+        <h3 data-i18n="aud2_h">Buyers & Sellers</h3>
+        <p data-i18n="aud2_p">First home or fifth, we walk beside you. Clear updates, plain words, and a team that answers in your language.</p>
+        <a class="more" href="#" onclick="showPortal();return false;" data-i18n="aud2_link">See your portal →</a>
+      </div>
+      <div class="card glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3 data-i18n="aud3_h">Lenders</h3>
+        <p data-i18n="aud3_p">Clean title commitments, on-time closings, and secure document delivery that keeps your pipeline moving.</p>
+        <a class="more" href="#" onclick="document.getElementById('calculator').scrollIntoView();return false;" data-i18n="aud_link2">Order title →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="alwayson">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">◆ <span data-i18n="ao_eyebrow">Never a busy signal</span></span>
+      <h2 data-i18n="ao_h2">A front desk that never sleeps</h2>
+      <p data-i18n="ao_p">Calls after hours, on weekends, in three languages — answered. Our AI front desk and concierge handle the questions so nothing waits until Monday.</p>
+    </div>
+    <div class="steps">
+      <div class="step glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <h3 data-i18n="ao1_h">24/7 phone answering</h3>
+        <p data-i18n="ao1_p">Every call is greeted, answered, and routed by a natural-sounding AI receptionist — day or night, in English, Kreyòl, or French.</p>
+      </div>
+      <div class="step glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg></div>
+        <h3 data-i18n="ao2_h">Books & schedules for you</h3>
+        <p data-i18n="ao2_p">Callers can get a quote, start an order, or schedule a closing right on the call — it flows straight into your secure file.</p>
+      </div>
+      <div class="step glass fade">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3 data-i18n="ao3_h">Concierge for every client</h3>
+        <p data-i18n="ao3_p">A dedicated concierge follows your file end to end — chasing documents, answering questions, and keeping your closing on track.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brandband">
+  <div class="wrap brandband-inner">
+    <div class="brandword">SKYBRIDGE</div>
+    <div class="brandband-card fade">
+      <img src="img-haitian-family.jpg" alt="A joyful Haitian family moving into their new home with keys in hand">
+      <div class="brandband-cap">
+        <h2 data-i18n="brand_h">Your bridge home.</h2>
+        <p data-i18n="brand_p">From your first question to the keys in your hand — in English, Español, Kreyòl, or Français.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="banner glass fade">
+      <h2 data-i18n="banner_h">Ready when you are.</h2>
+      <p data-i18n="banner_p">Start an order, get an estimate, or track a closing already in progress. Our digital front desk is open around the clock.</p>
+      <div class="hero-cta">
+        <button class="btn btn-gold" onclick="document.getElementById('calculator').scrollIntoView()"><span data-i18n="cta_estimate2">Get my estimate</span></button>
+        <button class="btn btn-ghost" onclick="showPortal()"><span data-i18n="cta_track2">Open client portal</span></button>
+      </div>
+      <div class="badge-row">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> <span data-i18n="badge1">Bank-grade encryption</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> <span data-i18n="badge2">Secure document upload</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg> <span data-i18n="badge3">ALTA member</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== PORTAL ===================== -->
+<main id="portalView">
+  <section style="padding-top:50px">
+    <div class="wrap">
+      <div class="portal-top fade in">
+        <div class="av">MJ</div>
+        <div>
+          <h2 style="color:#fff;font-size:26px" data-i18n="portal_hi">Welcome back, Marie</h2>
+          <p style="color:var(--sky-soft);font-size:14.5px" data-i18n="portal_file">File #SB-2026-0847 · 1240 NE 110th St, Miami, FL</p>
+        </div>
+        <button class="btn btn-ghost" style="margin-left:auto" onclick="showHome()"><span data-i18n="portal_back">← Back to site</span></button>
+      </div>
+
+      <div class="portal-grid">
+        <div class="panel glass fade in">
+          <h3 data-i18n="portal_prog_h">Your closing progress</h3>
+          <p class="muted" data-i18n="portal_prog_p">Estimated closing: July 14, 2026 · You're 3 of 5 steps in.</p>
+          <div class="progbar"><i></i></div>
+          <div class="timeline">
+            <div class="ti done"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+              <h4 data-i18n="tl1_h">Order received</h4><p data-i18n="tl1_p">June 28 · We opened your secure file and confirmed the contract.</p></div>
+            <div class="ti done"><div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+              <h4 data-i18n="tl2_h">Title search complete</h4><p data-i18n="tl2_p">July 2 · We checked the property's full history. No surprises.</p></div>
+            <div class="ti active"><div class="dot"></div>
+              <h4 data-i18n="tl3_h">Clearing title</h4><p data-i18n="tl3_p">In progress · We're resolving one old lien and ordering payoffs.</p></div>
+            <div class="ti pending"><div class="dot"></div>
+              <h4 data-i18n="tl4_h">Clear to close</h4><p data-i18n="tl4_p">Next · We'll send your final numbers and schedule signing.</p></div>
+            <div class="ti pending"><div class="dot"></div>
+              <h4 data-i18n="tl5_h">Closed & insured</h4><p data-i18n="tl5_p">The keys are yours. Your title policy is issued.</p></div>
+          </div>
+
+          <div class="next-card glass">
+            <h4 data-i18n="portal_next_h">One thing we need from you</h4>
+            <p data-i18n="portal_next_p">Please upload a copy of your government ID so we can verify identity before signing.</p>
+            <button class="btn btn-gold"><span data-i18n="portal_next_btn">Upload ID now</span></button>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel glass fade in" style="margin-bottom:22px">
+            <h3 data-i18n="portal_doc_h">Documents</h3>
+            <p class="muted" data-i18n="portal_doc_p">Encrypted. Only you and your closing team can see these.</p>
+            <div class="upload">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 16V4m0 0L8 8m4-4l4 4M4 20h16"/></svg>
+              <p data-i18n="portal_upload">Drag a file here or tap to upload</p>
+            </div>
+            <div class="doc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/></svg> <span data-i18n="doc1">Purchase contract</span><span class="tag" data-i18n="doc_ok">Received</span></div>
+            <div class="doc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/></svg> <span data-i18n="doc2">Title commitment</span><span class="tag" data-i18n="doc_ok2">Received</span></div>
+            <div class="doc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-bright)" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/></svg> <span data-i18n="doc3">Government ID</span><span class="tag wait" data-i18n="doc_wait">Needed</span></div>
+          </div>
+
+          <div class="panel glass fade in">
+            <h3 data-i18n="portal_sched_h">Schedule your closing</h3>
+            <p class="muted" data-i18n="portal_sched_p">Pick a time that works. In-office or fully online.</p>
+            <button class="btn btn-gold" style="width:100%;justify-content:center"><span data-i18n="portal_sched_btn">Choose a closing time</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="brand" style="color:#fff;margin-bottom:8px"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19h18M5 19V9l7-5 7 5v10"/></svg></span>Skybridge Title</div>
+      <div data-i18n="foot_addr">655 NE 125th Street, Ste A · North Miami, FL 33161</div>
+    </div>
+    <div style="text-align:right">
+      <div data-i18n="foot_call">Call us: 1 (888) 336-0902</div>
+      <div style="opacity:.6;margin-top:6px">© 2026 Skybridge Title, LLC · <span data-i18n="foot_proto">Prototype</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- TRANSLATIONS ---------- */
+const I18N = {
+  en:{
+    nav_how:"How it works",nav_calc:"Get a quote",nav_who:"Who we help",nav_track:"Track closing",
+    cta_quote:"Get a quote",hero_eyebrow:"North Miami · Title & Escrow",
+    hero_h1:"Buying a home should feel <em>safe</em>, not confusing.",
+    hero_lede:"We handle the title, the paperwork, and the closing — and we explain every step in plain language, in your language. No surprises. No hidden fees.",
+    cta_estimate:"See my closing costs",cta_track:"Track my closing",
+    trust_1:"Surprise fees at closing",trust_2:"Online order & tracking",trust_3:"Languages, spoken clearly",
+    how_eyebrow:"Simple by design",how_h2:"Three steps to the keys",
+    how_p:"Most people never buy a home twice in a row. So we made the process feel like one clear path — not a stack of legal papers.",
+    step1_h:"Tell us about the deal",step1_p:"Realtor, lender, or buyer — submit your order online in minutes. We open your secure file automatically.",
+    step2_h:"We do the title work",step2_p:"We search the property history, clear any liens, and protect you with title insurance. You watch it happen in real time.",
+    step3_h:"You close with confidence",step3_p:"Sign in person or online, get your keys, and keep us as a resource long after closing day.",
+    calc_eyebrow:"Instant estimate",calc_h2:"Know your closing costs in seconds",
+    calc_p:"Enter a price. We use Florida's official title rates — the same numbers every title company must follow by law — so your estimate is real.",
+    calc_price:"Purchase price",calc_role:"I am the…",calc_buyer:"Buyer",calc_seller:"Seller",
+    calc_loan:"Loan amount",calc_loan_opt:"(leave blank if paying cash)",
+    calc_owner:"Who pays for the owner's title policy?",calc_owner_b:"Buyer (typical in Miami-Dade)",calc_owner_s:"Seller (typical in most FL counties)",
+    calc_your:"Your estimated total",calc_subtext:"Estimated costs you would bring to closing",
+    calc_disc:"Estimate only. Title insurance uses Florida's state-promulgated rates. Documentary stamp tax, intangible tax, and recording fees are based on Miami-Dade standard rates. Your final figures depend on the contract, county, lender, and survey. We confirm everything before you sign.",
+    who_eyebrow:"Built for everyone at the table",who_h2:"Who we help",
+    aud1_h:"Realtors",aud1_p:"Submit orders in two minutes, track every file from your phone, and never chase us for an update again.",aud_link:"Submit an order →",
+    aud2_h:"Buyers & Sellers",aud2_p:"First home or fifth, we walk beside you. Clear updates, plain words, and a team that answers in your language.",aud2_link:"See your portal →",
+    aud3_h:"Lenders",aud3_p:"Clean title commitments, on-time closings, and secure document delivery that keeps your pipeline moving.",aud_link2:"Order title →",
+    ao_eyebrow:"Never a busy signal",ao_h2:"A front desk that never sleeps",
+    ao_p:"Calls after hours, on weekends, in three languages — answered. Our AI front desk and concierge handle the questions so nothing waits until Monday.",
+    hero_badge:"345+ families home",
+    stats_eyebrow:"Trusted across South Florida",stats_h2:"Families we've helped home",stats_p:"Real people, real closings — guided start to finish by a team that speaks your language.",
+    stat_1:"Happy clients & families",stat_2:"In-house title experts",stat_3:"Languages spoken clearly",stat_4:"Surprise fees at closing",
+    brand_h:"Your bridge home.",brand_p:"From your first question to the keys in your hand — in English, Español, Kreyòl, or Français.",
+    ao1_h:"24/7 phone answering",ao1_p:"Every call is greeted, answered, and routed by a natural-sounding AI receptionist — day or night, in English, Spanish, Kreyòl, or French.",
+    ao2_h:"Books & schedules for you",ao2_p:"Callers can get a quote, start an order, or schedule a closing right on the call — it flows straight into your secure file.",
+    ao3_h:"Concierge for every client",ao3_p:"A dedicated concierge follows your file end to end — chasing documents, answering questions, and keeping your closing on track.",
+    banner_h:"Ready when you are.",banner_p:"Start an order, get an estimate, or track a closing already in progress. Our digital front desk is open around the clock.",
+    cta_estimate2:"Get my estimate",cta_track2:"Open client portal",
+    badge1:"Bank-grade encryption",badge2:"Secure document upload",badge3:"ALTA member",
+    portal_hi:"Welcome back, Marie",portal_file:"File #SB-2026-0847 · 1240 NE 110th St, Miami, FL",portal_back:"← Back to site",
+    portal_prog_h:"Your closing progress",portal_prog_p:"Estimated closing: July 14, 2026 · You're 3 of 5 steps in.",
+    tl1_h:"Order received",tl1_p:"June 28 · We opened your secure file and confirmed the contract.",
+    tl2_h:"Title search complete",tl2_p:"July 2 · We checked the property's full history. No surprises.",
+    tl3_h:"Clearing title",tl3_p:"In progress · We're resolving one old lien and ordering payoffs.",
+    tl4_h:"Clear to close",tl4_p:"Next · We'll send your final numbers and schedule signing.",
+    tl5_h:"Closed & insured",tl5_p:"The keys are yours. Your title policy is issued.",
+    portal_next_h:"One thing we need from you",portal_next_p:"Please upload a copy of your government ID so we can verify identity before signing.",portal_next_btn:"Upload ID now",
+    portal_doc_h:"Documents",portal_doc_p:"Encrypted. Only you and your closing team can see these.",portal_upload:"Drag a file here or tap to upload",
+    doc1:"Purchase contract",doc_ok:"Received",doc2:"Title commitment",doc_ok2:"Received",doc3:"Government ID",doc_wait:"Needed",
+    portal_sched_h:"Schedule your closing",portal_sched_p:"Pick a time that works. In-office or fully online.",portal_sched_btn:"Choose a closing time",
+    foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Call us: 1 (888) 336-0902",foot_proto:"Prototype"
+  },
+  ht:{
+    nav_how:"Kijan li mache",nav_calc:"Jwenn yon devi",nav_who:"Moun nou ede",nav_track:"Swiv fèmti a",
+    cta_quote:"Jwenn yon devi",hero_eyebrow:"North Miami · Tit & Escrow",
+    hero_h1:"Achte yon kay ta dwe santi w <em>an sekirite</em>, pa konfizyon.",
+    hero_lede:"Nou okipe tit la, papye yo, ak fèmti a — epi nou esplike chak etap an langaj senp, nan lang ou. Pa gen sipriz. Pa gen frè kache.",
+    cta_estimate:"Wè frè fèmti mwen",cta_track:"Swiv fèmti mwen an",
+    trust_1:"Frè sipriz nan fèmti",trust_2:"Kòmann & swivi sou entènèt",trust_3:"Lang, pale klè",
+    how_eyebrow:"Senp depi nan konsepsyon",how_h2:"Twa etap pou jwenn kle yo",
+    how_p:"Pifò moun pa achte kay de fwa youn dèyè lòt. Se poutèt sa nou fè pwosesis la santi tankou yon sèl chemen klè — pa yon pil papye legal.",
+    step1_h:"Di nou sou tranzaksyon an",step1_p:"Ajan, prètè, oswa achtè — soumèt kòmann ou an sou entènèt nan kèk minit. Nou ouvri dosye sekirize ou otomatikman.",
+    step2_h:"Nou fè travay tit la",step2_p:"Nou chèche istwa pwopriyete a, retire nenpòt dèt, epi pwoteje ou ak asirans tit. Ou wè li ap fèt an tan reyèl.",
+    step3_h:"Ou fèmen ak konfyans",step3_p:"Siyen an pèsòn oswa sou entènèt, pran kle ou yo, epi kenbe nou kòm yon resous lontan apre jou fèmti a.",
+    calc_eyebrow:"Estimasyon enstantane",calc_h2:"Konnen frè fèmti ou nan kèk segonn",
+    calc_p:"Antre yon pri. Nou itilize to ofisyèl tit Florida — menm chif chak konpayi tit dwe suiv pa lalwa — pou estimasyon ou reyèl.",
+    calc_price:"Pri acha",calc_role:"Mwen se…",calc_buyer:"Achtè",calc_seller:"Vandè",
+    calc_loan:"Montan prè a",calc_loan_opt:"(kite vid si w ap peye kach)",
+    calc_owner:"Kiyès ki peye pou polis tit pwopriyetè a?",calc_owner_b:"Achtè (tipik nan Miami-Dade)",calc_owner_s:"Vandè (tipik nan pifò konte FL)",
+    calc_your:"Total estime ou",calc_subtext:"Frè estime ou ta pote nan fèmti a",
+    calc_disc:"Estimasyon sèlman. Asirans tit itilize to leta Florida fikse. Taks dokimantè, taks entanjib, ak frè anrejistreman baze sou to estanda Miami-Dade. Chif final ou depann de kontra, konte, prètè, ak sondaj. Nou konfime tout bagay anvan ou siyen.",
+    who_eyebrow:"Fèt pou tout moun ki nan tab la",who_h2:"Moun nou ede",
+    aud1_h:"Ajan Imobilye",aud1_p:"Soumèt kòmann nan de minit, swiv chak dosye sou telefòn ou, epi pa janm kouri dèyè nou pou yon mizajou ankò.",aud_link:"Soumèt yon kòmann →",
+    aud2_h:"Achtè & Vandè",aud2_p:"Premye kay oswa senkyèm, nou mache bò kote w. Mizajou klè, mo senp, ak yon ekip ki reponn nan lang ou.",aud2_link:"Wè pòtay ou →",
+    aud3_h:"Prètè",aud3_p:"Angajman tit pwòp, fèmti alè, ak livrezon dokiman sekirize ki kenbe pipeline ou ap mache.",aud_link2:"Kòmande tit →",
+    ao_eyebrow:"Pa janm yon liy okipe",ao_h2:"Yon resepsyon ki pa janm dòmi",
+    ao_p:"Apèl apre lè, wikenn, nan twa lang — reponn. Resepsyon AI nou an ak konsyèj la okipe kesyon yo pou anyen pa tann jiska Lendi.",
+    hero_badge:"345+ fanmi lakay yo",
+    stats_eyebrow:"Konfye nan tout Sid Florid",stats_h2:"Fanmi nou ede jwenn kay yo",stats_p:"Vrè moun, vrè fèmti — akonpaye depi nan kòmansman jiska lafen pa yon ekip ki pale lang ou.",
+    stat_1:"Kliyan ak fanmi kontan",stat_2:"Ekspè tit anndan kay la",stat_3:"Lang nou pale klè",stat_4:"Frè sipriz nan fèmti",
+    brand_h:"Pon ou pou rive lakay.",brand_p:"Depi premye kesyon ou jiska kle nan men ou — an Anglè, Espayòl, Kreyòl, oswa Franse.",
+    ao1_h:"Repons telefòn 24/7",ao1_p:"Chak apèl resevwa, reponn, epi dirije pa yon resepsyonis AI ki sonnen natirèl — lajounen kou lannwit, an Anglè, Espayòl, Kreyòl, oswa Franse.",
+    ao2_h:"Li pran randevou pou ou",ao2_p:"Moun ki rele ka jwenn yon devi, kòmanse yon kòmann, oswa pwograme yon fèmti dirèkteman nan apèl la — li ale dirèk nan dosye sekirize ou.",
+    ao3_h:"Konsyèj pou chak kliyan",ao3_p:"Yon konsyèj dedye swiv dosye ou bout an bout — kouri dèyè dokiman, reponn kesyon, epi kenbe fèmti ou sou bon chemen.",
+    banner_h:"Pare lè ou pare.",banner_p:"Kòmanse yon kòmann, jwenn yon estimasyon, oswa swiv yon fèmti ki deja ap fèt. Biwo dijital nou an louvri 24 sou 24.",
+    cta_estimate2:"Jwenn estimasyon mwen",cta_track2:"Louvri pòtay kliyan",
+    badge1:"Chifreman nivo bank",badge2:"Telechaje dokiman sekirize",badge3:"Manm ALTA",
+    portal_hi:"Bon retou, Marie",portal_file:"Dosye #SB-2026-0847 · 1240 NE 110th St, Miami, FL",portal_back:"← Tounen nan sit la",
+    portal_prog_h:"Pwogrè fèmti ou",portal_prog_p:"Fèmti estime: 14 jiyè 2026 · Ou nan etap 3 sou 5.",
+    tl1_h:"Kòmann resevwa",tl1_p:"28 jen · Nou ouvri dosye sekirize ou epi konfime kontra a.",
+    tl2_h:"Rechèch tit fini",tl2_p:"2 jiyè · Nou tcheke tout istwa pwopriyete a. Pa gen sipriz.",
+    tl3_h:"N ap netwaye tit la",tl3_p:"Ap fèt · N ap rezoud yon ansyen dèt epi kòmande peman.",
+    tl4_h:"Pare pou fèmen",tl4_p:"Pwochen · N ap voye chif final ou yo epi pwograme siyati a.",
+    tl5_h:"Fèmen & asire",tl5_p:"Kle yo se pou ou. Polis tit ou a bay.",
+    portal_next_h:"Yon sèl bagay nou bezwen nan men ou",portal_next_p:"Tanpri telechaje yon kopi kat idantite gouvènman ou pou nou verifye idantite anvan siyati.",portal_next_btn:"Telechaje ID kounye a",
+    portal_doc_h:"Dokiman",portal_doc_p:"Chifre. Se sèlman ou menm ak ekip fèmti ou ki ka wè sa yo.",portal_upload:"Trennen yon fichye isit la oswa tape pou telechaje",
+    doc1:"Kontra acha",doc_ok:"Resevwa",doc2:"Angajman tit",doc_ok2:"Resevwa",doc3:"ID gouvènman",doc_wait:"Bezwen",
+    portal_sched_h:"Pwograme fèmti ou",portal_sched_p:"Chwazi yon lè ki bon pou ou. Nan biwo oswa konplètman sou entènèt.",portal_sched_btn:"Chwazi yon lè fèmti",
+    foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Rele nou: 1 (888) 336-0902",foot_proto:"Pwototip"
+  },
+  fr:{
+    nav_how:"Comment ça marche",nav_calc:"Obtenir un devis",nav_who:"Qui nous aidons",nav_track:"Suivre la clôture",
+    cta_quote:"Obtenir un devis",hero_eyebrow:"North Miami · Titre & Séquestre",
+    hero_h1:"Acheter une maison devrait être <em>rassurant</em>, pas déroutant.",
+    hero_lede:"Nous gérons le titre, les documents et la clôture — et nous expliquons chaque étape en langage simple, dans votre langue. Aucune surprise. Aucuns frais cachés.",
+    cta_estimate:"Voir mes frais de clôture",cta_track:"Suivre ma clôture",
+    trust_1:"Frais surprises à la clôture",trust_2:"Commande & suivi en ligne",trust_3:"Langues, parlées clairement",
+    how_eyebrow:"Simple par conception",how_h2:"Trois étapes vers les clés",
+    how_p:"La plupart des gens n'achètent pas deux maisons de suite. Nous avons donc fait de ce processus un chemin clair — pas une pile de documents juridiques.",
+    step1_h:"Parlez-nous de la transaction",step1_p:"Agent, prêteur ou acheteur — soumettez votre commande en ligne en quelques minutes. Nous ouvrons votre dossier sécurisé automatiquement.",
+    step2_h:"Nous faisons le travail de titre",step2_p:"Nous recherchons l'historique du bien, levons les privilèges et vous protégeons avec une assurance titre. Vous le voyez en temps réel.",
+    step3_h:"Vous concluez en toute confiance",step3_p:"Signez en personne ou en ligne, recevez vos clés, et gardez-nous comme ressource bien après la clôture.",
+    calc_eyebrow:"Estimation instantanée",calc_h2:"Connaissez vos frais de clôture en quelques secondes",
+    calc_p:"Entrez un prix. Nous utilisons les tarifs officiels de titre de Floride — les mêmes chiffres que chaque société de titre doit suivre par la loi — pour une estimation réelle.",
+    calc_price:"Prix d'achat",calc_role:"Je suis le/la…",calc_buyer:"Acheteur",calc_seller:"Vendeur",
+    calc_loan:"Montant du prêt",calc_loan_opt:"(laisser vide si paiement comptant)",
+    calc_owner:"Qui paie la police de titre du propriétaire ?",calc_owner_b:"Acheteur (typique à Miami-Dade)",calc_owner_s:"Vendeur (typique dans la plupart des comtés)",
+    calc_your:"Votre total estimé",calc_subtext:"Frais estimés que vous apporteriez à la clôture",
+    calc_disc:"Estimation seulement. L'assurance titre utilise les tarifs fixés par l'État de Floride. La taxe documentaire, la taxe intangible et les frais d'enregistrement sont basés sur les tarifs standard de Miami-Dade. Vos chiffres finaux dépendent du contrat, du comté, du prêteur et de l'arpentage. Nous confirmons tout avant que vous signiez.",
+    who_eyebrow:"Conçu pour tous les acteurs",who_h2:"Qui nous aidons",
+    aud1_h:"Agents immobiliers",aud1_p:"Soumettez des commandes en deux minutes, suivez chaque dossier depuis votre téléphone, et ne nous relancez plus jamais.",aud_link:"Soumettre une commande →",
+    aud2_h:"Acheteurs & Vendeurs",aud2_p:"Première maison ou cinquième, nous marchons à vos côtés. Des mises à jour claires, des mots simples, une équipe qui répond dans votre langue.",aud2_link:"Voir votre portail →",
+    aud3_h:"Prêteurs",aud3_p:"Engagements de titre propres, clôtures à temps, et livraison sécurisée de documents qui font avancer votre pipeline.",aud_link2:"Commander un titre →",
+    ao_eyebrow:"Jamais de ligne occupée",ao_h2:"Un accueil qui ne dort jamais",
+    ao_p:"Appels en soirée, le week-end, en trois langues — répondus. Notre accueil IA et notre concierge gèrent les questions pour que rien n'attende jusqu'à lundi.",
+    hero_badge:"345+ familles chez elles",
+    stats_eyebrow:"De confiance dans le Sud de la Floride",stats_h2:"Des familles que nous avons aidées",stats_p:"De vraies personnes, de vraies clôtures — accompagnées du début à la fin par une équipe qui parle votre langue.",
+    stat_1:"Clients & familles satisfaits",stat_2:"Experts en titre internes",stat_3:"Langues parlées clairement",stat_4:"Frais surprises à la clôture",
+    brand_h:"Votre pont vers la maison.",brand_p:"De votre première question aux clés en main — en anglais, espagnol, créole ou français.",
+    ao1_h:"Réponse téléphonique 24/7",ao1_p:"Chaque appel est accueilli, répondu et acheminé par une réceptionniste IA à la voix naturelle — jour et nuit, en anglais, espagnol, créole ou français.",
+    ao2_h:"Prend vos rendez-vous",ao2_p:"Les appelants peuvent obtenir un devis, lancer une commande ou planifier une clôture pendant l'appel — tout va directement dans votre dossier sécurisé.",
+    ao3_h:"Un concierge pour chaque client",ao3_p:"Un concierge dédié suit votre dossier de bout en bout — relance les documents, répond aux questions et garde votre clôture sur les rails.",
+    banner_h:"Prêts quand vous l'êtes.",banner_p:"Lancez une commande, obtenez une estimation, ou suivez une clôture déjà en cours. Notre accueil numérique est ouvert 24h/24.",
+    cta_estimate2:"Obtenir mon estimation",cta_track2:"Ouvrir le portail client",
+    badge1:"Chiffrement de niveau bancaire",badge2:"Téléversement sécurisé",badge3:"Membre ALTA",
+    portal_hi:"Bon retour, Marie",portal_file:"Dossier #SB-2026-0847 · 1240 NE 110th St, Miami, FL",portal_back:"← Retour au site",
+    portal_prog_h:"Votre progression de clôture",portal_prog_p:"Clôture estimée : 14 juillet 2026 · Vous êtes à l'étape 3 sur 5.",
+    tl1_h:"Commande reçue",tl1_p:"28 juin · Nous avons ouvert votre dossier sécurisé et confirmé le contrat.",
+    tl2_h:"Recherche de titre terminée",tl2_p:"2 juillet · Nous avons vérifié tout l'historique du bien. Aucune surprise.",
+    tl3_h:"Nettoyage du titre",tl3_p:"En cours · Nous réglons un ancien privilège et commandons les soldes.",
+    tl4_h:"Prêt à clôturer",tl4_p:"Ensuite · Nous enverrons vos chiffres finaux et planifierons la signature.",
+    tl5_h:"Clôturé & assuré",tl5_p:"Les clés sont à vous. Votre police de titre est émise.",
+    portal_next_h:"Une chose dont nous avons besoin",portal_next_p:"Veuillez téléverser une copie de votre pièce d'identité officielle pour vérifier votre identité avant la signature.",portal_next_btn:"Téléverser ma pièce d'identité",
+    portal_doc_h:"Documents",portal_doc_p:"Chiffrés. Seuls vous et votre équipe de clôture pouvez les voir.",portal_upload:"Glissez un fichier ici ou touchez pour téléverser",
+    doc1:"Contrat d'achat",doc_ok:"Reçu",doc2:"Engagement de titre",doc_ok2:"Reçu",doc3:"Pièce d'identité",doc_wait:"Requis",
+    portal_sched_h:"Planifiez votre clôture",portal_sched_p:"Choisissez un moment qui vous convient. Au bureau ou entièrement en ligne.",portal_sched_btn:"Choisir une heure de clôture",
+    foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Appelez-nous : 1 (888) 336-0902",foot_proto:"Prototype"
+  },
+  es:{
+    nav_how:"Cómo funciona",nav_calc:"Obtener cotización",nav_who:"A quién ayudamos",nav_track:"Seguir el cierre",
+    cta_quote:"Obtener cotización",hero_eyebrow:"North Miami · Títulos y Custodia",
+    hero_h1:"Comprar una casa debería dar <em>tranquilidad</em>, no confusión.",
+    hero_lede:"Nos encargamos del título, el papeleo y el cierre — y le explicamos cada paso en palabras sencillas, en su idioma. Sin sorpresas. Sin cargos ocultos.",
+    cta_estimate:"Ver mis costos de cierre",cta_track:"Seguir mi cierre",
+    trust_1:"Cargos sorpresa al cierre",trust_2:"Pedidos y seguimiento en línea",trust_3:"Idiomas, hablados con claridad",
+    how_eyebrow:"Simple por diseño",how_h2:"Tres pasos hacia las llaves",
+    how_p:"Casi nadie compra una casa dos veces seguidas. Por eso convertimos el proceso en un camino claro — no en una pila de papeles legales.",
+    step1_h:"Cuéntenos sobre la transacción",step1_p:"Agente, prestamista o comprador — envíe su pedido en línea en minutos. Abrimos su expediente seguro automáticamente.",
+    step2_h:"Hacemos el trabajo de título",step2_p:"Investigamos el historial de la propiedad, resolvemos gravámenes y lo protegemos con un seguro de título. Usted lo ve en tiempo real.",
+    step3_h:"Cierra con confianza",step3_p:"Firme en persona o en línea, reciba sus llaves y cuente con nosotros como recurso mucho después del cierre.",
+    calc_eyebrow:"Estimación instantánea",calc_h2:"Conozca sus costos de cierre en segundos",
+    calc_p:"Ingrese un precio. Usamos las tarifas oficiales de título de Florida — las mismas cifras que toda compañía de título debe seguir por ley — para que su estimación sea real.",
+    calc_price:"Precio de compra",calc_role:"Yo soy el…",calc_buyer:"Comprador",calc_seller:"Vendedor",
+    calc_loan:"Monto del préstamo",calc_loan_opt:"(deje en blanco si paga en efectivo)",
+    calc_owner:"¿Quién paga la póliza de título del propietario?",calc_owner_b:"Comprador (típico en Miami-Dade)",calc_owner_s:"Vendedor (típico en la mayoría de los condados)",
+    calc_your:"Su total estimado",calc_subtext:"Costos estimados que llevaría al cierre",
+    calc_disc:"Solo una estimación. El seguro de título usa las tarifas fijadas por el estado de Florida. El impuesto documental, el impuesto intangible y los cargos de registro se basan en las tarifas estándar de Miami-Dade. Sus cifras finales dependen del contrato, el condado, el prestamista y el estudio. Confirmamos todo antes de que firme.",
+    who_eyebrow:"Para todos en la mesa",who_h2:"A quién ayudamos",
+    aud1_h:"Agentes inmobiliarios",aud1_p:"Envíe pedidos en dos minutos, siga cada expediente desde su teléfono y no nos persiga más por una actualización.",aud_link:"Enviar un pedido →",
+    aud2_h:"Compradores y vendedores",aud2_p:"Primera casa o quinta, caminamos a su lado. Actualizaciones claras, palabras sencillas y un equipo que responde en su idioma.",aud2_link:"Ver su portal →",
+    aud3_h:"Prestamistas",aud3_p:"Compromisos de título limpios, cierres a tiempo y entrega segura de documentos que mantienen su flujo en marcha.",aud_link2:"Pedir título →",
+    hero_badge:"345+ familias en casa",
+    stats_eyebrow:"De confianza en el Sur de Florida",stats_h2:"Familias que hemos ayudado a llegar a casa",stats_p:"Personas reales, cierres reales — guiados de principio a fin por un equipo que habla su idioma.",
+    stat_1:"Clientes y familias felices",stat_2:"Expertos en título internos",stat_3:"Idiomas hablados con claridad",stat_4:"Cargos sorpresa al cierre",
+    brand_h:"Su puente a casa.",brand_p:"Desde su primera pregunta hasta las llaves en la mano — en inglés, español, criollo o francés.",
+    ao_eyebrow:"Nunca una línea ocupada",ao_h2:"Una recepción que nunca duerme",
+    ao_p:"Llamadas fuera de horario, fines de semana, en cuatro idiomas — contestadas. Nuestra recepción con IA y el conserje atienden las preguntas para que nada espere hasta el lunes.",
+    ao1_h:"Atención telefónica 24/7",ao1_p:"Cada llamada es recibida, contestada y dirigida por una recepcionista con IA de voz natural — de día o de noche, en inglés, español, criollo o francés.",
+    ao2_h:"Reserva y agenda por usted",ao2_p:"Quien llama puede obtener una cotización, iniciar un pedido o agendar un cierre en la misma llamada — todo va directo a su expediente seguro.",
+    ao3_h:"Conserje para cada cliente",ao3_p:"Un conserje dedicado sigue su expediente de principio a fin — solicita documentos, responde preguntas y mantiene su cierre en marcha.",
+    banner_h:"Listos cuando usted lo esté.",banner_p:"Inicie un pedido, obtenga una estimación o siga un cierre ya en curso. Nuestra recepción digital está abierta las 24 horas.",
+    cta_estimate2:"Obtener mi estimación",cta_track2:"Abrir portal del cliente",
+    badge1:"Cifrado de nivel bancario",badge2:"Carga segura de documentos",badge3:"Miembro de ALTA",
+    portal_hi:"Bienvenida de nuevo, Marie",portal_file:"Expediente #SB-2026-0847 · 1240 NE 110th St, Miami, FL",portal_back:"← Volver al sitio",
+    portal_prog_h:"El progreso de su cierre",portal_prog_p:"Cierre estimado: 14 de julio de 2026 · Va en el paso 3 de 5.",
+    tl1_h:"Pedido recibido",tl1_p:"28 de junio · Abrimos su expediente seguro y confirmamos el contrato.",
+    tl2_h:"Búsqueda de título completa",tl2_p:"2 de julio · Revisamos todo el historial de la propiedad. Sin sorpresas.",
+    tl3_h:"Limpiando el título",tl3_p:"En curso · Estamos resolviendo un gravamen antiguo y solicitando los pagos.",
+    tl4_h:"Listo para cerrar",tl4_p:"Siguiente · Le enviaremos sus cifras finales y agendaremos la firma.",
+    tl5_h:"Cerrado y asegurado",tl5_p:"Las llaves son suyas. Su póliza de título está emitida.",
+    portal_next_h:"Una cosa que necesitamos de usted",portal_next_p:"Por favor suba una copia de su identificación oficial para verificar su identidad antes de la firma.",portal_next_btn:"Subir identificación ahora",
+    portal_doc_h:"Documentos",portal_doc_p:"Cifrados. Solo usted y su equipo de cierre pueden verlos.",portal_upload:"Arrastre un archivo aquí o toque para subir",
+    doc1:"Contrato de compra",doc_ok:"Recibido",doc2:"Compromiso de título",doc_ok2:"Recibido",doc3:"Identificación oficial",doc_wait:"Requerido",
+    portal_sched_h:"Agende su cierre",portal_sched_p:"Elija un horario que le convenga. En oficina o totalmente en línea.",portal_sched_btn:"Elegir un horario de cierre",
+    foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Llámenos: 1 (888) 336-0902",foot_proto:"Prototipo"
+  }
+};
+
+let lang='en';
+function setLang(l){
+  lang=l;
+  document.documentElement.lang = (l==='ht'?'ht':l);
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(I18N[l][k]!==undefined) el.innerHTML=I18N[l][k];
+  });
+  calc();
+}
+
+/* ---------- FEE CALCULATOR (Florida promulgated rates) ---------- */
+function formatMoney(el){
+  let v=el.value.replace(/[^\d]/g,'');
+  el.value=v?Number(v).toLocaleString('en-US'):'';
+}
+function num(id){return Number((document.getElementById(id).value||'').replace(/[^\d]/g,''))||0;}
+
+// FL owner's title premium (promulgated)
+function flTitlePremium(amount){
+  if(amount<=0) return 0;
+  let p=0;
+  const tiers=[[100000,5.75],[900000,5.00],[4000000,2.50],[5000000,2.25]]; // up to 100k, 100k-1M, 1M-5M, 5M-10M
+  let rem=amount;
+  for(const [band,rate] of tiers){
+    const taxed=Math.min(rem,band);
+    p+=Math.ceil(taxed/1000)*rate;
+    rem-=taxed;
+    if(rem<=0) break;
+  }
+  if(rem>0) p+=Math.ceil(rem/1000)*2.00; // over 10M
+  return Math.max(p,100); // $100 minimum
+}
+
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+
+function calc(){
+  const price=num('price');
+  const loan=num('loan');
+  const role=document.querySelector('input[name=role]:checked').value;
+  const ownerPayer=document.getElementById('ownerPayer').value;
+  const t=I18N[lang];
+  document.getElementById('loanField').style.opacity = role==='seller'?0.5:1;
+
+  // Components
+  const ownerPremium=flTitlePremium(price);
+  const lenderPremium=(role==='buyer'&&loan>0)?25:0; // simultaneous-issue loan policy (FL flat $25)
+  const titleSearch=200;
+  const settlement=450;
+  const docStampsDeed=Math.ceil(price/100)*0.60;       // Miami-Dade deed: $0.60/$100 (seller)
+  const docStampsNote=loan>0?Math.ceil(loan/100)*0.35:0; // note: $0.35/$100 (buyer)
+  const intangible=loan>0?loan*0.002:0;                 // intangible tax 2 mills (buyer)
+  const recording=loan>0?105:55;
+
+  const L=[];
+  let total=0;
+  function add(label,val){L.push([label,val]);total+=val;}
+
+  if(role==='buyer'){
+    L.push(['group',t.calc_buyer]);
+    if(ownerPayer==='buyer') add(lblOwner(),ownerPremium);
+    if(loan>0){
+      add(lbl('Lender\'s title policy','Polis tit prètè a','Police de titre du prêteur','Póliza de título del prestamista'),lenderPremium);
+      add(lbl('Doc stamps on note','Tenm sou prè a','Timbres sur le prêt','Impuesto documental sobre el préstamo'),docStampsNote);
+      add(lbl('Intangible tax on mortgage','Taks entanjib sou ipotèk','Taxe intangible sur l\'hypothèque','Impuesto intangible sobre la hipoteca'),intangible);
+    }
+    add(lbl('Settlement / closing fee','Frè fèmti','Frais de clôture','Cargo de liquidación / cierre'),settlement);
+    add(lbl('Title search & exam','Rechèch & egzamen tit','Recherche & examen de titre','Búsqueda y examen de título'),titleSearch);
+    add(lbl('Recording fees','Frè anrejistreman','Frais d\'enregistrement','Cargos de registro'),recording);
+  } else {
+    L.push(['group',t.calc_seller]);
+    if(ownerPayer==='seller') add(lblOwner(),ownerPremium);
+    add(lbl('Doc stamps on deed','Tenm sou ak la','Timbres sur l\'acte','Impuesto documental sobre la escritura'),docStampsDeed);
+    add(lbl('Settlement / closing fee','Frè fèmti','Frais de clôture','Cargo de liquidación / cierre'),settlement);
+    add(lbl('Title search & exam','Rechèch & egzamen tit','Recherche & examen de titre','Búsqueda y examen de título'),titleSearch);
+  }
+
+  document.getElementById('total').textContent=money(total);
+  document.getElementById('lines').innerHTML=L.map(([a,b])=>
+    a==='group'?`<div class="line group">${b}</div>`:`<div class="line"><span>${a}</span><span>${money(b)}</span></div>`
+  ).join('');
+}
+function lbl(en,ht,fr,es){return lang==='ht'?ht:lang==='fr'?fr:lang==='es'?(es||en):en;}
+function lblOwner(){return lbl('Owner\'s title insurance','Asirans tit pwopriyetè','Assurance titre du propriétaire','Seguro de título del propietario');}
+
+/* ---------- VIEW SWITCH ---------- */
+function showPortal(){document.getElementById('homeView').style.display='none';document.getElementById('portalView').style.display='block';window.scrollTo(0,0);}
+function showHome(){document.getElementById('portalView').style.display='none';document.getElementById('homeView').style.display='block';}
+
+/* ---------- SCROLL REVEAL ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:0.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+setLang('en');
+calc();
+</script>
+</body>
+</html>
