@@ -358,7 +358,7 @@
   .cc-head .cc-status{font-size:12px;color:var(--ok);font-weight:600}
   .cc-head .cc-close{margin-left:auto;background:transparent;border:0;color:var(--sky-soft);font-size:24px;cursor:pointer;line-height:1}
   .cc-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:11px}
-  .cc-msg{max-width:84%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5}
+  .cc-msg{max-width:84%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5;white-space:pre-line}
   .cc-bot{align-self:flex-start;background:var(--glass-strong);border:1px solid var(--line);color:var(--champagne);border-bottom-left-radius:5px}
   .cc-user{align-self:flex-end;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);font-weight:600;border-bottom-right-radius:5px}
   .cc-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 10px}
@@ -581,12 +581,12 @@
     </a>
     <div class="partners">
       <div class="pcard glass fade">
-        <div class="pav">MR</div>
-        <h3>Maria Rivera</h3>
-        <div class="firm">Rivera Group · Coral Gables</div>
+        <div class="pav">DR</div>
+        <h3>Drouillard Realty Corp.</h3>
+        <div class="firm">Florida &amp; Georgia · CQ1046838</div>
         <span class="ptag" data-i18n="spec_res">Residential</span>
-        <p data-i18n="pcb_1">Helping families find home across Miami-Dade.</p>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
+        <p data-i18n="pcb_1">Homes, condos & investment across Florida and Georgia.</p>
+        <a href="https://www.drouillardrealty.com" target="_blank" rel="noopener" data-i18n="fp_cta">Visit site →</a>
       </div>
       <div class="pcard glass fade">
         <div class="pav">JO</div>
@@ -914,7 +914,7 @@ const I18N = {
     partners_eyebrow:"For the realtors we work with",partners_h2:"Our realtor partners",
     partners_p:"We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.",
     spec_res:"Residential",spec_lux:"Luxury",spec_com:"Commercial",spec_first:"First-time buyers",
-    pcb_1:"Helping families find home across Miami-Dade.",pcb_2:"Waterfront and luxury listings, sold with care.",pcb_3:"Commercial and investment deals, done right.",pcb_4:"Guiding first-time buyers, every step.",
+    pcb_1:"Homes, condos & investment across Florida and Georgia.",pcb_2:"Waterfront and luxury listings, sold with care.",pcb_3:"Commercial and investment deals, done right.",pcb_4:"Guiding first-time buyers, every step.",
     pcard_link:"View profile →",
     partners_cta_p:"Work with Skybridge? Get a free featured profile — and we'll help market your listings.",partners_cta:"Become a featured partner",
     blog_eyebrow:"Learn the process",blog_h2:"Guides & resources",blog_p:"Plain-language guides on buying, selling, and closing — new posts every month in English, Español, Kreyòl, and Français.",
@@ -934,6 +934,14 @@ const I18N = {
     chat_r_track:"Sure — you can follow every step of your closing in your secure client portal. Opening it now…",
     chat_r_person:"Of course. Our team is one call away at 1 (888) 336-0902, or leave a note on our contact form and we'll reply fast — in your language.",
     chat_r_default:"Great question. A specialist can help with that — call 1 (888) 336-0902 or use our contact form, and we'll get right back to you.",
+    chat_ask_price:"Sure — what's the purchase price? Just type a number, like 450000.",
+    chat_est_intro:"Here's a quick estimate for a {price} home, using Florida's official rates:",
+    chat_est_total:"Estimated title-related total: {total}",
+    chat_est_note:"This covers the core title costs. For a full breakdown including your loan (doc stamps, intangible tax), tap 'Get a quote' to open the calculator.",
+    chat_faq_title:"A title company makes sure the home has a clean title — no hidden liens or ownership disputes — and issues title insurance that protects you if a problem ever surfaces. We also handle the closing and the funds.",
+    chat_faq_lien:"A title search is our deep check of the property's history. If we find a lien — an unpaid debt attached to the home — we clear it before closing, so it never becomes your problem.",
+    chat_faq_policy:"There are two policies: the owner's policy protects you, the buyer; the lender's policy protects the bank. In Florida, who pays is set by the contract and county — your estimate will show it.",
+    chat_faq_time:"Most closings take about 2–4 weeks after the contract is signed, depending on the lender and the title search. You'll follow every step in your portal.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Call us: 1 (888) 336-0902",foot_proto:"Prototype"
   },
   ht:{
@@ -986,7 +994,7 @@ const I18N = {
     partners_eyebrow:"Pou ajan nou travay ak yo",partners_h2:"Patnè ajan nou yo",
     partners_p:"Nou pa sèlman fèmen kontra ou — nou pwomote biznis ou. Rankontre kèk ajan ki fè Skybridge konfyans, epi mete non ou la tou.",
     spec_res:"Rezidansyèl",spec_lux:"Liks",spec_com:"Komèsyal",spec_first:"Premye achtè",
-    pcb_1:"Ede fanmi jwenn kay nan tout Miami-Dade.",pcb_2:"Pwopriyete liks ak bò lanmè, vann ak swen.",pcb_3:"Kontra komèsyal ak envestisman, byen fèt.",pcb_4:"Gide premye achtè yo, chak etap.",
+    pcb_1:"Kay, kondo ak envestisman nan Florid ak Georgia.",pcb_2:"Pwopriyete liks ak bò lanmè, vann ak swen.",pcb_3:"Kontra komèsyal ak envestisman, byen fèt.",pcb_4:"Gide premye achtè yo, chak etap.",
     pcard_link:"Wè pwofil →",
     partners_cta_p:"Ou travay ak Skybridge? Jwenn yon pwofil vedèt gratis — epi n ap ede w fè piblisite pou anons ou yo.",partners_cta:"Vin yon patnè vedèt",
     blog_eyebrow:"Aprann pwosesis la",blog_h2:"Gid ak resous",blog_p:"Gid an langaj senp sou achte, vann, ak fèmti — nouvo piblikasyon chak mwa an Anglè, Espayòl, Kreyòl, ak Franse.",
@@ -1006,6 +1014,14 @@ const I18N = {
     chat_r_track:"Byensi — ou ka swiv chak etap fèmti ou nan pòtay sekirize ou. M ap louvri li kounye a…",
     chat_r_person:"Natirèlman. Ekip nou an a yon apèl: 1 (888) 336-0902, oswa kite yon nòt sou fòm nan epi n ap reponn vit, nan lang ou.",
     chat_r_default:"Bon kesyon. Yon espesyalis ka ede w — rele 1 (888) 336-0902 oswa sèvi ak fòm nan epi n ap reponn ou touswit.",
+    chat_ask_price:"Byensi — ki pri acha a? Tape yon nimewo, tankou 450000.",
+    chat_est_intro:"Men yon estimasyon rapid pou yon kay {price}, ak to ofisyèl Florid yo:",
+    chat_est_total:"Total estime ki gen rapò ak tit la: {total}",
+    chat_est_note:"Sa kouvri frè prensipal tit yo. Pou yon detay konplè ak prè ou (tenm dokimantè, taks entanjib), peze 'Jwenn yon devi' pou louvri kalkilatè a.",
+    chat_faq_title:"Yon konpayi tit asire kay la gen yon tit pwòp — san dèt kache oswa konfli sou pwopriyete — epi li bay yon asirans tit ki pwoteje w si yon pwoblèm parèt. Nou okipe fèmti a ak lajan an tou.",
+    chat_faq_lien:"Yon rechèch tit se gwo tcheke nou fè sou istwa pwopriyete a. Si nou jwenn yon dèt sou kay la, nou regle l anvan fèmti a, pou li pa janm vin pwoblèm ou.",
+    chat_faq_policy:"Gen de polis: polis pwopriyetè a pwoteje ou menm, achtè a; polis prètè a pwoteje bank lan. Nan Florid, se kontra a ak konte a ki di kiyès ki peye — estimasyon ou a ap montre l.",
+    chat_faq_time:"Pifò fèmti pran anviwon 2–4 semèn apre kontra a siyen, selon prètè a ak rechèch tit la. W ap swiv chak etap nan pòtay ou.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Rele nou: 1 (888) 336-0902",foot_proto:"Pwototip"
   },
   fr:{
@@ -1058,7 +1074,7 @@ const I18N = {
     partners_eyebrow:"Pour les agents avec qui nous travaillons",partners_h2:"Nos agents partenaires",
     partners_p:"Nous ne faisons pas que conclure vos transactions — nous promouvons votre entreprise. Rencontrez des agents qui font confiance à Skybridge, et ajoutez votre nom ici aussi.",
     spec_res:"Résidentiel",spec_lux:"Luxe",spec_com:"Commercial",spec_first:"Primo-accédants",
-    pcb_1:"Aider les familles à trouver un foyer dans tout Miami-Dade.",pcb_2:"Biens de luxe et en bord de mer, vendus avec soin.",pcb_3:"Transactions commerciales et d'investissement, bien menées.",pcb_4:"Guider les primo-accédants, à chaque étape.",
+    pcb_1:"Maisons, condos et investissement en Floride et Géorgie.",pcb_2:"Biens de luxe et en bord de mer, vendus avec soin.",pcb_3:"Transactions commerciales et d'investissement, bien menées.",pcb_4:"Guider les primo-accédants, à chaque étape.",
     pcard_link:"Voir le profil →",
     partners_cta_p:"Vous travaillez avec Skybridge ? Obtenez un profil en vedette gratuit — et nous promouvons vos annonces.",partners_cta:"Devenez agent en vedette",
     blog_eyebrow:"Comprendre le processus",blog_h2:"Guides et ressources",blog_p:"Des guides en langage simple sur l'achat, la vente et la clôture — de nouveaux articles chaque mois en anglais, espagnol, créole et français.",
@@ -1078,6 +1094,14 @@ const I18N = {
     chat_r_track:"Bien sûr — vous pouvez suivre chaque étape de votre clôture dans votre portail sécurisé. Je l'ouvre…",
     chat_r_person:"Bien sûr. Notre équipe est à un appel : 1 (888) 336-0902, ou laissez un mot sur le formulaire et nous répondrons vite, dans votre langue.",
     chat_r_default:"Bonne question. Un spécialiste peut vous aider — appelez le 1 (888) 336-0902 ou utilisez le formulaire, nous reviendrons vers vous rapidement.",
+    chat_ask_price:"Bien sûr — quel est le prix d'achat ? Tapez un nombre, par exemple 450000.",
+    chat_est_intro:"Voici une estimation rapide pour une maison à {price}, avec les tarifs officiels de Floride :",
+    chat_est_total:"Total estimé lié au titre : {total}",
+    chat_est_note:"Ceci couvre les frais de titre principaux. Pour un détail complet avec votre prêt (timbres, taxe intangible), touchez « Obtenir un devis » pour ouvrir le calculateur.",
+    chat_faq_title:"Une société de titre vérifie que la maison a un titre clair — sans privilèges cachés ni litiges de propriété — et émet une assurance titre qui vous protège si un problème survient. Nous gérons aussi la clôture et les fonds.",
+    chat_faq_lien:"Une recherche de titre est notre vérification approfondie de l'historique du bien. Si nous trouvons un privilège — une dette impayée sur la maison — nous le levons avant la clôture, pour qu'il ne devienne jamais votre problème.",
+    chat_faq_policy:"Il y a deux polices : celle du propriétaire vous protège, l'acheteur ; celle du prêteur protège la banque. En Floride, qui paie dépend du contrat et du comté — votre estimation l'indiquera.",
+    chat_faq_time:"La plupart des clôtures prennent 2 à 4 semaines après la signature du contrat, selon le prêteur et la recherche de titre. Vous suivrez chaque étape dans votre portail.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Appelez-nous : 1 (888) 336-0902",foot_proto:"Prototype"
   },
   es:{
@@ -1130,7 +1154,7 @@ const I18N = {
     partners_eyebrow:"Para los agentes con quienes trabajamos",partners_h2:"Nuestros agentes aliados",
     partners_p:"No solo cerramos sus tratos — promovemos su negocio. Conozca a algunos agentes que confían en Skybridge, y ponga su nombre aquí también.",
     spec_res:"Residencial",spec_lux:"Lujo",spec_com:"Comercial",spec_first:"Primera vivienda",
-    pcb_1:"Ayudando a las familias a encontrar hogar en Miami-Dade.",pcb_2:"Propiedades de lujo y frente al mar, vendidas con cuidado.",pcb_3:"Negocios comerciales y de inversión, bien hechos.",pcb_4:"Guiando a quienes compran por primera vez, paso a paso.",
+    pcb_1:"Casas, condominios e inversión en Florida y Georgia.",pcb_2:"Propiedades de lujo y frente al mar, vendidas con cuidado.",pcb_3:"Negocios comerciales y de inversión, bien hechos.",pcb_4:"Guiando a quienes compran por primera vez, paso a paso.",
     pcard_link:"Ver perfil →",
     partners_cta_p:"¿Trabaja con Skybridge? Obtenga un perfil destacado gratis — y le ayudamos a promocionar sus propiedades.",partners_cta:"Conviértase en agente destacado",
     blog_eyebrow:"Conozca el proceso",blog_h2:"Guías y recursos",blog_p:"Guías en lenguaje sencillo sobre comprar, vender y cerrar — nuevas publicaciones cada mes en inglés, español, criollo y francés.",
@@ -1150,6 +1174,14 @@ const I18N = {
     chat_r_track:"Claro — puede seguir cada paso de su cierre en su portal seguro. Abriéndolo ahora…",
     chat_r_person:"Por supuesto. Nuestro equipo está a una llamada: 1 (888) 336-0902, o déjenos una nota en el formulario y le responderemos rápido, en su idioma.",
     chat_r_default:"Buena pregunta. Un especialista puede ayudarle — llame al 1 (888) 336-0902 o use el formulario y le responderemos enseguida.",
+    chat_ask_price:"Claro — ¿cuál es el precio de compra? Escriba un número, por ejemplo 450000.",
+    chat_est_intro:"Aquí tiene una estimación rápida para una casa de {price}, con las tarifas oficiales de Florida:",
+    chat_est_total:"Total estimado relacionado con el título: {total}",
+    chat_est_note:"Esto cubre los costos principales del título. Para un desglose completo con su préstamo (impuestos documentales e intangible), toque 'Obtener cotización' para abrir la calculadora.",
+    chat_faq_title:"Una compañía de título verifica que la casa tenga un título limpio — sin gravámenes ocultos ni disputas de propiedad — y emite un seguro de título que lo protege si surge un problema. También gestionamos el cierre y los fondos.",
+    chat_faq_lien:"Una búsqueda de título es nuestra revisión profunda del historial de la propiedad. Si encontramos un gravamen — una deuda pendiente sobre la casa — lo resolvemos antes del cierre, para que nunca sea su problema.",
+    chat_faq_policy:"Hay dos pólizas: la del propietario lo protege a usted, el comprador; la del prestamista protege al banco. En Florida, quién paga lo define el contrato y el condado — su estimación lo mostrará.",
+    chat_faq_time:"La mayoría de los cierres toman de 2 a 4 semanas tras firmar el contrato, según el prestamista y la búsqueda de título. Seguirá cada paso en su portal.",
     foot_addr:"655 NE 125th Street, Ste A · North Miami, FL 33161",foot_call:"Llámenos: 1 (888) 336-0902",foot_proto:"Prototipo"
   }
 };
@@ -1201,11 +1233,31 @@ function ccReply(key){
   var t=I18N[lang];
   setTimeout(function(){ ccAdd(t[key]||t.chat_r_default,'bot'); },550);
 }
-function ccQuick(intent){
+var ccAwaitPrice=false;
+function ccEstimate(price){
   var t=I18N[lang];
+  var owner=flTitlePremium(price);
+  var settlement=450, search=200, recording=55;
+  var total=owner+settlement+search+recording;
+  var lines = lblOwner()+': '+money(owner)+'\n'
+    + lbl('Settlement / closing fee','Frè fèmti','Frais de clôture','Cargo de cierre')+': '+money(settlement)+'\n'
+    + lbl('Title search & exam','Rechèch & egzamen tit','Recherche & examen de titre','Búsqueda y examen de título')+': '+money(search)+'\n'
+    + lbl('Recording fees','Frè anrejistreman','Frais d\'enregistrement','Cargos de registro')+': '+money(recording);
+  return t.chat_est_intro.replace('{price}',money(price)) + '\n\n' + lines + '\n\n'
+    + t.chat_est_total.replace('{total}',money(total)) + '\n\n' + t.chat_est_note;
+}
+function ccParsePrice(s){
+  var m=s.replace(/[, ]/g,'').match(/\$?(\d{4,})k?/i);
+  if(!m) return 0;
+  var n=parseInt(m[1],10);
+  if(/\dk/i.test(s)) n=n*1000;
+  return (n>=1000 && n<=100000000)? n : 0;
+}
+function ccQuick(intent){
   var k={quote:'chat_q1',track:'chat_q2',costs:'chat_q3',person:'chat_q4'}[intent];
-  ccAdd(t[k],'user');
-  if(intent==='quote'||intent==='costs'){ ccReply('chat_r_quote'); setTimeout(function(){showHome();document.getElementById('calculator').scrollIntoView();},900); }
+  ccAdd(I18N[lang][k],'user');
+  if(intent==='quote'){ ccReply('chat_r_quote'); setTimeout(function(){showHome();document.getElementById('calculator').scrollIntoView();},900); }
+  else if(intent==='costs'){ ccAwaitPrice=true; ccReply('chat_ask_price'); }
   else if(intent==='track'){ ccReply('chat_r_track'); setTimeout(showPortal,1000); }
   else { ccReply('chat_r_person'); }
 }
@@ -1214,11 +1266,20 @@ function ccSend(e){
   var i=document.getElementById('ccInput'); var v=(i.value||'').trim(); if(!v) return false;
   ccAdd(v,'user'); i.value='';
   var s=v.toLowerCase();
-  if(/quote|cost|price|estimat|cu[aá]nto|pri|fr[eè]|frais|devis|cotiz/.test(s)){ ccReply('chat_r_quote'); setTimeout(function(){showHome();document.getElementById('calculator').scrollIntoView();},900); }
-  else if(/track|status|portal|swiv|seguir|suivre|f[eè]mti|progress|pwogr/.test(s)){ ccReply('chat_r_track'); }
-  else if(/agent|person|human|call|phone|moun|persona|personne|rele|telefon|appel/.test(s)){ ccReply('chat_r_person'); }
-  else { ccReply('chat_r_default'); }
-  return false;
+  var price=ccParsePrice(s);
+  // 1) Inline closing-cost estimate (real Florida math)
+  if(ccAwaitPrice && price){ ccAwaitPrice=false; setTimeout(function(){ccAdd(ccEstimate(price),'bot');},550); return false; }
+  if(price && /cost|price|estimat|quote|clos|cu[aá]nto|cuesta|pri|fr[eè]|frais|devis|cotiz|f[eè]mti/.test(s)){ setTimeout(function(){ccAdd(ccEstimate(price),'bot');},550); return false; }
+  if(/cost|quote|estimat|cu[aá]nto|cuesta|devis|cotiz|frais de cl/.test(s)){ ccAwaitPrice=true; ccReply('chat_ask_price'); return false; }
+  // 2) Title-issue knowledge
+  if(/lien|title search|search the|dèt|gravamen|privil[eè]ge|rechèch tit|b[uú]squeda/.test(s)){ ccReply('chat_faq_lien'); return false; }
+  if(/owner|lender|policy|who pays|polis|p[oó]liza|propietario|prêteur|propri[eé]taire|pwopriyet/.test(s)){ ccReply('chat_faq_policy'); return false; }
+  if(/how long|timeline|weeks|when will|how many days|konbyen tan|cu[aá]nto tiempo|combien de temps|delai|délai/.test(s)){ ccReply('chat_faq_time'); return false; }
+  if(/title|insurance|what do you|title company|tit|asirans|seguro de t|titre|assurance/.test(s)){ ccReply('chat_faq_title'); return false; }
+  // 3) Navigation intents
+  if(/track|status|portal|swiv|seguir|suivre|progress|pwogr/.test(s)){ ccReply('chat_r_track'); return false; }
+  if(/agent|person|human|call|phone|moun|persona|personne|rele|telefon|appel/.test(s)){ ccReply('chat_r_person'); return false; }
+  ccReply('chat_r_default'); return false;
 }
 
 /* ---------- FEE CALCULATOR (Florida promulgated rates) ---------- */
