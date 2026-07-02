@@ -58,7 +58,7 @@
     border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;gap:22px;height:72px}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Fraunces';font-size:21px;font-weight:600;color:#fff}
-  .brand-logo{height:34px;width:auto;display:block}
+  .brand-logo{height:48px;width:auto;display:block}
   .brand .mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--navy-900);box-shadow:0 6px 18px rgba(216,180,106,0.4)}
   .brand .mark svg{width:20px;height:20px}
@@ -390,7 +390,7 @@
       <a href="#how" data-i18n="nav_how">How it works</a>
       <a href="#calculator" data-i18n="nav_calc">Get a quote</a>
       <a href="#partners" data-i18n="nav_partners">Realtor partners</a>
-      <a href="#blog" data-i18n="nav_blog">Resources</a>
+      <a href="#resources" data-i18n="nav_blog">Resources</a>
       <a href="#" onclick="showPortal();return false;" data-i18n="nav_track">Track closing</a>
     </nav>
     <div class="nav-right">
@@ -569,49 +569,40 @@
       <span class="eyebrow">◆ <span data-i18n="partners_eyebrow">For the realtors we work with</span></span>
       <h2 data-i18n="partners_h2">Our realtor partners</h2>
     </div>
-    <p class="partner-intro fade" data-i18n="partners_p">We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.</p>
-    <a class="featured-partner glass fade" href="https://sodolending.com/" target="_blank" rel="noopener">
-      <img class="fp-logo" src="sodo-logo.png" alt="Sodo Lending">
-      <div class="fp-body">
-        <span class="fp-tag" data-i18n="fp_tag">Featured lending partner</span>
-        <h3>Sodo Lending</h3>
-        <p data-i18n="fp_desc">Mortgages made simple — FHA, VA, USDA, conventional &amp; jumbo loans across Florida. NMLS #2323340.</p>
-      </div>
-      <span class="fp-cta" data-i18n="fp_cta">Visit site →</span>
-    </a>
+    <p class="partner-intro fade" data-i18n="partners_p">We work with the industry’s most trusted underwriters, associations and lending partners — the institutions that stand behind every Skybridge closing.</p>
     <div class="partners">
-      <div class="pcard glass fade">
-        <div class="pav">DR</div>
-        <h3>Drouillard Realty Corp.</h3>
-        <div class="firm">Florida &amp; Georgia · CQ1046838</div>
-        <span class="ptag" data-i18n="spec_res">Residential</span>
-        <p data-i18n="pcb_1">Homes, condos & investment across Florida and Georgia.</p>
-        <a href="https://www.drouillardrealty.com" target="_blank" rel="noopener" data-i18n="fp_cta">Visit site →</a>
-      </div>
-      <div class="pcard glass fade">
-        <div class="pav">JO</div>
-        <h3>James Okafor</h3>
-        <div class="firm">Okafor Realty · Aventura</div>
-        <span class="ptag" data-i18n="spec_lux">Luxury</span>
-        <p data-i18n="pcb_2">Waterfront and luxury listings, sold with care.</p>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
-      </div>
-      <div class="pcard glass fade">
-        <div class="pav">SL</div>
-        <h3>Sophia Laurent</h3>
-        <div class="firm">Laurent &amp; Co · Brickell</div>
-        <span class="ptag" data-i18n="spec_com">Commercial</span>
-        <p data-i18n="pcb_3">Commercial and investment deals, done right.</p>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
-      </div>
-      <div class="pcard glass fade">
-        <div class="pav">DP</div>
-        <h3>David Pierre</h3>
-        <div class="firm">Pierre Homes · North Miami</div>
-        <span class="ptag" data-i18n="spec_first">First-time buyers</span>
-        <p data-i18n="pcb_4">Guiding first-time buyers, every step.</p>
-        <a href="#contact" onclick="document.getElementById('contact').scrollIntoView();return false;" data-i18n="pcard_link">View profile →</a>
-      </div>
+      <a class="pcard glass fade" href="https://www.alta.org" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="pav" style="font-size:13px">ALTA</div>
+        <h3>American Land Title Association</h3>
+        <div class="firm">National title-industry association</div>
+        <span class="ptag">Industry body</span>
+        <p>The national voice of the land-title industry, whose standards Skybridge follows on every file.</p>
+        <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
+      </a>
+      <a class="pcard glass fade" href="https://www.firstam.com" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="pav" style="font-size:18px">FA</div>
+        <h3>First American Title</h3>
+        <div class="firm">Title insurance underwriter</div>
+        <span class="ptag">Underwriter</span>
+        <p>One of the nation&rsquo;s largest title insurers, backing your owner&rsquo;s and lender&rsquo;s policies.</p>
+        <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
+      </a>
+      <a class="pcard glass fade" href="https://www.invtitle.com" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="pav" style="font-size:13px">ITIC</div>
+        <h3>Investors Title Insurance Company</h3>
+        <div class="firm">Title insurance underwriter</div>
+        <span class="ptag">Underwriter</span>
+        <p>A trusted national underwriter providing the financial strength behind your title protection.</p>
+        <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
+      </a>
+      <a class="pcard glass fade" href="https://www.pnc.com" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="pav" style="font-size:15px">PNC</div>
+        <h3>PNC</h3>
+        <div class="firm">Banking &amp; lending partner</div>
+        <span class="ptag">Lender</span>
+        <p>A national banking partner supporting buyers and lenders all the way through closing.</p>
+        <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
+      </a>
     </div>
     <div class="partner-cta fade">
       <p data-i18n="partners_cta_p">Work with Skybridge? Get a free featured profile — and we'll help market your listings.</p>
@@ -699,6 +690,58 @@
   </div>
 </section>
 
+<section id="resources">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">&#9670; <span data-i18n="res_eyebrow">Resources</span></span>
+      <h2 data-i18n="res_h2">Glossary, FAQs &amp; useful links</h2>
+      <p data-i18n="res_p">Plain-language answers to the questions we hear most — so nothing about your closing feels like a mystery.</p>
+    </div>
+
+    <div class="glass fade" style="padding:26px 28px;margin-bottom:22px">
+      <h3 style="font-family:'Fraunces';font-size:24px;color:#fff;margin-bottom:14px">Glossary of title terms</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px 28px">
+        <div><strong style="color:var(--gold-bright)">Title</strong><br><span style="color:var(--sky-soft);font-size:14.5px">Legal proof that you own a property.</span></div>
+        <div><strong style="color:var(--gold-bright)">Title insurance</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A one-time policy that protects you and your lender from past ownership problems, liens, or fraud.</span></div>
+        <div><strong style="color:var(--gold-bright)">Title search</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A review of public records to confirm the seller can legally sell and the property is clear.</span></div>
+        <div><strong style="color:var(--gold-bright)">Escrow</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A neutral account that holds money and documents until every condition of the sale is met.</span></div>
+        <div><strong style="color:var(--gold-bright)">Closing (settlement)</strong><br><span style="color:var(--sky-soft);font-size:14.5px">The final step where documents are signed, funds change hands, and ownership transfers to you.</span></div>
+        <div><strong style="color:var(--gold-bright)">Deed</strong><br><span style="color:var(--sky-soft);font-size:14.5px">The document that legally transfers ownership from the seller to the buyer.</span></div>
+        <div><strong style="color:var(--gold-bright)">Lien</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A legal claim against a property for an unpaid debt — it must be cleared before a clean transfer.</span></div>
+        <div><strong style="color:var(--gold-bright)">Underwriter</strong><br><span style="color:var(--sky-soft);font-size:14.5px">The insurance company that backs your title policy financially.</span></div>
+        <div><strong style="color:var(--gold-bright)">Owner’s vs. lender’s policy</strong><br><span style="color:var(--sky-soft);font-size:14.5px">The owner’s policy protects you; the lender’s policy protects the bank’s loan.</span></div>
+        <div><strong style="color:var(--gold-bright)">Closing Disclosure</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A form listing your final loan terms and every cost, given before you sign.</span></div>
+        <div><strong style="color:var(--gold-bright)">Documentary stamp tax</strong><br><span style="color:var(--sky-soft);font-size:14.5px">A Florida tax on the deed and mortgage, paid at closing.</span></div>
+        <div><strong style="color:var(--gold-bright)">Wire fraud</strong><br><span style="color:var(--sky-soft);font-size:14.5px">Scams that trick buyers into sending funds to a fake account — always verify wiring details by phone.</span></div>
+      </div>
+    </div>
+
+    <div class="glass fade" style="padding:26px 28px;margin-bottom:22px">
+      <h3 style="font-family:'Fraunces';font-size:24px;color:#fff;margin-bottom:14px">Frequently asked questions</h3>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <details style="border-bottom:1px solid var(--line);padding-bottom:12px"><summary style="cursor:pointer;color:#fff;font-weight:600">What does a title company actually do?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">We confirm the seller truly owns the property, clear any liens or claims, insure your ownership, hold funds safely in escrow, and handle the signing so your closing is smooth and protected.</p></details>
+        <details style="border-bottom:1px solid var(--line);padding-bottom:12px"><summary style="cursor:pointer;color:#fff;font-weight:600">Do I really need title insurance?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">Yes. It is a one-time cost that protects your ownership for as long as you own the home — against hidden problems like unknown heirs, forged documents, or old unpaid debts.</p></details>
+        <details style="border-bottom:1px solid var(--line);padding-bottom:12px"><summary style="cursor:pointer;color:#fff;font-weight:600">Who pays for closing costs in Florida?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">It is negotiable and varies by county. In most of South Florida the seller customarily pays for the owner’s title policy, but this can be set in the contract. Use our instant calculator for an itemized estimate.</p></details>
+        <details style="border-bottom:1px solid var(--line);padding-bottom:12px"><summary style="cursor:pointer;color:#fff;font-weight:600">How long does closing take?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">A typical residential closing runs 2–4 weeks from contract to keys, depending on financing and the title search. Cash deals can close faster.</p></details>
+        <details style="border-bottom:1px solid var(--line);padding-bottom:12px"><summary style="cursor:pointer;color:#fff;font-weight:600">What do I bring to closing?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">A government-issued photo ID and any funds due by wire or cashier’s check. We send a full checklist ahead of time so there are no surprises.</p></details>
+        <details style="padding-bottom:2px"><summary style="cursor:pointer;color:#fff;font-weight:600">How do I protect myself from wire fraud?</summary><p style="color:var(--sky-soft);font-size:14.5px;margin-top:8px">Never trust wiring instructions sent by email alone. Always call our office at a known number to verify before sending any funds. Skybridge will never change wire details by email.</p></details>
+      </div>
+    </div>
+
+    <div class="glass fade" style="padding:26px 28px">
+      <h3 style="font-family:'Fraunces';font-size:24px;color:#fff;margin-bottom:14px">Useful links</h3>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 24px;color:var(--sky-soft);font-size:14.5px">
+        <li><a href="https://www.alta.org" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">American Land Title Association &rarr;</a></li>
+        <li><a href="https://www.myfloridacfo.com" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">Florida Dept. of Financial Services &rarr;</a></li>
+        <li><a href="https://www.consumerfinance.gov/owning-a-home/" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">CFPB – Owning a Home &rarr;</a></li>
+        <li><a href="https://www.miamidade.gov/global/service.page?Mduid_service=ser149" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">Miami-Dade Recorder &rarr;</a></li>
+        <li><a href="https://www.broward.org/RecordsTaxesTreasury/Records/Pages/default.aspx" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">Broward County Records &rarr;</a></li>
+        <li><a href="https://www.firstam.com" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">First American Title &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="contact-wrap glass fade">
@@ -747,6 +790,38 @@
 </main>
 
 <!-- ===================== PORTAL ===================== -->
+<section id="privacy">
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head fade" style="text-align:left">
+      <span class="eyebrow">&#9670; <span data-i18n="priv_eyebrow">Your data</span></span>
+      <h2 data-i18n="priv_h2">Privacy Policy</h2>
+    </div>
+    <div class="glass fade" style="padding:26px 28px;color:var(--sky-soft);font-size:14.5px;line-height:1.7">
+      <p><strong style="color:#fff">Skybridge Title, LLC</strong> respects your privacy. This policy explains what we collect and how we use it.</p>
+      <p style="margin-top:12px"><strong style="color:#fff">What we collect.</strong> Information you give us to open and complete a closing — such as your name, contact details, property information, and documents you upload — plus basic technical data from your visit to this site.</p>
+      <p style="margin-top:12px"><strong style="color:#fff">How we use it.</strong> Only to provide title and escrow services, communicate with you about your file, meet legal and underwriting requirements, and improve our service. We do not sell your personal information.</p>
+      <p style="margin-top:12px"><strong style="color:#fff">How we protect it.</strong> Files are handled on secure systems with encryption in transit and at rest, and access is limited to the people working on your closing.</p>
+      <p style="margin-top:12px"><strong style="color:#fff">Your choices.</strong> You may ask us what we hold about you, request corrections, or ask us to delete information we are not legally required to keep. Email <a href="#contact" onclick="showHome();return false;" style="color:var(--gold-bright)">our team</a> to make a request.</p>
+      <p style="margin-top:12px;opacity:.7">Last updated: June 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section id="accessibility">
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head fade" style="text-align:left">
+      <span class="eyebrow">&#9670; <span data-i18n="acc_eyebrow">Open to everyone</span></span>
+      <h2 data-i18n="acc_h2">Accessibility Statement</h2>
+    </div>
+    <div class="glass fade" style="padding:26px 28px;color:var(--sky-soft);font-size:14.5px;line-height:1.7">
+      <p>Skybridge Title is committed to making this website usable by everyone, including people who rely on assistive technology.</p>
+      <p style="margin-top:12px">We aim to meet the <strong style="color:#fff">WCAG 2.1 AA</strong> guidelines: high-contrast text, clear headings, keyboard navigation, descriptive labels on images and links, and content available in English, Español, Kreyòl, and Français.</p>
+      <p style="margin-top:12px">If you have trouble using any part of this site, or need information in another format, please <a href="#contact" onclick="showHome();return false;" style="color:var(--gold-bright)">contact us</a> and we will help you directly and promptly.</p>
+      <p style="margin-top:12px;opacity:.7">Last updated: June 2026.</p>
+    </div>
+  </div>
+</section>
+
 <main id="portalView">
   <section style="padding-top:50px">
     <div class="wrap">
@@ -856,7 +931,15 @@
       <div data-i18n="foot_call">Call us: 1 (888) 336-0902</div>
       <div style="margin-top:6px"><a href="#contact" onclick="showHome();setTimeout(function(){var c=document.getElementById('contact');if(c)c.scrollIntoView();},40);return false;" style="color:var(--gold-bright);font-weight:600" data-i18n="foot_contact">Contact us</a></div>
       <div style="opacity:.6;margin-top:6px">© 2026 Skybridge Title, LLC · <span data-i18n="foot_proto">Prototype</span></div>
+      <div style="margin-top:6px;font-size:12.5px"><a href="#privacy" style="color:var(--sky-soft)" data-i18n="foot_privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="#accessibility" style="color:var(--sky-soft)" data-i18n="foot_access">Accessibility</a></div>
     </div>
+  </div>
+  <div class="wrap" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:6px 0 10px">
+    <a href="https://www.bbb.org" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;background:#fff;color:#0c2a55;font-weight:800;border-radius:10px;padding:9px 15px;text-decoration:none;font-size:13px">
+      <span style="background:#0c2a55;color:#fff;border-radius:5px;padding:2px 7px;letter-spacing:.5px">BBB</span> A+ Accredited Business</a>
+    <span style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--line);color:var(--sky-soft);border-radius:10px;padding:9px 15px;font-size:13px;font-weight:600">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#8fd0a8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      Secure Insight Registered Agent</span>
   </div>
   <div class="wrap"><div class="poweredby"><a href="https://techfides.com" target="_blank" rel="noopener"><span data-i18n="powered">Powered by</span> <span class="tfmark">Tech<span>Fides</span></span> &nbsp;·&nbsp; Own Your AI</a></div></div>
 </footer>
@@ -866,7 +949,7 @@
 const I18N = {
   en:{
     nav_how:"How it works",nav_calc:"Get a quote",nav_who:"Who we help",nav_track:"Track closing",
-    cta_quote:"Get a quote",hero_eyebrow:"North Miami · Title & Escrow",
+    cta_quote:"Get a quote",hero_eyebrow:"Title & Escrow",
     hero_h1:"Buying a home should feel <em>safe</em>, not confusing.",
     hero_lede:"We handle the title, the paperwork, and the closing — and we explain every step in plain language, in your language. No surprises. No hidden fees.",
     cta_estimate:"See my closing costs",cta_track:"Track my closing",
@@ -910,9 +993,9 @@ const I18N = {
     portal_doc_h:"Documents",portal_doc_p:"Encrypted. Only you and your closing team can see these.",portal_upload:"Drag a file here or tap to upload",
     doc1:"Purchase contract",doc_ok:"Received",doc2:"Title commitment",doc_ok2:"Received",doc3:"Government ID",doc_wait:"Needed",
     portal_sched_h:"Schedule your closing",portal_sched_p:"Pick a time that works. In-office or fully online.",portal_sched_btn:"Choose a closing time",
-    nav_partners:"Realtor partners",nav_blog:"Resources",
-    partners_eyebrow:"For the realtors we work with",partners_h2:"Our realtor partners",
-    partners_p:"We don't just close your deals — we promote your business. Meet some of the agents who trust Skybridge, and put your name here too.",
+    nav_partners:"Partners",foot_privacy:"Privacy Policy",foot_access:"Accessibility",res_eyebrow:"Resources",res_h2:"Glossary, FAQs & useful links",nav_blog:"Resources",
+    partners_eyebrow:"The institutions behind your closing",partners_h2:"Our partners",
+    partners_p:"We work with the industry\u2019s most trusted underwriters, associations and lending partners \u2014 the institutions that stand behind every Skybridge closing.",
     spec_res:"Residential",spec_lux:"Luxury",spec_com:"Commercial",spec_first:"First-time buyers",
     pcb_1:"Homes, condos & investment across Florida and Georgia.",pcb_2:"Waterfront and luxury listings, sold with care.",pcb_3:"Commercial and investment deals, done right.",pcb_4:"Guiding first-time buyers, every step.",
     pcard_link:"View profile →",
@@ -946,7 +1029,7 @@ const I18N = {
   },
   ht:{
     nav_how:"Kijan li mache",nav_calc:"Jwenn yon devi",nav_who:"Moun nou ede",nav_track:"Swiv fèmti a",
-    cta_quote:"Jwenn yon devi",hero_eyebrow:"North Miami · Tit & Escrow",
+    cta_quote:"Jwenn yon devi",hero_eyebrow:"Tit & Escrow",
     hero_h1:"Achte yon kay ta dwe santi w <em>an sekirite</em>, pa konfizyon.",
     hero_lede:"Nou okipe tit la, papye yo, ak fèmti a — epi nou esplike chak etap an langaj senp, nan lang ou. Pa gen sipriz. Pa gen frè kache.",
     cta_estimate:"Wè frè fèmti mwen",cta_track:"Swiv fèmti mwen an",
@@ -990,9 +1073,9 @@ const I18N = {
     portal_doc_h:"Dokiman",portal_doc_p:"Chifre. Se sèlman ou menm ak ekip fèmti ou ki ka wè sa yo.",portal_upload:"Trennen yon fichye isit la oswa tape pou telechaje",
     doc1:"Kontra acha",doc_ok:"Resevwa",doc2:"Angajman tit",doc_ok2:"Resevwa",doc3:"ID gouvènman",doc_wait:"Bezwen",
     portal_sched_h:"Pwograme fèmti ou",portal_sched_p:"Chwazi yon lè ki bon pou ou. Nan biwo oswa konplètman sou entènèt.",portal_sched_btn:"Chwazi yon lè fèmti",
-    nav_partners:"Patnè ajan",nav_blog:"Resous",
-    partners_eyebrow:"Pou ajan nou travay ak yo",partners_h2:"Patnè ajan nou yo",
-    partners_p:"Nou pa sèlman fèmen kontra ou — nou pwomote biznis ou. Rankontre kèk ajan ki fè Skybridge konfyans, epi mete non ou la tou.",
+    nav_partners:"Patnè",nav_blog:"Resous",
+    partners_eyebrow:"Enstitisyon ki dèyè fèmti ou a",partners_h2:"Patnè nou yo",
+    partners_p:"Nou travay ak enstitisyon ki gen plis konfyans nan endistri a \u2014 patnè ki kanpe dèyè chak fèmti Skybridge.",
     spec_res:"Rezidansyèl",spec_lux:"Liks",spec_com:"Komèsyal",spec_first:"Premye achtè",
     pcb_1:"Kay, kondo ak envestisman nan Florid ak Georgia.",pcb_2:"Pwopriyete liks ak bò lanmè, vann ak swen.",pcb_3:"Kontra komèsyal ak envestisman, byen fèt.",pcb_4:"Gide premye achtè yo, chak etap.",
     pcard_link:"Wè pwofil →",
@@ -1026,7 +1109,7 @@ const I18N = {
   },
   fr:{
     nav_how:"Comment ça marche",nav_calc:"Obtenir un devis",nav_who:"Qui nous aidons",nav_track:"Suivre la clôture",
-    cta_quote:"Obtenir un devis",hero_eyebrow:"North Miami · Titre & Séquestre",
+    cta_quote:"Obtenir un devis",hero_eyebrow:"Titre & Séquestre",
     hero_h1:"Acheter une maison devrait être <em>rassurant</em>, pas déroutant.",
     hero_lede:"Nous gérons le titre, les documents et la clôture — et nous expliquons chaque étape en langage simple, dans votre langue. Aucune surprise. Aucuns frais cachés.",
     cta_estimate:"Voir mes frais de clôture",cta_track:"Suivre ma clôture",
@@ -1070,9 +1153,9 @@ const I18N = {
     portal_doc_h:"Documents",portal_doc_p:"Chiffrés. Seuls vous et votre équipe de clôture pouvez les voir.",portal_upload:"Glissez un fichier ici ou touchez pour téléverser",
     doc1:"Contrat d'achat",doc_ok:"Reçu",doc2:"Engagement de titre",doc_ok2:"Reçu",doc3:"Pièce d'identité",doc_wait:"Requis",
     portal_sched_h:"Planifiez votre clôture",portal_sched_p:"Choisissez un moment qui vous convient. Au bureau ou entièrement en ligne.",portal_sched_btn:"Choisir une heure de clôture",
-    nav_partners:"Agents partenaires",nav_blog:"Ressources",
-    partners_eyebrow:"Pour les agents avec qui nous travaillons",partners_h2:"Nos agents partenaires",
-    partners_p:"Nous ne faisons pas que conclure vos transactions — nous promouvons votre entreprise. Rencontrez des agents qui font confiance à Skybridge, et ajoutez votre nom ici aussi.",
+    nav_partners:"Partenaires",nav_blog:"Ressources",
+    partners_eyebrow:"Les institutions derrière votre clôture",partners_h2:"Nos partenaires",
+    partners_p:"Nous travaillons avec les institutions les plus fiables du secteur \u2014 les partenaires qui soutiennent chaque clôture Skybridge.",
     spec_res:"Résidentiel",spec_lux:"Luxe",spec_com:"Commercial",spec_first:"Primo-accédants",
     pcb_1:"Maisons, condos et investissement en Floride et Géorgie.",pcb_2:"Biens de luxe et en bord de mer, vendus avec soin.",pcb_3:"Transactions commerciales et d'investissement, bien menées.",pcb_4:"Guider les primo-accédants, à chaque étape.",
     pcard_link:"Voir le profil →",
@@ -1106,7 +1189,7 @@ const I18N = {
   },
   es:{
     nav_how:"Cómo funciona",nav_calc:"Obtener cotización",nav_who:"A quién ayudamos",nav_track:"Seguir el cierre",
-    cta_quote:"Obtener cotización",hero_eyebrow:"North Miami · Títulos y Custodia",
+    cta_quote:"Obtener cotización",hero_eyebrow:"Títulos y Custodia",
     hero_h1:"Comprar una casa debería dar <em>tranquilidad</em>, no confusión.",
     hero_lede:"Nos encargamos del título, el papeleo y el cierre — y le explicamos cada paso en palabras sencillas, en su idioma. Sin sorpresas. Sin cargos ocultos.",
     cta_estimate:"Ver mis costos de cierre",cta_track:"Seguir mi cierre",
@@ -1150,9 +1233,9 @@ const I18N = {
     portal_doc_h:"Documentos",portal_doc_p:"Cifrados. Solo usted y su equipo de cierre pueden verlos.",portal_upload:"Arrastre un archivo aquí o toque para subir",
     doc1:"Contrato de compra",doc_ok:"Recibido",doc2:"Compromiso de título",doc_ok2:"Recibido",doc3:"Identificación oficial",doc_wait:"Requerido",
     portal_sched_h:"Agende su cierre",portal_sched_p:"Elija un horario que le convenga. En oficina o totalmente en línea.",portal_sched_btn:"Elegir un horario de cierre",
-    nav_partners:"Agentes aliados",nav_blog:"Recursos",
-    partners_eyebrow:"Para los agentes con quienes trabajamos",partners_h2:"Nuestros agentes aliados",
-    partners_p:"No solo cerramos sus tratos — promovemos su negocio. Conozca a algunos agentes que confían en Skybridge, y ponga su nombre aquí también.",
+    nav_partners:"Socios",nav_blog:"Recursos",
+    partners_eyebrow:"Las instituciones detrás de su cierre",partners_h2:"Nuestros socios",
+    partners_p:"Trabajamos con las instituciones más confiables del sector \u2014 los socios que respaldan cada cierre de Skybridge.",
     spec_res:"Residencial",spec_lux:"Lujo",spec_com:"Comercial",spec_first:"Primera vivienda",
     pcb_1:"Casas, condominios e inversión en Florida y Georgia.",pcb_2:"Propiedades de lujo y frente al mar, vendidas con cuidado.",pcb_3:"Negocios comerciales y de inversión, bien hechos.",pcb_4:"Guiando a quienes compran por primera vez, paso a paso.",
     pcard_link:"Ver perfil →",
