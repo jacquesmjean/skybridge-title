@@ -230,6 +230,8 @@
   .partners{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .pcard{padding:26px 22px;text-align:center;transition:transform .25s,border-color .25s}
   .pcard:hover{transform:translateY(-6px);border-color:rgba(216,180,106,0.5)}
+  .pcard .plogo{width:180px;height:64px;margin:0 auto 16px;background:#fff;border-radius:12px;display:grid;place-items:center;padding:10px 16px}
+  .pcard .plogo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
   .pcard .pav{width:74px;height:74px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
     font-family:'Fraunces';font-size:28px;color:var(--navy-900);font-weight:600;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold))}
@@ -572,7 +574,7 @@
     <p class="partner-intro fade" data-i18n="partners_p">We work with the industry’s most trusted underwriters, associations and lending partners — the institutions that stand behind every Skybridge closing.</p>
     <div class="partners">
       <a class="pcard glass fade" href="https://www.alta.org" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="pav" style="font-size:13px">ALTA</div>
+        <div class="plogo"><img src="alta-logo.svg" alt="American Land Title Association" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="pav" style="display:none">ALTA</span></div>
         <h3>American Land Title Association</h3>
         <div class="firm">National title-industry association</div>
         <span class="ptag">Industry body</span>
@@ -580,7 +582,7 @@
         <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
       </a>
       <a class="pcard glass fade" href="https://www.firstam.com" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="pav" style="font-size:18px">FA</div>
+        <div class="plogo"><img src="firstam-logo.png" alt="First American Title" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="pav" style="display:none">FA</span></div>
         <h3>First American Title</h3>
         <div class="firm">Title insurance underwriter</div>
         <span class="ptag">Underwriter</span>
@@ -588,7 +590,7 @@
         <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
       </a>
       <a class="pcard glass fade" href="https://www.invtitle.com" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="pav" style="font-size:13px">ITIC</div>
+        <div class="plogo"><img src="invtitle-logo.svg" alt="Investors Title Insurance Company" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="pav" style="display:none">ITIC</span></div>
         <h3>Investors Title Insurance Company</h3>
         <div class="firm">Title insurance underwriter</div>
         <span class="ptag">Underwriter</span>
@@ -596,7 +598,7 @@
         <span style="color:var(--gold-bright);font-weight:600">Visit site &rarr;</span>
       </a>
       <a class="pcard glass fade" href="https://www.pnc.com" target="_blank" rel="noopener" style="text-decoration:none">
-        <div class="pav" style="font-size:15px">PNC</div>
+        <div class="plogo"><img src="https://www.pnc.com/content/dam/pnc-com/oneTrust/consent/c9e1445b-763f-4806-a65c-2b561880b4df/53c63f13-dd39-4506-8f0c-2666061cab1d/logos/static/logo_pnc.png" alt="PNC" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><span class="pav" style="display:none">PNC</span></div>
         <h3>PNC</h3>
         <div class="firm">Banking &amp; lending partner</div>
         <span class="ptag">Lender</span>
