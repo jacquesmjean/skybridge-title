@@ -402,10 +402,10 @@
       <img src="skybridge-logo.png" alt="Skybridge Title" class="brand-logo">
     </a>
     <nav class="nav-links">
-      <a href="#how" data-i18n="nav_how">How it works</a>
-      <a href="#calculator" data-i18n="nav_calc">Get a quote</a>
-      <a href="#partners" data-i18n="nav_partners">Realtor partners</a>
-      <a href="#resources" data-i18n="nav_blog">Resources</a>
+      <a href="#how" onclick="navTo('how');return false;" data-i18n="nav_how">How it works</a>
+      <a href="#calculator" onclick="navTo('calculator');return false;" data-i18n="nav_calc">Get a quote</a>
+      <a href="#partners" onclick="navTo('partners');return false;" data-i18n="nav_partners">Realtor partners</a>
+      <a href="#resources" onclick="navTo('resources');return false;" data-i18n="nav_blog">Resources</a>
       <a href="#" onclick="showPortal();return false;" data-i18n="nav_track">Track closing</a>
     </nav>
     <div class="nav-right">
@@ -1528,6 +1528,7 @@ function lblOwner(){return lbl('Owner\'s title insurance','Asirans tit pwopriyet
 /* ---------- VIEW SWITCH ---------- */
 function showPortal(){document.getElementById('homeView').style.display='none';document.getElementById('portalView').style.display='block';window.scrollTo(0,0);}
 function showHome(){document.getElementById('portalView').style.display='none';document.getElementById('homeView').style.display='block';}
+function navTo(id){closePolicy();showHome();var el=document.getElementById(id);if(el){setTimeout(function(){el.scrollIntoView();},30);}}
 function openPolicy(id){var m=document.getElementById(id);if(!m)return;showHome();m.querySelectorAll('.fade,.reveal').forEach(function(e){e.style.opacity='1';e.style.transform='none';});m.classList.add('open');document.body.style.overflow='hidden';m.scrollTop=0;window.scrollTo(0,0);}
 function closePolicy(){document.querySelectorAll('.policy-modal.open').forEach(function(m){m.classList.remove('open');});document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePolicy();});
