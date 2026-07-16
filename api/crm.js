@@ -81,6 +81,7 @@ function readBody(req) {
   });
 }
 const S = (v, n) => String(v == null ? '' : v).slice(0, n);
+const cleanDetails = (d) => { if (!d || typeof d !== 'object' || Array.isArray(d)) return undefined; const o = {}; let n = 0; for (const k in d) { if (n++ > 40) break; const v = S(d[k], 500); if (v) o[String(k).slice(0, 60)] = v; } return Object.keys(o).length ? o : undefined; };
 
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
@@ -117,21 +118,25 @@ module.exports = async (req, res) => {
       if (req.method !== 'POST') return res.status(405).json({ error: 'method' });
       const b = await readBody(req);
       if (b.company_hp) return res.status(200).json({ ok: true }); // honeypot
+      const type = S(b.type, 24) || 'contact';
       const lead = {
         id: crypto.randomUUID(), ts: Date.now(),
-        type: S(b.type, 24) || 'contact', name: S(b.name, 120), email: S(b.email, 160),
+        ref: (type === 'order') ? ('SB-' + Date.now().toString(36).toUpperCase().slice(-6)) : undefined,
+        type, name: S(b.name, 120), email: S(b.email, 160),
         phone: S(b.phone, 60), company: S(b.company, 160), role: S(b.role, 60),
-        area: S(b.area, 120), topic: S(b.topic, 80), message: S(b.message, 4000),
+        area: S(b.area, 120), topic: S(b.topic, 120), message: S(b.message, 4000),
+        details: cleanDetails(b.details),
         source: S(b.source, 80) || 'website', lang: S(b.lang, 8), status: 'new'
       };
       await kv(['SET', 'sb:lead:' + lead.id, JSON.stringify(lead)]);
       await kv(['LPUSH', 'sb:leadids', lead.id]);
       await kv(['LTRIM', 'sb:leadids', 0, 9999]);
+      const detailLines = lead.details ? Object.keys(lead.details).map(k => k + ': ' + lead.details[k]) : [];
       await sendEmail(
-        'New ' + lead.type + ' submission — ' + (lead.name || lead.email || 'Skybridge'),
-        ['Type: ' + lead.type, 'Name: ' + lead.name, 'Email: ' + lead.email, 'Phone: ' + lead.phone,
-         'Company: ' + lead.company, 'Role: ' + lead.role, 'Area: ' + lead.area, 'Topic: ' + lead.topic,
-         'Source: ' + lead.source, '', lead.message].join('\n')
+        'New ' + lead.type + ' submission' + (lead.ref ? ' [' + lead.ref + ']' : '') + ' — ' + (lead.name || lead.email || 'Skybridge'),
+        ['Type: ' + lead.type, lead.ref ? 'Order #: ' + lead.ref : '', 'Name: ' + lead.name, 'Email: ' + lead.email,
+         'Phone: ' + lead.phone, 'Company: ' + lead.company, 'Role: ' + lead.role, 'Topic: ' + lead.topic]
+          .concat(detailLines).concat(['Source: ' + lead.source, '', lead.message]).filter(x => x !== '').join('\n')
       );
       return res.status(200).json({ ok: true });
     }
