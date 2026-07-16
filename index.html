@@ -560,7 +560,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div>
         <h3 data-i18n="aud1_h">Realtors</h3>
         <p data-i18n="aud1_p">Submit orders in two minutes, track every file from your phone, and never chase us for an update again.</p>
-        <a class="more" href="#" onclick="document.getElementById('calculator').scrollIntoView();return false;" data-i18n="aud_link">Submit an order →</a>
+        <a class="more" href="#" onclick="openPolicy('order');return false;" data-i18n="aud_link">Submit an order →</a>
       </div>
       <div class="card glass fade">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
@@ -572,7 +572,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
         <h3 data-i18n="aud3_h">Lenders</h3>
         <p data-i18n="aud3_p">Clean title commitments, on-time closings, and secure document delivery that keeps your pipeline moving.</p>
-        <a class="more" href="#" onclick="document.getElementById('calculator').scrollIntoView();return false;" data-i18n="aud_link2">Order title →</a>
+        <a class="more" href="#" onclick="openPolicy('order');return false;" data-i18n="aud_link2">Order title →</a>
       </div>
     </div>
   </div>
@@ -758,6 +758,51 @@
 </section>
 
 
+
+<section id="order" class="policy-modal" role="dialog" aria-modal="true" aria-label="Open a title order"><button class="policy-close" onclick="closePolicy()" aria-label="Close">&times;</button>
+  <div class="wrap" style="max-width:820px">
+    <div class="sec-head fade" style="text-align:left">
+      <span class="eyebrow">&#9670; <span data-i18n="ord_eyebrow">Open a file</span></span>
+      <h2 data-i18n="ord_h2">Open a title order</h2>
+      <p data-i18n="ord_intro" style="color:var(--sky-soft);max-width:640px">Realtors, buyers, sellers, and lenders: start a closing in two minutes. We open your secure file and confirm right away with an order number.</p>
+    </div>
+    <div class="glass fade" style="padding:22px 24px">
+      <div class="form-ok" id="orderOk" data-i18n="ord_ok">Order received. We have opened your file and will confirm shortly with your order number and a secure link to upload documents.</div>
+      <form onsubmit="return sendOrderForm(event)">
+        <div class="frow">
+          <div class="field"><select name="role" required><option value="" disabled selected data-i18n="ord_role_ph">I am a...</option><option data-i18n="ord_role_realtor">Realtor / Agent</option><option data-i18n="ord_role_buyer">Buyer</option><option data-i18n="ord_role_seller">Seller</option><option data-i18n="ord_role_lender">Lender / Loan officer</option><option data-i18n="ord_role_attorney">Attorney</option><option data-i18n="ord_role_other">Other</option></select></div>
+          <div class="field"><select name="txn" required><option value="" disabled selected data-i18n="ord_txn_ph">Transaction type</option><option data-i18n="ord_txn_purchase">Purchase</option><option data-i18n="ord_txn_refi">Refinance</option><option data-i18n="ord_txn_cash">Cash purchase</option><option data-i18n="ord_txn_new">New construction</option><option data-i18n="ord_txn_other">Other</option></select></div>
+        </div>
+        <div class="field"><input name="address" type="text" data-i18n-ph="ord_address_ph" placeholder="Property address" required></div>
+        <div class="frow">
+          <div class="field"><input name="amount" type="text" data-i18n-ph="ord_amount_ph" placeholder="Purchase price or loan amount"></div>
+          <div class="field"><input name="closing" type="text" data-i18n-ph="ord_closing_ph" placeholder="Estimated closing date"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><input name="buyer" type="text" data-i18n-ph="ord_buyer_ph" placeholder="Buyer name(s)"></div>
+          <div class="field"><input name="seller" type="text" data-i18n-ph="ord_seller_ph" placeholder="Seller name(s)"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><input name="agent" type="text" data-i18n-ph="ord_agent_ph" placeholder="Listing / selling agent"></div>
+          <div class="field"><input name="lender" type="text" data-i18n-ph="ord_lender_ph" placeholder="Lender / loan officer"></div>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,.1);margin:4px 0 14px"></div>
+        <div class="frow">
+          <div class="field"><input name="name" type="text" data-i18n-ph="ord_name_ph" placeholder="Your name" required></div>
+          <div class="field"><input name="company" type="text" data-i18n-ph="ord_company_ph" placeholder="Your company / brokerage"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><input name="email" type="email" data-i18n-ph="ord_email_ph" placeholder="Your email" required></div>
+          <div class="field"><input name="phone" type="tel" data-i18n-ph="ord_phone_ph" placeholder="Your phone"></div>
+        </div>
+        <div class="field"><select name="contract"><option value="" disabled selected data-i18n="ord_contract_ph">Do you have a signed contract?</option><option data-i18n="ord_contract_yes">Yes, I will send it securely</option><option data-i18n="ord_contract_no">Not yet</option><option data-i18n="ord_contract_na">Refinance / N/A</option></select></div>
+        <div class="field"><textarea name="notes" data-i18n-ph="ord_notes_ph" placeholder="Anything else we should know? Deadlines, prior title company, etc."></textarea></div>
+        <button class="btn btn-gold" type="submit" style="width:100%;justify-content:center"><span data-i18n="ord_send">Submit order</span></button>
+        <p class="form-note" data-i18n="ord_note">Your information is sent securely. We will email you an order number and a secure link to upload documents.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
 <section id="partner" class="policy-modal" role="dialog" aria-modal="true" aria-label="Become a featured partner"><button class="policy-close" onclick="closePolicy()" aria-label="Close">&times;</button>
   <div class="wrap" style="max-width:940px">
@@ -1446,6 +1491,19 @@ function sendPartnerForm(e){
   document.getElementById('partnerOk').style.display='block';
   f.reset();
   var m=document.getElementById('partner'); if(m){m.scrollTop=0;window.scrollTo(0,0);}
+  return false;
+}
+function sendOrderForm(e){
+  e.preventDefault();
+  var f=e.target;
+  function g(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value:'';}
+  var details={"Role":g('role'),"Transaction":g('txn'),"Property address":g('address'),"Price / loan amount":g('amount'),"Est. closing date":g('closing'),"Buyer(s)":g('buyer'),"Seller(s)":g('seller'),"Listing / selling agent":g('agent'),"Lender / loan officer":g('lender'),"Signed contract":g('contract')};
+  crmPost({type:'order',source:'order-intake',lang:(typeof lang!=='undefined'?lang:'en'),
+    name:g('name'),email:g('email'),phone:g('phone'),company:g('company'),role:g('role'),
+    topic:(g('txn')||'Order')+' \u00b7 '+g('address'),message:g('notes'),details:details});
+  document.getElementById('orderOk').style.display='block';
+  f.reset();
+  var mo=document.getElementById('order'); if(mo){mo.scrollTop=0;window.scrollTo(0,0);}
   return false;
 }
 

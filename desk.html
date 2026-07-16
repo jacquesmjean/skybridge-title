@@ -116,6 +116,7 @@
 <script>
 var API='/api/crm';
 var STATUSES=['new','contacted','in progress','won','closed'];
+var ORDER_STATUSES=['new','title search','clear to close','scheduled','funded','closed'];
 var TYPES=[['all','All'],['partner','Partner'],['contact','Contact'],['quote','Quote'],['order','Order']];
 var leads=[], filter='all';
 
@@ -186,12 +187,14 @@ function render(){
 function openDrawer(id){
   var l=leads.filter(function(x){return x.id===id;})[0];if(!l)return;
   function row(k,v){return v?'<div class="drow"><div class="k">'+k+'</div><div class="v">'+esc(v)+'</div></div>':'';}
-  var opts=STATUSES.map(function(s){return '<option'+((l.status||'new')===s?' selected':'')+'>'+s+'</option>';}).join('');
+  var sts=(l.type==='order')?ORDER_STATUSES:STATUSES;
+  var opts=sts.map(function(s){return '<option'+((l.status||'new')===s?' selected':'')+'>'+s+'</option>';}).join('');
+  var dh='';if(l.details&&typeof l.details==='object'){for(var dk in l.details){dh+=row(dk,l.details[dk]);}}
   el('drawerBody').innerHTML='<div class="dcard">'+
-    '<span class="badge '+badgeClass(l.type)+'" style="margin-bottom:8px">'+esc(l.type)+'</span>'+
+    '<span class="badge '+badgeClass(l.type)+'" style="margin-bottom:8px">'+esc(l.type)+'</span>'+(l.ref?' <span class="badge b-default" style="margin-left:6px">'+esc(l.ref)+'</span>':'')+
     '<h2>'+esc(l.name||l.email||'Submission')+'</h2>'+
     '<div style="color:var(--sky);font-size:12.5px;margin-bottom:14px">'+fmt(l.ts)+' &middot; via '+esc(l.source||'website')+(l.lang?' &middot; '+esc(l.lang):'')+'</div>'+
-    row('Email',l.email)+row('Phone',l.phone)+row('Company',l.company)+row('Role',l.role)+row('Market / area',l.area)+row('Topic',l.topic)+row('Message',l.message)+
+    row('Email',l.email)+row('Phone',l.phone)+row('Company',l.company)+row('Role',l.role)+row('Market / area',l.area)+row('Topic',l.topic)+dh+row('Message',l.message)+
     '<div class="dactions"><label style="margin:0">Status</label><select id="stSel" style="width:auto;margin:0">'+opts+'</select>'+
     '<button class="btn" style="width:auto;padding:10px 18px" id="saveSt">Save</button>'+
     (l.email?'<a class="btn ghost" href="mailto:'+esc(l.email)+'">Reply by email</a>':'')+'</div>'+
