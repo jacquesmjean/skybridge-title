@@ -1420,17 +1420,31 @@ function setLang(l){
    Production: POSTs to the secure CRM (Supabase + n8n).
    Routing: form submissions + tracking -> Submissions@skybridgetitle.com;
    transaction & general notifications -> andre@skybridgetitle.com. */
+function crmPost(payload){
+  try{fetch('/api/crm?action=submit',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify(payload)}).catch(function(){});}catch(e){}
+}
+function fval(f,sel){var el=f.querySelector(sel);return el?el.value:'';}
 function sendForm(e){
   e.preventDefault();
+  var f=e.target;
+  var topic=fval(f,'#cf_topic');
+  var type=/order/i.test(topic)?'order':(/partner|realtor/i.test(topic)?'partner':'contact');
+  crmPost({type:type,source:'website-contact',lang:(typeof lang!=='undefined'?lang:'en'),topic:topic,
+    name:fval(f,'input[type=text]'),email:fval(f,'input[type=email]'),phone:fval(f,'input[type=tel]'),message:fval(f,'textarea')});
   document.getElementById('formOk').style.display='block';
-  e.target.reset();
-  document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+  f.reset();
+  document.getElementById('formOk').scrollIntoView({block:'center'});
   return false;
 }
 function sendPartnerForm(e){
   e.preventDefault();
+  var f=e.target;
+  var texts=f.querySelectorAll('input[type=text]');
+  crmPost({type:'partner',source:'featured-partner',lang:(typeof lang!=='undefined'?lang:'en'),
+    name:texts[0]?texts[0].value:'',company:texts[1]?texts[1].value:'',area:texts[2]?texts[2].value:'',
+    role:fval(f,'select'),email:fval(f,'input[type=email]'),phone:fval(f,'input[type=tel]'),message:fval(f,'textarea')});
   document.getElementById('partnerOk').style.display='block';
-  e.target.reset();
+  f.reset();
   var m=document.getElementById('partner'); if(m){m.scrollTop=0;window.scrollTo(0,0);}
   return false;
 }

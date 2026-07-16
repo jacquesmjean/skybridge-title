@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Skybridge Service Desk</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  :root{--navy-900:#070d1f;--navy-800:#0c1733;--navy-700:#13224a;--navy-600:#1c3066;--gold:#e89238;--gold-bright:#fba94c;--champagne:#e9f1fa;--sky:#6ca6d6;--sky-soft:#a9c9e6;--paper:#f7f9fc;--line:rgba(255,255,255,0.14);--ok:#5fd1a0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--navy-900);color:var(--champagne);min-height:100vh}
+  a{color:var(--gold-bright)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  /* login */
+  #login{min-height:100vh;display:grid;place-items:center;padding:24px}
+  .card{width:100%;max-width:400px;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:18px;padding:34px 30px;box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+  .brand{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px}
+  .brand img{height:34px}
+  .eyebrow{color:var(--gold-bright);font-size:11px;font-weight:700;letter-spacing:2px;text-align:center;margin:14px 0 4px}
+  h1{font-size:22px;text-align:center;margin-bottom:4px;color:#fff}
+  .sub{color:var(--sky-soft);font-size:13px;text-align:center;margin-bottom:22px}
+  label{display:block;font-size:12px;color:var(--sky-soft);margin:0 0 5px 2px}
+  input,select,textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--line);border-radius:11px;padding:12px 13px;color:#fff;font-size:14px;font-family:inherit;margin-bottom:14px}
+  input:focus,select:focus{outline:none;border-color:var(--gold)}
+  .btn{width:100%;background:linear-gradient(90deg,var(--gold),var(--gold-bright));color:#0c1733;font-weight:800;font-size:14.5px;border:0;border-radius:11px;padding:12px;cursor:pointer}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--sky-soft);width:auto;padding:8px 14px;font-weight:600;font-size:13px}
+  .err{background:rgba(255,90,90,.12);border:1px solid rgba(255,120,120,.35);color:#ffd0d0;font-size:13px;padding:10px 12px;border-radius:10px;margin-bottom:14px;display:none}
+  .muted{color:var(--sky);font-size:11.5px;text-align:center;margin-top:16px;line-height:1.5}
+  /* dashboard */
+  #dash{display:none}
+  header.top{background:var(--navy-800);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  header.top .wrap{display:flex;align-items:center;gap:14px;padding:14px 20px}
+  header.top img{height:30px}
+  .deskname{font-weight:800;color:#fff;font-size:16px}
+  .deskname span{color:var(--gold-bright)}
+  .spacer{flex:1}
+  .who{color:var(--sky-soft);font-size:13px}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 8px}
+  .stat{background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:14px;padding:14px 18px;min-width:118px}
+  .stat b{display:block;font-size:26px;color:var(--gold-bright);font-weight:800}
+  .stat span{font-size:12px;color:var(--sky-soft)}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 12px}
+  .tab{background:rgba(255,255,255,0.05);border:1px solid var(--line);color:var(--sky-soft);border-radius:999px;padding:7px 15px;font-size:13px;font-weight:600;cursor:pointer}
+  .tab.on{background:var(--gold);border-color:var(--gold);color:#0c1733}
+  table{width:100%;border-collapse:collapse;background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:40px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--sky);padding:12px 14px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--line)}
+  td{padding:12px 14px;font-size:13.5px;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr.row{cursor:pointer}
+  tr.row:hover td{background:rgba(255,255,255,0.03)}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;text-transform:capitalize}
+  .b-partner{background:rgba(232,146,56,.18);color:var(--gold-bright)}
+  .b-contact{background:rgba(108,166,214,.18);color:var(--sky-soft)}
+  .b-quote{background:rgba(95,209,160,.18);color:#8fe6c2}
+  .b-order{background:rgba(180,140,255,.18);color:#cbb6ff}
+  .b-default{background:rgba(255,255,255,.1);color:var(--sky-soft)}
+  .st{font-size:12.5px;padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+  .empty{text-align:center;color:var(--sky-soft);padding:40px;font-size:14px}
+  /* drawer */
+  #drawer{position:fixed;inset:0;background:rgba(5,10,25,.7);display:none;z-index:20;padding:24px;overflow-y:auto}
+  #drawer.open{display:block}
+  .dcard{max-width:640px;margin:20px auto;background:var(--navy-800);border:1px solid var(--line);border-radius:18px;padding:26px 28px}
+  .dcard h2{color:#fff;font-size:20px;margin-bottom:2px}
+  .drow{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px}
+  .drow .k{color:var(--sky);min-width:120px;font-size:12.5px}
+  .drow .v{color:#fff;flex:1;word-break:break-word}
+  .dactions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}
+  .x{position:absolute;top:20px;right:22px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--navy-700);color:#fff;font-size:20px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="card">
+    <div class="brand"><img src="/skybridge-logo.png" alt="Skybridge Title"></div>
+    <div class="eyebrow">SERVICE DESK</div>
+    <h1>Welcome back</h1>
+    <div class="sub">Sign in to manage requests and applications.</div>
+    <div class="err" id="loginErr"></div>
+    <form id="loginForm" autocomplete="on">
+      <label>Email</label>
+      <input type="email" id="email" required autocomplete="username">
+      <label>Password</label>
+      <input type="password" id="password" required autocomplete="current-password">
+      <button class="btn" type="submit" id="loginBtn">Sign in</button>
+    </form>
+    <div class="muted">Authorized Skybridge Title staff only.<br>Protected area &middot; sessions expire after 12 hours.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dash">
+  <header class="top">
+    <div class="wrap">
+      <img src="/skybridge-logo.png" alt="Skybridge Title">
+      <div class="deskname">Service <span>Desk</span></div>
+      <div class="spacer"></div>
+      <div class="who" id="who"></div>
+      <button class="btn ghost" id="reloadBtn">Refresh</button>
+      <button class="btn ghost" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="stats" id="stats"></div>
+    <div class="tabs" id="tabs"></div>
+    <div id="tableWrap"></div>
+  </div>
+</div>
+
+<!-- DETAIL DRAWER -->
+<div id="drawer"><button class="x" onclick="closeDrawer()">&times;</button><div id="drawerBody"></div></div>
+
+<script>
+var API='/api/crm';
+var STATUSES=['new','contacted','in progress','won','closed'];
+var TYPES=[['all','All'],['partner','Partner'],['contact','Contact'],['quote','Quote'],['order','Order']];
+var leads=[], filter='all';
+
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function fmt(ts){if(!ts)return'';var d=new Date(ts);return d.toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});}
+function badgeClass(t){return ({partner:'b-partner',contact:'b-contact',quote:'b-quote',order:'b-order'})[t]||'b-default';}
+
+async function api(action,opts){opts=opts||{};opts.headers=Object.assign({'Content-Type':'application/json'},opts.headers||{});opts.credentials='same-origin';var r=await fetch(API+'?action='+action,opts);var j={};try{j=await r.json();}catch(e){}return {status:r.status,body:j};}
+
+async function checkSession(){var r=await api('me');if(r.status===200&&r.body.user){showDash(r.body.user);}else{showLogin();}}
+function showLogin(){el('login').style.display='grid';el('dash').style.display='none';}
+function showDash(user){el('login').style.display='none';el('dash').style.display='block';el('who').textContent=user.name||user.email;loadLeads();}
+
+el('loginForm').addEventListener('submit',async function(e){
+  e.preventDefault();el('loginErr').style.display='none';el('loginBtn').textContent='Signing in...';
+  var r=await api('login',{method:'POST',body:JSON.stringify({email:el('email').value,password:el('password').value})});
+  el('loginBtn').textContent='Sign in';
+  if(r.status===200){checkSession();}
+  else{el('loginErr').textContent=(r.body&&r.body.error)||'Sign in failed.';el('loginErr').style.display='block';}
+});
+el('logoutBtn').addEventListener('click',async function(){await api('logout',{method:'POST'});showLogin();});
+el('reloadBtn').addEventListener('click',loadLeads);
+
+async function loadLeads(){
+  el('reloadBtn').textContent='Loading...';
+  var r=await api('leads');
+  el('reloadBtn').textContent='Refresh';
+  if(r.status===401){showLogin();return;}
+  leads=(r.body&&r.body.leads)||[];
+  leads.sort(function(a,b){return (b.ts||0)-(a.ts||0);});
+  render();
+}
+
+function render(){
+  // stats
+  var counts={};leads.forEach(function(l){counts[l.type]=(counts[l.type]||0)+1;});
+  var newCount=leads.filter(function(l){return (l.status||'new')==='new';}).length;
+  el('stats').innerHTML=
+    '<div class="stat"><b>'+leads.length+'</b><span>Total submissions</span></div>'+
+    '<div class="stat"><b>'+newCount+'</b><span>New / unworked</span></div>'+
+    '<div class="stat"><b>'+(counts.partner||0)+'</b><span>Partner applications</span></div>';
+  // tabs
+  el('tabs').innerHTML=TYPES.map(function(t){
+    var n=t[0]==='all'?leads.length:(counts[t[0]]||0);
+    return '<div class="tab'+(filter===t[0]?' on':'')+'" data-t="'+t[0]+'">'+t[1]+' ('+n+')</div>';
+  }).join('');
+  Array.prototype.forEach.call(el('tabs').children,function(c){c.onclick=function(){filter=c.getAttribute('data-t');render();};});
+  // table
+  var rows=leads.filter(function(l){return filter==='all'||l.type===filter;});
+  if(!rows.length){el('tableWrap').innerHTML='<div class="empty">No submissions yet. New requests from the website will appear here automatically.</div>';return;}
+  var html='<table><thead><tr><th>Date</th><th>Type</th><th>Name</th><th>Contact</th><th>Summary</th><th>Status</th></tr></thead><tbody>';
+  rows.forEach(function(l,i){
+    var summary=l.type==='partner'?(esc(l.company||'')+(l.role?' &middot; '+esc(l.role):'')):esc((l.topic||l.message||'').slice(0,60));
+    html+='<tr class="row" data-id="'+esc(l.id)+'">'+
+      '<td>'+fmt(l.ts)+'</td>'+
+      '<td><span class="badge '+badgeClass(l.type)+'">'+esc(l.type)+'</span></td>'+
+      '<td>'+esc(l.name||'—')+'</td>'+
+      '<td>'+esc(l.email||'')+'<br><span style="color:var(--sky)">'+esc(l.phone||'')+'</span></td>'+
+      '<td style="color:var(--sky-soft)">'+summary+'</td>'+
+      '<td><span class="badge b-default">'+esc(l.status||'new')+'</span></td></tr>';
+  });
+  html+='</tbody></table>';
+  el('tableWrap').innerHTML=html;
+  Array.prototype.forEach.call(document.querySelectorAll('tr.row'),function(tr){tr.onclick=function(){openDrawer(tr.getAttribute('data-id'));};});
+}
+
+function openDrawer(id){
+  var l=leads.filter(function(x){return x.id===id;})[0];if(!l)return;
+  function row(k,v){return v?'<div class="drow"><div class="k">'+k+'</div><div class="v">'+esc(v)+'</div></div>':'';}
+  var opts=STATUSES.map(function(s){return '<option'+((l.status||'new')===s?' selected':'')+'>'+s+'</option>';}).join('');
+  el('drawerBody').innerHTML='<div class="dcard">'+
+    '<span class="badge '+badgeClass(l.type)+'" style="margin-bottom:8px">'+esc(l.type)+'</span>'+
+    '<h2>'+esc(l.name||l.email||'Submission')+'</h2>'+
+    '<div style="color:var(--sky);font-size:12.5px;margin-bottom:14px">'+fmt(l.ts)+' &middot; via '+esc(l.source||'website')+(l.lang?' &middot; '+esc(l.lang):'')+'</div>'+
+    row('Email',l.email)+row('Phone',l.phone)+row('Company',l.company)+row('Role',l.role)+row('Market / area',l.area)+row('Topic',l.topic)+row('Message',l.message)+
+    '<div class="dactions"><label style="margin:0">Status</label><select id="stSel" style="width:auto;margin:0">'+opts+'</select>'+
+    '<button class="btn" style="width:auto;padding:10px 18px" id="saveSt">Save</button>'+
+    (l.email?'<a class="btn ghost" href="mailto:'+esc(l.email)+'">Reply by email</a>':'')+'</div>'+
+    '<div id="stMsg" style="color:var(--ok);font-size:12.5px;margin-top:10px"></div></div>';
+  el('drawer').classList.add('open');
+  el('saveSt').onclick=async function(){
+    var r=await api('leads',{method:'PATCH',body:JSON.stringify({id:l.id,status:el('stSel').value})});
+    if(r.status===200){l.status=el('stSel').value;el('stMsg').textContent='Saved.';render();}
+    else{el('stMsg').style.color='#ffd0d0';el('stMsg').textContent='Could not save.';}
+  };
+}
+function closeDrawer(){el('drawer').classList.remove('open');}
+el('drawer').addEventListener('click',function(e){if(e.target===el('drawer'))closeDrawer();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer();});
+
+checkSession();
+</script>
+</body>
+</html>
