@@ -390,7 +390,7 @@
   .policy-modal{position:fixed;inset:0;z-index:300;display:none;background:rgba(5,10,25,0.82);backdrop-filter:blur(5px);overflow-y:auto;padding:52px 16px}
   .policy-modal.open{display:block} .policy-modal .glass h3{color:#fff;font-size:15.5px;margin:18px 0 7px} .policy-modal .glass ul{margin:10px 0 10px 20px} .policy-modal .glass li{margin:5px 0} .policy-modal .glass strong{color:#fff} .policy-modal .glass p{margin-top:12px} .policy-modal .glass p:first-child{margin-top:0}
   .policy-modal .wrap{position:relative}
-  .policy-close{position:fixed;top:18px;right:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(12,23,51,0.95);color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:301;display:grid;place-items:center}
+  .policy-close{position:fixed;top:18px;right:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:rgba(12,23,51,0.95);color:#fff;font-size:22px;line-height:1;cursor:pointer;z-index:301;display:grid;place-items:center} .fp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:start;margin-top:6px} .fp-ben{display:flex;gap:12px;margin-bottom:15px} .fp-ben .dot{flex:none;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-bright));display:grid;place-items:center;color:#0c1733;font-weight:800;font-size:15px} .fp-ben h4{color:#fff;font-size:14.5px;margin:0 0 2px;font-weight:700} .fp-ben p{color:var(--sky-soft);font-size:12.5px;margin:0;line-height:1.5} @media(max-width:760px){.fp-grid{grid-template-columns:1fr}}
   .policy-close:hover{border-color:var(--gold)}
 </style>
 </head>
@@ -621,7 +621,7 @@
     </div>
     <div class="partner-cta fade">
       <p data-i18n="partners_cta_p">Work with Skybridge? Get a free featured profile — and we'll help market your listings.</p>
-      <button class="btn btn-gold" onclick="document.getElementById('contact').scrollIntoView()"><span data-i18n="partners_cta">Become a featured partner</span></button>
+      <button class="btn btn-gold" onclick="openPolicy('partner')"><span data-i18n="partners_cta">Become a featured partner</span></button>
     </div>
   </div>
 </section>
@@ -753,6 +753,47 @@
         <li><a href="https://www.broward.org/RecordsTaxesTreasury/Records/Pages/default.aspx" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">Broward County Records &rarr;</a></li>
         <li><a href="https://www.firstam.com" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:600">First American Title &rarr;</a></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="partner" class="policy-modal" role="dialog" aria-modal="true" aria-label="Become a featured partner"><button class="policy-close" onclick="closePolicy()" aria-label="Close">&times;</button>
+  <div class="wrap" style="max-width:940px">
+    <div class="sec-head fade" style="text-align:left">
+      <span class="eyebrow">&#9670; <span data-i18n="fp2_eyebrow">Grow with Skybridge</span></span>
+      <h2 data-i18n="fp2_h2">Become a featured partner</h2>
+      <p data-i18n="fp2_intro" style="color:var(--sky-soft);max-width:770px">Realtors and mortgage brokers: put Skybridge to work for your business.</p>
+    </div>
+    <div class="fp-grid fade">
+      <div class="glass" style="padding:22px 24px">
+        <h3 style="color:#fff;font-size:16px;margin:0 0 14px" data-i18n="fp2_ben_h">What you get</h3>
+        <div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b1_t">Benefit</h4><p data-i18n="fp2_b1_p">Detail</p></div></div><div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b2_t">Benefit</h4><p data-i18n="fp2_b2_p">Detail</p></div></div><div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b3_t">Benefit</h4><p data-i18n="fp2_b3_p">Detail</p></div></div><div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b4_t">Benefit</h4><p data-i18n="fp2_b4_p">Detail</p></div></div><div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b5_t">Benefit</h4><p data-i18n="fp2_b5_p">Detail</p></div></div><div class="fp-ben"><span class="dot">&#10003;</span><div><h4 data-i18n="fp2_b6_t">Benefit</h4><p data-i18n="fp2_b6_p">Detail</p></div></div>
+      </div>
+      <div class="glass" style="padding:22px 24px">
+        <h3 style="color:#fff;font-size:16px;margin:0 0 12px" data-i18n="fp2_form_h">Apply in 30 seconds</h3>
+        <div class="form-ok" id="partnerOk" data-i18n="fp2_ok">Thank you, welcome aboard.</div>
+        <form onsubmit="return sendPartnerForm(event)">
+          <div class="field"><input type="text" data-i18n-ph="fp2_name_ph" placeholder="Full name" required></div>
+          <div class="field"><input type="text" data-i18n-ph="fp2_company_ph" placeholder="Company or brokerage"></div>
+          <div class="field"><select required>
+            <option value="" disabled selected data-i18n="fp2_role_ph">I am a...</option>
+            <option data-i18n="fp2_role_realtor">Realtor / Real estate agent</option>
+            <option data-i18n="fp2_role_broker">Mortgage broker</option>
+            <option data-i18n="fp2_role_lender">Lender / Loan officer</option>
+            <option data-i18n="fp2_role_other">Other</option>
+          </select></div>
+          <div class="frow">
+            <div class="field"><input type="email" data-i18n-ph="fp2_email_ph" placeholder="Email" required></div>
+            <div class="field"><input type="tel" data-i18n-ph="fp2_phone_ph" placeholder="Phone"></div>
+          </div>
+          <div class="field"><input type="text" data-i18n-ph="fp2_area_ph" placeholder="City or market you serve"></div>
+          <div class="field"><textarea data-i18n-ph="fp2_msg_ph" placeholder="Anything you would like us to know? (optional)"></textarea></div>
+          <button class="btn btn-gold" type="submit" style="width:100%;justify-content:center"><span data-i18n="fp2_send">Apply to become a partner</span></button>
+          <p class="form-note" data-i18n="fp2_note">Your information is sent securely and is never sold.</p>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -1082,6 +1123,7 @@ const I18N = {
     pcb_1:"Homes, condos & investment across Florida and Georgia.",pcb_2:"Waterfront and luxury listings, sold with care.",pcb_3:"Commercial and investment deals, done right.",pcb_4:"Guiding first-time buyers, every step.",
     pcard_link:"View profile →",
     partners_cta_p:"Work with Skybridge? Get a free featured profile — and we'll help market your listings.",partners_cta:"Become a featured partner",
+    fp2_eyebrow:"Grow with Skybridge",fp2_h2:"Become a featured partner",fp2_intro:"Realtors and mortgage brokers: put Skybridge to work for your business. Here is everything you get, and it costs you nothing.",fp2_ben_h:"What you get",fp2_b1_t:"Free Realtor Spotlight",fp2_b1_p:"A featured profile on our site that puts you in front of every buyer who finds us.",fp2_b2_t:"Co-marketing that makes you shine",fp2_b2_p:"Branded flyers, instant quote links, and social posts your clients can share.",fp2_b3_t:"Fast, bilingual closings",fp2_b3_p:"We close in English, Spanish, Kreyol, and French, so every client feels cared for.",fp2_b4_t:"Referrals back to you",fp2_b4_p:"We send Skybridge buyers and sellers your way. It goes both ways.",fp2_b5_t:"A closing team that never sleeps",fp2_b5_p:"A dedicated team plus a 24/7 AI front desk. You never chase an update again.",fp2_b6_t:"Reviews and milestones, handled",fp2_b6_p:"We request 5-star reviews and send anniversary touches to your clients for you.",fp2_form_h:"Apply in 30 seconds",fp2_name_ph:"Full name",fp2_company_ph:"Company or brokerage",fp2_role_ph:"I am a...",fp2_role_realtor:"Realtor / Real estate agent",fp2_role_broker:"Mortgage broker",fp2_role_lender:"Lender / Loan officer",fp2_role_other:"Other",fp2_email_ph:"Email",fp2_phone_ph:"Phone",fp2_area_ph:"City or market you serve",fp2_msg_ph:"Anything you would like us to know? (optional)",fp2_send:"Apply to become a partner",fp2_note:"Your information is sent securely and is never sold.",fp2_ok:"Thank you, welcome aboard. Our partner team will reach out within one business day.",
     blog_eyebrow:"Learn the process",blog_h2:"Guides & resources",blog_p:"Plain-language guides on buying, selling, and closing — new posts every month in English, Español, Kreyòl, and Français.",
     blog_tag:"Guide",blog_read:"Read more →",
     blog1_d:"June 2026",blog1_t:"What does a title company actually do?",blog1_x:"A 3-minute, no-jargon explainer for first-time buyers.",
@@ -1163,6 +1205,7 @@ const I18N = {
     pcb_1:"Kay, kondo ak envestisman nan Florid ak Georgia.",pcb_2:"Pwopriyete liks ak bò lanmè, vann ak swen.",pcb_3:"Kontra komèsyal ak envestisman, byen fèt.",pcb_4:"Gide premye achtè yo, chak etap.",
     pcard_link:"Wè pwofil →",
     partners_cta_p:"Ou travay ak Skybridge? Jwenn yon pwofil vedèt gratis — epi n ap ede w fè piblisite pou anons ou yo.",partners_cta:"Vin yon patnè vedèt",
+    fp2_eyebrow:"Grandi ak Skybridge",fp2_h2:"Vin yon patne vedet",fp2_intro:"Ajan imobilye ak koutye ipotek: mete Skybridge travay pou biznis ou. Men tout sa ou jwenn, epi li pa koute ou anyen.",fp2_ben_h:"Sa ou jwenn",fp2_b1_t:"Pwofil vedet gratis",fp2_b1_p:"Yon pwofil sou sit nou an ki mete ou devan chak achte ki jwenn nou.",fp2_b2_t:"Ko-maketin ki fe ou klere",fp2_b2_p:"Feye ak mak ou, lyen devi enstantane, ak piblikasyon rezo sosyal kliyan ou ka pataje.",fp2_b3_t:"Femti rapid nan plizye lang",fp2_b3_p:"Nou femen an Angle, Panyol, Kreyol, ak Franse, pou chak kliyan santi yo byen okipe.",fp2_b4_t:"Referans ki tounen vin jwenn ou",fp2_b4_p:"Nou voye achte ak vande Skybridge ba ou. Li mache nan de sans.",fp2_b5_t:"Yon ekip femti ki pa janm domi",fp2_b5_p:"Yon ekip dedye plis yon resepsyon AI 24/7. Ou pa janm kouri deye yon mizajou anko.",fp2_b6_t:"Revi ak etap enpotan, nou okipe yo",fp2_b6_p:"Nou mande revi 5 zetwal epi voye mesaj anivese bay kliyan ou yo pou ou.",fp2_form_h:"Aplike nan 30 segond",fp2_name_ph:"Non konple",fp2_company_ph:"Konpayi oswa ajans",fp2_role_ph:"Mwen se...",fp2_role_realtor:"Ajan imobilye",fp2_role_broker:"Koutye ipotek",fp2_role_lender:"Prete / Ofisye pre",fp2_role_other:"Lot",fp2_email_ph:"Imel",fp2_phone_ph:"Telefon",fp2_area_ph:"Vil oswa zon ou sevi",fp2_msg_ph:"Gen yon bagay ou vle di nou? (opsyonel)",fp2_send:"Aplike pou vin patne",fp2_note:"Enfomasyon ou voye an sekirite epi nou pa janm vann li.",fp2_ok:"Mesi, byenveni. Ekip patne nou an ap kontakte ou nan yon jou travay.",
     blog_eyebrow:"Aprann pwosesis la",blog_h2:"Gid ak resous",blog_p:"Gid an langaj senp sou achte, vann, ak fèmti — nouvo piblikasyon chak mwa an Anglè, Espayòl, Kreyòl, ak Franse.",
     blog_tag:"Gid",blog_read:"Li plis →",
     blog1_d:"Jen 2026",blog1_t:"Kisa yon konpayi tit fè vrèman?",blog1_x:"Yon eksplikasyon 3 minit, san jagon, pou premye achtè.",
@@ -1244,6 +1287,7 @@ const I18N = {
     pcb_1:"Maisons, condos et investissement en Floride et Géorgie.",pcb_2:"Biens de luxe et en bord de mer, vendus avec soin.",pcb_3:"Transactions commerciales et d'investissement, bien menées.",pcb_4:"Guider les primo-accédants, à chaque étape.",
     pcard_link:"Voir le profil →",
     partners_cta_p:"Vous travaillez avec Skybridge ? Obtenez un profil en vedette gratuit — et nous promouvons vos annonces.",partners_cta:"Devenez agent en vedette",
+    fp2_eyebrow:"Grandissez avec Skybridge",fp2_h2:"Devenez partenaire en vedette",fp2_intro:"Agents immobiliers et courtiers hypothecaires : mettez Skybridge au service de votre activite. Voici tout ce que vous obtenez, et cela ne vous coute rien.",fp2_ben_h:"Ce que vous obtenez",fp2_b1_t:"Profil en vedette gratuit",fp2_b1_p:"Un profil sur notre site qui vous place devant chaque acheteur qui nous trouve.",fp2_b2_t:"Un co-marketing qui vous met en valeur",fp2_b2_p:"Des depliants a votre nom, des liens de devis instantane et des publications que vos clients peuvent partager.",fp2_b3_t:"Des clotures rapides et bilingues",fp2_b3_p:"Nous cloturons en anglais, espagnol, creole et francais, pour que chaque client se sente bien accompagne.",fp2_b4_t:"Des references en retour",fp2_b4_p:"Nous vous envoyons des acheteurs et des vendeurs de Skybridge. Cela va dans les deux sens.",fp2_b5_t:"Une equipe de cloture qui ne dort jamais",fp2_b5_p:"Une equipe dediee et une reception IA 24/7. Vous ne courez plus jamais apres une mise a jour.",fp2_b6_t:"Avis et jalons, pris en charge",fp2_b6_p:"Nous demandons des avis 5 etoiles et envoyons des messages d anniversaire a vos clients pour vous.",fp2_form_h:"Postulez en 30 secondes",fp2_name_ph:"Nom complet",fp2_company_ph:"Entreprise ou agence",fp2_role_ph:"Je suis...",fp2_role_realtor:"Agent immobilier",fp2_role_broker:"Courtier hypothecaire",fp2_role_lender:"Preteur / Agent de credit",fp2_role_other:"Autre",fp2_email_ph:"E-mail",fp2_phone_ph:"Telephone",fp2_area_ph:"Ville ou secteur desservi",fp2_msg_ph:"Quelque chose a nous dire ? (facultatif)",fp2_send:"Postuler comme partenaire",fp2_note:"Vos informations sont transmises en toute securite et ne sont jamais vendues.",fp2_ok:"Merci, bienvenue a bord. Notre equipe partenaires vous contactera sous un jour ouvrable.",
     blog_eyebrow:"Comprendre le processus",blog_h2:"Guides et ressources",blog_p:"Des guides en langage simple sur l'achat, la vente et la clôture — de nouveaux articles chaque mois en anglais, espagnol, créole et français.",
     blog_tag:"Guide",blog_read:"Lire la suite →",
     blog1_d:"Juin 2026",blog1_t:"Que fait vraiment une société de titre ?",blog1_x:"Une explication de 3 minutes, sans jargon, pour les primo-accédants.",
@@ -1325,6 +1369,7 @@ const I18N = {
     pcb_1:"Casas, condominios e inversión en Florida y Georgia.",pcb_2:"Propiedades de lujo y frente al mar, vendidas con cuidado.",pcb_3:"Negocios comerciales y de inversión, bien hechos.",pcb_4:"Guiando a quienes compran por primera vez, paso a paso.",
     pcard_link:"Ver perfil →",
     partners_cta_p:"¿Trabaja con Skybridge? Obtenga un perfil destacado gratis — y le ayudamos a promocionar sus propiedades.",partners_cta:"Conviértase en agente destacado",
+    fp2_eyebrow:"Crezca con Skybridge",fp2_h2:"Conviertase en socio destacado",fp2_intro:"Agentes inmobiliarios y corredores hipotecarios: ponga a Skybridge a trabajar para su negocio. Esto es todo lo que recibe, y no le cuesta nada.",fp2_ben_h:"Lo que recibe",fp2_b1_t:"Perfil destacado gratis",fp2_b1_p:"Un perfil en nuestro sitio que lo pone frente a cada comprador que nos encuentra.",fp2_b2_t:"Co-marketing que lo hace brillar",fp2_b2_p:"Folletos con su marca, enlaces de cotizacion instantanea y publicaciones que sus clientes pueden compartir.",fp2_b3_t:"Cierres rapidos y bilingues",fp2_b3_p:"Cerramos en ingles, espanol, criollo y frances, para que cada cliente se sienta bien atendido.",fp2_b4_t:"Referencias de vuelta para usted",fp2_b4_p:"Le enviamos compradores y vendedores de Skybridge. Funciona en ambos sentidos.",fp2_b5_t:"Un equipo de cierre que nunca duerme",fp2_b5_p:"Un equipo dedicado mas una recepcion con IA 24/7. Nunca mas persiga una actualizacion.",fp2_b6_t:"Resenas e hitos, resueltos",fp2_b6_p:"Pedimos resenas de 5 estrellas y enviamos mensajes de aniversario a sus clientes por usted.",fp2_form_h:"Solicite en 30 segundos",fp2_name_ph:"Nombre completo",fp2_company_ph:"Empresa o correduria",fp2_role_ph:"Soy...",fp2_role_realtor:"Agente inmobiliario",fp2_role_broker:"Corredor hipotecario",fp2_role_lender:"Prestamista / Oficial de prestamos",fp2_role_other:"Otro",fp2_email_ph:"Correo electronico",fp2_phone_ph:"Telefono",fp2_area_ph:"Ciudad o mercado que atiende",fp2_msg_ph:"Algo que quiera contarnos? (opcional)",fp2_send:"Solicitar ser socio",fp2_note:"Su informacion se envia de forma segura y nunca se vende.",fp2_ok:"Gracias, bienvenido a bordo. Nuestro equipo de socios se comunicara en un dia habil.",
     blog_eyebrow:"Conozca el proceso",blog_h2:"Guías y recursos",blog_p:"Guías en lenguaje sencillo sobre comprar, vender y cerrar — nuevas publicaciones cada mes en inglés, español, criollo y francés.",
     blog_tag:"Guía",blog_read:"Leer más →",
     blog1_d:"Junio 2026",blog1_t:"¿Qué hace realmente una compañía de título?",blog1_x:"Una explicación de 3 minutos, sin tecnicismos, para quienes compran por primera vez.",
@@ -1380,6 +1425,13 @@ function sendForm(e){
   document.getElementById('formOk').style.display='block';
   e.target.reset();
   document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+  return false;
+}
+function sendPartnerForm(e){
+  e.preventDefault();
+  document.getElementById('partnerOk').style.display='block';
+  e.target.reset();
+  var m=document.getElementById('partner'); if(m){m.scrollTop=0;window.scrollTo(0,0);}
   return false;
 }
 
